@@ -22,14 +22,20 @@ jobs:
           - 1.19.x
           - 1.20.x
           - 1.21.x
+          - 1.22.x
+          - 1.23.x
+          - 1.24.x
+          - 1.25.x
+          - 1.26.x
+          - 1.27.2
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 1
 
     - name: Setup Go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
       with:
         go-version: ${{ matrix.go-version }}
 
