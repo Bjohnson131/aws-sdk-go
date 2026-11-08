@@ -1,6 +1,15 @@
+//go:build go1.9
+// +build go1.9
+
 package endpoints
 
 import "testing"
+
+// ***************************************************************************
+// All endpoint metadata is sourced from the testdata/endpoints.json file at
+// test startup. Not the live endpoints model file. Update the testdata file
+// for the tests to use the latest live model.
+// ***************************************************************************
 
 func TestEnumDefaultPartitions(t *testing.T) {
 	resolver := DefaultResolver()
@@ -38,7 +47,8 @@ func TestEnumPartitionServices(t *testing.T) {
 
 	svcEnum := partEnum.Services()
 
-	if a, e := len(svcEnum), len(expectPart.Services); a != e {
+	// Expect the number of services in the partition + ec2metadata
+	if a, e := len(svcEnum), len(expectPart.Services)+1; a != e {
 		t.Errorf("expected %d regions, got %d", e, a)
 	}
 }
@@ -109,7 +119,8 @@ func TestEnumServicesEndpoints(t *testing.T) {
 
 	ss := p.Services()
 
-	if a, e := len(ss), 5; a != e {
+	// Expect the number of services in the partition + ec2metadata
+	if a, e := len(ss), 6; a != e {
 		t.Errorf("expect %d regions got %d", e, a)
 	}
 
@@ -253,12 +264,13 @@ func TestResolverFunc(t *testing.T) {
 
 func TestOptionsSet(t *testing.T) {
 	var actual Options
-	actual.Set(DisableSSLOption, UseDualStackOption, StrictMatchingOption)
+	actual.Set(DisableSSLOption, UseDualStackOption, StrictMatchingOption, UseDualStackEndpointOption)
 
 	expect := Options{
-		DisableSSL:     true,
-		UseDualStack:   true,
-		StrictMatching: true,
+		DisableSSL:           true,
+		UseDualStack:         true,
+		UseDualStackEndpoint: DualStackEndpointStateEnabled,
+		StrictMatching:       true,
 	}
 
 	if actual != expect {
@@ -344,5 +356,48 @@ func TestPartitionForRegion_NotFound(t *testing.T) {
 	actual, ok := PartitionForRegion(ps, "regionNotExists")
 	if ok {
 		t.Errorf("expect no partition to be found, got %v", actual)
+	}
+}
+
+func TestEC2MetadataEndpoint(t *testing.T) {
+	cases := []struct {
+		Options  Options
+		Expected string
+	}{
+		{
+			Expected: ec2MetadataEndpointIPv4,
+		},
+		{
+			Options: Options{
+				EC2MetadataEndpointMode: EC2IMDSEndpointModeStateIPv4,
+			},
+			Expected: ec2MetadataEndpointIPv4,
+		},
+		{
+			Options: Options{
+				EC2MetadataEndpointMode: EC2IMDSEndpointModeStateIPv6,
+			},
+			Expected: ec2MetadataEndpointIPv6,
+		},
+	}
+
+	for _, p := range DefaultPartitions() {
+		var region string
+		for r := range p.Regions() {
+			region = r
+			break
+		}
+
+		for _, c := range cases {
+			endpoint, err := p.EndpointFor("ec2metadata", region, func(options *Options) {
+				*options = c.Options
+			})
+			if err != nil {
+				t.Fatalf("expect no error, got %v", err)
+			}
+			if e, a := c.Expected, endpoint.URL; e != a {
+				t.Errorf("exect %v, got %v", e, a)
+			}
+		}
 	}
 }

@@ -3,14 +3,25 @@
 // Package transcribeservice provides the client and types for making API
 // requests to Amazon Transcribe Service.
 //
-// Operations and objects for transcribing speech to text.
+// Amazon Transcribe offers three main types of batch transcription: Standard,
+// Medical, and Call Analytics.
+//
+//   - Standard transcriptions are the most common option. Refer to for details.
+//
+//   - Medical transcriptions are tailored to medical professionals and incorporate
+//     medical terms. A common use case for this service is transcribing doctor-patient
+//     dialogue into after-visit notes. Refer to for details.
+//
+//   - Call Analytics transcriptions are designed for use with call center
+//     audio on two different channels; if you're looking for insight into customer
+//     service calls, use this option. Refer to for details.
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26 for more information on this service.
 //
 // See transcribeservice package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/transcribeservice/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact Amazon Transcribe Service with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -25,4 +36,7 @@
 // See the Amazon Transcribe Service client TranscribeService for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/transcribeservice/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package transcribeservice

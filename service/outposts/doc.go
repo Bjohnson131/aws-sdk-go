@@ -3,10 +3,11 @@
 // Package outposts provides the client and types for making API
 // requests to AWS Outposts.
 //
-// AWS Outposts is a fully managed service that extends AWS infrastructure,
-// APIs, and tools to customer premises. By providing local access to AWS managed
-// infrastructure, AWS Outposts enables customers to build and run applications
-// on premises using the same programming interfaces as in AWS Regions, while
+// Amazon Web Services Outposts is a fully managed service that extends Amazon
+// Web Services infrastructure, APIs, and tools to customer premises. By providing
+// local access to Amazon Web Services managed infrastructure, Amazon Web Services
+// Outposts enables customers to build and run applications on premises using
+// the same programming interfaces as in Amazon Web Services Regions, while
 // using local compute and storage resources for lower latency and local data
 // processing needs.
 //
@@ -15,7 +16,7 @@
 // See outposts package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/outposts/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS Outposts with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -30,4 +31,7 @@
 // See the AWS Outposts client Outposts for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/outposts/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package outposts

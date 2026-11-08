@@ -3,14 +3,14 @@
 // Package amplifybackend provides the client and types for making API
 // requests to AmplifyBackend.
 //
-// AWS Amplify Admin API
+// # AWS Amplify Admin API
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/amplifybackend-2020-08-11 for more information on this service.
 //
 // See amplifybackend package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/amplifybackend/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AmplifyBackend with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -25,4 +25,7 @@
 // See the AmplifyBackend client AmplifyBackend for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/amplifybackend/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package amplifybackend

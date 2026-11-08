@@ -3,20 +3,20 @@
 // Package servicediscovery provides the client and types for making API
 // requests to AWS Cloud Map.
 //
-// With AWS Cloud Map, you can configure public DNS, private DNS, or HTTP namespaces
+// With Cloud Map, you can configure public DNS, private DNS, or HTTP namespaces
 // that your microservice applications run in. When an instance becomes available,
-// you can call the AWS Cloud Map API to register the instance with AWS Cloud
-// Map. For public or private DNS namespaces, AWS Cloud Map automatically creates
-// DNS records and an optional health check. Clients that submit public or private
-// DNS queries, or HTTP requests, for the service receive an answer that contains
-// up to eight healthy records.
+// you can call the Cloud Map API to register the instance with Cloud Map. For
+// public or private DNS namespaces, Cloud Map automatically creates DNS records
+// and an optional health check. Clients that submit public or private DNS queries,
+// or HTTP requests, for the service receive an answer that contains up to eight
+// healthy records.
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/servicediscovery-2017-03-14 for more information on this service.
 //
 // See servicediscovery package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/servicediscovery/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS Cloud Map with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -31,4 +31,7 @@
 // See the AWS Cloud Map client ServiceDiscovery for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/servicediscovery/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package servicediscovery

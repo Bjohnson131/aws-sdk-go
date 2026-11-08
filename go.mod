@@ -1,9 +1,7 @@
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 module github.com/aws/aws-sdk-go
 
-require (
-	github.com/jmespath/go-jmespath v0.4.0
-	github.com/pkg/errors v0.9.1
-	golang.org/x/net v0.0.0-20201110031124-69a78807bb2b
-)
+go 1.19
 
-go 1.11
+require github.com/jmespath/go-jmespath v0.4.0

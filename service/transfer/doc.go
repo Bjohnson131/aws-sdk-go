@@ -3,24 +3,25 @@
 // Package transfer provides the client and types for making API
 // requests to AWS Transfer Family.
 //
-// AWS Transfer Family is a fully managed service that enables the transfer
-// of files over the File Transfer Protocol (FTP), File Transfer Protocol over
-// SSL (FTPS), or Secure Shell (SSH) File Transfer Protocol (SFTP) directly
-// into and out of Amazon Simple Storage Service (Amazon S3). AWS helps you
-// seamlessly migrate your file transfer workflows to AWS Transfer Family by
-// integrating with existing authentication systems, and providing DNS routing
-// with Amazon Route 53 so nothing changes for your customers and partners,
-// or their applications. With your data in Amazon S3, you can use it with AWS
-// services for processing, analytics, machine learning, and archiving. Getting
-// started with AWS Transfer Family is easy since there is no infrastructure
-// to buy and set up.
+// Transfer Family is a fully managed service that enables the transfer of files
+// over the File Transfer Protocol (FTP), File Transfer Protocol over SSL (FTPS),
+// or Secure Shell (SSH) File Transfer Protocol (SFTP) directly into and out
+// of Amazon Simple Storage Service (Amazon S3) or Amazon EFS. Additionally,
+// you can use Applicability Statement 2 (AS2) to transfer files into and out
+// of Amazon S3. Amazon Web Services helps you seamlessly migrate your file
+// transfer workflows to Transfer Family by integrating with existing authentication
+// systems, and providing DNS routing with Amazon Route 53 so nothing changes
+// for your customers and partners, or their applications. With your data in
+// Amazon S3, you can use it with Amazon Web Services for processing, analytics,
+// machine learning, and archiving. Getting started with Transfer Family is
+// easy since there is no infrastructure to buy and set up.
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/transfer-2018-11-05 for more information on this service.
 //
 // See transfer package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/transfer/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS Transfer Family with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -35,4 +36,7 @@
 // See the AWS Transfer Family client Transfer for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/transfer/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package transfer

@@ -3,17 +3,17 @@
 // Package imagebuilder provides the client and types for making API
 // requests to EC2 Image Builder.
 //
-// EC2 Image Builder is a fully managed AWS service that makes it easier to
-// automate the creation, management, and deployment of customized, secure,
-// and up-to-date "golden" server images that are pre-installed and pre-configured
-// with software and settings to meet specific IT standards.
+// EC2 Image Builder is a fully managed Amazon Web Services service that makes
+// it easier to automate the creation, management, and deployment of customized,
+// secure, and up-to-date "golden" server images that are pre-installed and
+// pre-configured with software and settings to meet specific IT standards.
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/imagebuilder-2019-12-02 for more information on this service.
 //
 // See imagebuilder package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/imagebuilder/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact EC2 Image Builder with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -28,4 +28,7 @@
 // See the EC2 Image Builder client Imagebuilder for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/imagebuilder/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package imagebuilder

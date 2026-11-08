@@ -5,23 +5,23 @@
 //
 // When you create a VPC using Amazon VPC, you automatically get DNS resolution
 // within the VPC from Route 53 Resolver. By default, Resolver answers DNS queries
-// for VPC domain names such as domain names for EC2 instances or ELB load balancers.
-// Resolver performs recursive lookups against public name servers for all other
-// domain names.
+// for VPC domain names such as domain names for EC2 instances or Elastic Load
+// Balancing load balancers. Resolver performs recursive lookups against public
+// name servers for all other domain names.
 //
 // You can also configure DNS resolution between your VPC and your network over
 // a Direct Connect or VPN connection:
 //
-// Forward DNS queries from resolvers on your network to Route 53 Resolver
+// # Forward DNS queries from resolvers on your network to Route 53 Resolver
 //
 // DNS resolvers on your network can forward DNS queries to Resolver in a specified
-// VPC. This allows your DNS resolvers to easily resolve domain names for AWS
-// resources such as EC2 instances or records in a Route 53 private hosted zone.
-// For more information, see How DNS Resolvers on Your Network Forward DNS Queries
-// to Route 53 Resolver (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-network-to-vpc)
+// VPC. This allows your DNS resolvers to easily resolve domain names for Amazon
+// Web Services resources such as EC2 instances or records in a Route 53 private
+// hosted zone. For more information, see How DNS Resolvers on Your Network
+// Forward DNS Queries to Route 53 Resolver (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-network-to-vpc)
 // in the Amazon Route 53 Developer Guide.
 //
-// Conditionally forward queries from a VPC to resolvers on your network
+// # Conditionally forward queries from a VPC to resolvers on your network
 //
 // You can configure Resolver to forward queries that it receives from EC2 instances
 // in your VPCs to DNS resolvers on your network. To forward selected queries,
@@ -35,7 +35,7 @@
 // (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-vpc-to-network)
 // in the Amazon Route 53 Developer Guide.
 //
-// Like Amazon VPC, Resolver is regional. In each region where you have VPCs,
+// Like Amazon VPC, Resolver is Regional. In each Region where you have VPCs,
 // you can choose whether to forward queries from your VPCs to your network
 // (outbound queries), from your network to your VPCs (inbound queries), or
 // both.
@@ -45,7 +45,7 @@
 // See route53resolver package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/route53resolver/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact Amazon Route 53 Resolver with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -60,4 +60,7 @@
 // See the Amazon Route 53 Resolver client Route53Resolver for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/route53resolver/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package route53resolver

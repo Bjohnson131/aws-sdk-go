@@ -1,3 +1,4 @@
+//go:build go1.7
 // +build go1.7
 
 package session
@@ -8,6 +9,7 @@ import (
 	"strconv"
 	"testing"
 
+	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/endpoints"
 	"github.com/aws/aws-sdk-go/awstesting"
@@ -106,6 +108,7 @@ func TestLoadEnvConfig(t *testing.T) {
 		Env                 map[string]string
 		UseSharedConfigCall bool
 		Config              envConfig
+		WantErr             bool
 	}{
 		0: {
 			Env: map[string]string{
@@ -356,6 +359,144 @@ func TestLoadEnvConfig(t *testing.T) {
 				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
 			},
 		},
+		21: {
+			Env: map[string]string{
+				"AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE": "IPv6",
+			},
+			Config: envConfig{
+				EC2IMDSEndpointMode:   endpoints.EC2IMDSEndpointModeStateIPv6,
+				SharedCredentialsFile: shareddefaults.SharedCredentialsFilename(),
+				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
+			},
+		},
+		22: {
+			Env: map[string]string{
+				"AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE": "IPv4",
+			},
+			Config: envConfig{
+				EC2IMDSEndpointMode:   endpoints.EC2IMDSEndpointModeStateIPv4,
+				SharedCredentialsFile: shareddefaults.SharedCredentialsFilename(),
+				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
+			},
+		},
+		23: {
+			Env: map[string]string{
+				"AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE": "foobar",
+			},
+			WantErr: true,
+		},
+		24: {
+			Env: map[string]string{
+				"AWS_EC2_METADATA_SERVICE_ENDPOINT": "http://endpoint.localhost",
+			},
+			Config: envConfig{
+				EC2IMDSEndpoint:       "http://endpoint.localhost",
+				SharedCredentialsFile: shareddefaults.SharedCredentialsFilename(),
+				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
+			},
+		},
+		25: {
+			Env: map[string]string{
+				"AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE": "IPv6",
+				"AWS_EC2_METADATA_SERVICE_ENDPOINT":      "http://endpoint.localhost",
+			},
+			Config: envConfig{
+				EC2IMDSEndpoint:       "http://endpoint.localhost",
+				EC2IMDSEndpointMode:   endpoints.EC2IMDSEndpointModeStateIPv6,
+				SharedCredentialsFile: shareddefaults.SharedCredentialsFilename(),
+				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
+			},
+		},
+		26: {
+			Env: map[string]string{
+				"AWS_EC2_METADATA_DISABLED": "false",
+			},
+			Config: envConfig{
+				SharedCredentialsFile: shareddefaults.SharedCredentialsFilename(),
+				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
+			},
+		},
+		27: {
+			Env: map[string]string{
+				"AWS_USE_DUALSTACK_ENDPOINT": "true",
+			},
+			Config: envConfig{
+				UseDualStackEndpoint:  endpoints.DualStackEndpointStateEnabled,
+				SharedCredentialsFile: shareddefaults.SharedCredentialsFilename(),
+				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
+			},
+		},
+		28: {
+			Env: map[string]string{
+				"AWS_USE_DUALSTACK_ENDPOINT": "false",
+			},
+			Config: envConfig{
+				UseDualStackEndpoint:  endpoints.DualStackEndpointStateDisabled,
+				SharedCredentialsFile: shareddefaults.SharedCredentialsFilename(),
+				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
+			},
+		},
+		29: {
+			Env: map[string]string{
+				"AWS_USE_DUALSTACK_ENDPOINT": "invalid",
+			},
+			WantErr: true,
+		},
+		30: {
+			Env: map[string]string{
+				"AWS_USE_FIPS_ENDPOINT": "true",
+			},
+			Config: envConfig{
+				UseFIPSEndpoint:       endpoints.FIPSEndpointStateEnabled,
+				SharedCredentialsFile: shareddefaults.SharedCredentialsFilename(),
+				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
+			},
+		},
+		31: {
+			Env: map[string]string{
+				"AWS_USE_FIPS_ENDPOINT": "false",
+			},
+			Config: envConfig{
+				UseFIPSEndpoint:       endpoints.FIPSEndpointStateDisabled,
+				SharedCredentialsFile: shareddefaults.SharedCredentialsFilename(),
+				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
+			},
+		},
+		32: {
+			Env: map[string]string{
+				"AWS_USE_FIPS_ENDPOINT": "invalid",
+			},
+			WantErr: true,
+		},
+		33: {
+			Env: map[string]string{
+				"AWS_EC2_METADATA_V1_DISABLED": "fAlSe",
+			},
+			Config: envConfig{
+				SharedCredentialsFile: shareddefaults.SharedCredentialsFilename(),
+				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
+				EC2IMDSv1Disabled:     aws.Bool(false),
+			},
+		},
+		34: {
+			Env: map[string]string{
+				"AWS_EC2_METADATA_V1_DISABLED": "tRuE",
+			},
+			Config: envConfig{
+				SharedCredentialsFile: shareddefaults.SharedCredentialsFilename(),
+				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
+				EC2IMDSv1Disabled:     aws.Bool(true),
+			},
+		},
+		35: {
+			Env: map[string]string{
+				"AWS_EC2_METADATA_V1_DISABLED": "invalid",
+			},
+			Config: envConfig{
+				SharedCredentialsFile: shareddefaults.SharedCredentialsFilename(),
+				SharedConfigFile:      shareddefaults.SharedConfigFilename(),
+			},
+		},
 	}
 
 	for i, c := range cases {
@@ -370,13 +511,19 @@ func TestLoadEnvConfig(t *testing.T) {
 			var err error
 			if c.UseSharedConfigCall {
 				cfg, err = loadSharedEnvConfig()
-				if err != nil {
-					t.Errorf("failed to load shared env config, %v", err)
+				if (err != nil) != c.WantErr {
+					t.Errorf("WantErr=%v, got err=%v", c.WantErr, err)
+					return
+				} else if c.WantErr {
+					return
 				}
 			} else {
 				cfg, err = loadEnvConfig()
-				if err != nil {
-					t.Errorf("failed to load env config, %v", err)
+				if (err != nil) != c.WantErr {
+					t.Errorf("WantErr=%v, got err=%v", c.WantErr, err)
+					return
+				} else if c.WantErr {
+					return
 				}
 			}
 

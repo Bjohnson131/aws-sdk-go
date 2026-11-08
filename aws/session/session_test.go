@@ -1,3 +1,4 @@
+//go:build go1.7
 // +build go1.7
 
 package session
@@ -8,6 +9,8 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"reflect"
+	"strconv"
 	"strings"
 	"testing"
 
@@ -699,6 +702,107 @@ func TestSession_ClientConfig_ResolveEndpoint(t *testing.T) {
 			},
 			ExpectEndpoint: "http://correct.example.aws",
 		},
+		"IMDS custom endpoint from profile": {
+			Service: ec2MetadataServiceID,
+			Options: Options{
+				SharedConfigState: SharedConfigEnable,
+				SharedConfigFiles: []string{testConfigFilename},
+				Profile:           "EC2MetadataServiceEndpoint",
+			},
+			Region:         "ignored",
+			ExpectEndpoint: "http://endpoint.localhost",
+		},
+		"IMDS custom endpoint from profile and env": {
+			Service: ec2MetadataServiceID,
+			Options: Options{
+				SharedConfigFiles: []string{testConfigFilename},
+				Profile:           "EC2MetadataServiceEndpoint",
+			},
+			Env: map[string]string{
+				"AWS_EC2_METADATA_SERVICE_ENDPOINT": "http://endpoint-env.localhost",
+			},
+			Region:         "ignored",
+			ExpectEndpoint: "http://endpoint-env.localhost",
+		},
+		"IMDS IPv6 mode from profile": {
+			Service: ec2MetadataServiceID,
+			Options: Options{
+				SharedConfigState: SharedConfigEnable,
+				SharedConfigFiles: []string{testConfigFilename},
+				Profile:           "EC2MetadataServiceEndpointModeIPv6",
+			},
+			Region:         "ignored",
+			ExpectEndpoint: "http://[fd00:ec2::254]/latest",
+		},
+		"IMDS IPv4 mode from profile": {
+			Service: ec2MetadataServiceID,
+			Options: Options{
+				SharedConfigFiles: []string{testConfigFilename},
+				Profile:           "EC2MetadataServiceEndpointModeIPv4",
+			},
+			Region:         "ignored",
+			ExpectEndpoint: "http://169.254.169.254/latest",
+		},
+		"IMDS IPv6 mode in env": {
+			Service: ec2MetadataServiceID,
+			Env: map[string]string{
+				"AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE": "IPv6",
+			},
+			Region:         "ignored",
+			ExpectEndpoint: "http://[fd00:ec2::254]/latest",
+		},
+		"IMDS IPv4 mode in env": {
+			Service: ec2MetadataServiceID,
+			Env: map[string]string{
+				"AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE": "IPv4",
+			},
+			Region:         "ignored",
+			ExpectEndpoint: "http://169.254.169.254/latest",
+		},
+		"IMDS mode in env and profile": {
+			Service: ec2MetadataServiceID,
+			Options: Options{
+				SharedConfigFiles: []string{testConfigFilename},
+				Profile:           "EC2MetadataServiceEndpointModeIPv4",
+			},
+			Env: map[string]string{
+				"AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE": "IPv6",
+			},
+			Region:         "ignored",
+			ExpectEndpoint: "http://[fd00:ec2::254]/latest",
+		},
+		"IMDS mode and endpoint profile": {
+			Service: ec2MetadataServiceID,
+			Options: Options{
+				SharedConfigState: SharedConfigEnable,
+				SharedConfigFiles: []string{testConfigFilename},
+				Profile:           "EC2MetadataServiceEndpointAndModeMixed",
+			},
+			Region:         "ignored",
+			ExpectEndpoint: "http://endpoint.localhost",
+		},
+		"IMDS mode session option and env": {
+			Service: ec2MetadataServiceID,
+			Options: Options{
+				EC2IMDSEndpointMode: endpoints.EC2IMDSEndpointModeStateIPv6,
+			},
+			Env: map[string]string{
+				"AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE": "IPv4",
+			},
+			Region:         "ignored",
+			ExpectEndpoint: "http://[fd00:ec2::254]/latest",
+		},
+		"IMDS endpoint session option and env": {
+			Service: ec2MetadataServiceID,
+			Options: Options{
+				EC2IMDSEndpoint: "http://endpoint.localhost",
+			},
+			Env: map[string]string{
+				"AWS_EC2_METADATA_SERVICE_ENDPOINT": "http://endpoint-env.localhost",
+			},
+			Region:         "ignored",
+			ExpectEndpoint: "http://endpoint.localhost",
+		},
 	}
 
 	for name, c := range cases {
@@ -720,6 +824,88 @@ func TestSession_ClientConfig_ResolveEndpoint(t *testing.T) {
 			})
 
 			if e, a := c.ExpectEndpoint, clientCfg.Endpoint; e != a {
+				t.Errorf("expect %v, got %v", e, a)
+			}
+		})
+	}
+}
+
+func TestNormalizeRegion(t *testing.T) {
+	cases := []struct {
+		Config                 aws.Config
+		ExpectedConfig         aws.Config
+		ExpectedResolvedRegion string
+	}{
+		{
+			Config: aws.Config{
+				Region: aws.String("us-west-2"),
+			},
+			ExpectedConfig: aws.Config{
+				Region: aws.String("us-west-2"),
+			},
+			ExpectedResolvedRegion: "",
+		},
+		{
+			Config: aws.Config{
+				Region:          aws.String("us-west-2"),
+				UseFIPSEndpoint: endpoints.FIPSEndpointStateEnabled,
+			},
+			ExpectedConfig: aws.Config{
+				Region:          aws.String("us-west-2"),
+				UseFIPSEndpoint: endpoints.FIPSEndpointStateEnabled,
+			},
+			ExpectedResolvedRegion: "",
+		},
+		{
+			Config: aws.Config{
+				Region:          aws.String("fips-us-west-2"),
+				UseFIPSEndpoint: endpoints.FIPSEndpointStateDisabled,
+			},
+			ExpectedConfig: aws.Config{
+				Region:          aws.String("fips-us-west-2"),
+				UseFIPSEndpoint: endpoints.FIPSEndpointStateEnabled,
+			},
+			ExpectedResolvedRegion: "us-west-2",
+		},
+		{
+			Config: aws.Config{
+				Region: aws.String("fips-us-west-2"),
+			},
+			ExpectedConfig: aws.Config{
+				Region:          aws.String("fips-us-west-2"),
+				UseFIPSEndpoint: endpoints.FIPSEndpointStateEnabled,
+			},
+			ExpectedResolvedRegion: "us-west-2",
+		},
+		{
+			Config: aws.Config{
+				Region: aws.String("us-west-2-fips"),
+			},
+			ExpectedConfig: aws.Config{
+				Region:          aws.String("us-west-2-fips"),
+				UseFIPSEndpoint: endpoints.FIPSEndpointStateEnabled,
+			},
+			ExpectedResolvedRegion: "us-west-2",
+		},
+		{
+			Config: aws.Config{
+				Region: aws.String("us-west-2-fips-thing"),
+			},
+			ExpectedConfig: aws.Config{
+				Region:          aws.String("us-west-2-fips-thing"),
+				UseFIPSEndpoint: endpoints.FIPSEndpointStateEnabled,
+			},
+			ExpectedResolvedRegion: "us-west-2-thing",
+		},
+	}
+
+	for i, tt := range cases {
+		t.Run(strconv.Itoa(i), func(t *testing.T) {
+			resolved := normalizeRegion(&tt.Config)
+			if !reflect.DeepEqual(tt.ExpectedConfig, tt.Config) {
+				t.Errorf("expect %v, got %v", tt.ExpectedConfig, tt.Config)
+			}
+			if e, a := tt.ExpectedResolvedRegion, resolved; e != a {
 				t.Errorf("expect %v, got %v", e, a)
 			}
 		})

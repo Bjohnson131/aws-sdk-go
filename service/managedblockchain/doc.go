@@ -12,7 +12,7 @@
 // frameworks. Because of fundamental differences between the frameworks, some
 // API actions or data types may only apply in the context of one framework
 // and not the other. For example, actions related to Hyperledger Fabric network
-// members such as CreateMember and DeleteMember do not apply to Ethereum.
+// members such as CreateMember and DeleteMember don't apply to Ethereum.
 //
 // The description for each action indicates the framework or frameworks to
 // which it applies. Data types and properties that apply only in the context
@@ -23,7 +23,7 @@
 // See managedblockchain package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/managedblockchain/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact Amazon Managed Blockchain with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -38,4 +38,7 @@
 // See the Amazon Managed Blockchain client ManagedBlockchain for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/managedblockchain/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package managedblockchain

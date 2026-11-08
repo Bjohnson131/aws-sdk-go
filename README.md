@@ -1,65 +1,20 @@
 # AWS SDK for Go
 
-[![API Reference](https://img.shields.io/badge/api-reference-blue.svg)](https://docs.aws.amazon.com/sdk-for-go/api) [![Join the chat at https://gitter.im/aws/aws-sdk-go](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aws/aws-sdk-go?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://api.travis-ci.com/aws/aws-sdk-go.svg?branch=main)](https://travis-ci.com/aws/aws-sdk-go) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-blue.svg)](https://github.com/aws/aws-sdk-go/blob/main/LICENSE.txt)
+[![API Reference](https://img.shields.io/badge/api-reference-blue.svg)](https://docs.aws.amazon.com/sdk-for-go/api) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-blue.svg)](https://github.com/aws/aws-sdk-go/blob/main/LICENSE.txt)
 
-aws-sdk-go is the official AWS SDK for the Go programming language.
+# :no_entry_sign: This SDK has reached end-of-support
 
-Checkout our [release notes](https://github.com/aws/aws-sdk-go/releases) for
-information about the latest bug fixes, updates, and features added to the SDK.
+We previously [announced](https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025)
+our end-of-support plan for AWS SDK for Go (v1).
 
-We [announced](https://aws.amazon.com/blogs/developer/aws-sdk-for-go-version-2-general-availability/) the General Availability for the [AWS SDK for Go V2 (v2)](https://github.com/aws/aws-sdk-go-v2). The v2 SDK source is available at https://github.com/aws/aws-sdk-go-v2. Review the v2 SDK's [Developer Guide](https://aws.github.io/aws-sdk-go-v2/docs/) to get started with AWS SDK for Go V2 or review the [migration guide](https://aws.github.io/aws-sdk-go-v2/docs/migrating/) if you already use version 1.
+Per that announcement, as of 7/31/2025, **the SDK has entered end-of-support**.
+It will not receive further updates.
 
-Jump To:
-* [Getting Started](#Getting-Started)
-* [Quick Examples](#Quick-Examples)
-* [Getting Help](#Getting-Help)
-* [Contributing](#Contributing)
-* [More Resources](#Resources)
+We recommend that you migrate to [AWS SDK for Go v2](https://aws.github.io/aws-sdk-go-v2/docs/).
+For additional details as well as information on how to migrate, please refer
+to the linked announcement.
 
-## Getting Started
-
-### Installing
-Use `go get` to retrieve the SDK to add it to your `GOPATH` workspace, or
-project's Go module dependencies.
-
-	go get github.com/aws/aws-sdk-go
-
-To update the SDK use `go get -u` to retrieve the latest version of the SDK.
-
-	go get -u github.com/aws/aws-sdk-go
-
-### Dependencies
-
-The SDK includes a `vendor` folder containing the runtime dependencies of the
-SDK. The metadata of the SDK's dependencies can be found in the Go module file
-`go.mod` or Dep file `Gopkg.toml`.
-
-### Go Modules
-
-If you are using Go modules, your `go get` will default to the latest tagged
-release version of the SDK. To get a specific release version of the SDK use
-`@<tag>` in your `go get` command.
-
-	go get github.com/aws/aws-sdk-go@v1.15.77
-
-To get the latest SDK repository change use `@latest`.
-
-	go get github.com/aws/aws-sdk-go@latest
-
-### Go 1.5
-
-If you are using Go 1.5 without vendoring enabled, (`GO15VENDOREXPERIMENT=1`),
-you will need to use `...` when retrieving the SDK to get its dependencies.
-
-	go get github.com/aws/aws-sdk-go/...
-
-This will still include the `vendor` folder. The `vendor` folder can be deleted
-if not used by your environment.
-
-    rm -rf $GOPATH/src/github.com/aws/aws-sdk-go/vendor
-
-
-## Quick Examples 
+## Quick Examples
 
 ### Complete SDK Example
 
@@ -160,36 +115,36 @@ The SDK core packages are all available under the aws package at the root of
 the SDK. Each client for a supported AWS service is available within its own
 package under the service folder at the root of the SDK.
 
-  * aws - SDK core, provides common shared types such as Config, Logger,
-    and utilities to make working with API parameters easier.
+- aws - SDK core, provides common shared types such as Config, Logger,
+  and utilities to make working with API parameters easier.
 
-      * awserr - Provides the error interface that the SDK will use for all
-        errors that occur in the SDK's processing. This includes service API
-        response errors as well. The Error type is made up of a code and message.
-        Cast the SDK's returned error type to awserr.Error and call the Code
-        method to compare returned error to specific error codes. See the package's
-        documentation for additional values that can be extracted such as RequestID.
+    - awserr - Provides the error interface that the SDK will use for all
+      errors that occur in the SDK's processing. This includes service API
+      response errors as well. The Error type is made up of a code and message.
+      Cast the SDK's returned error type to awserr.Error and call the Code
+      method to compare returned error to specific error codes. See the package's
+      documentation for additional values that can be extracted such as RequestID.
 
-      * credentials - Provides the types and built in credentials providers
-        the SDK will use to retrieve AWS credentials to make API requests with.
-        Nested under this folder are also additional credentials providers such as
-        stscreds for assuming IAM roles, and ec2rolecreds for EC2 Instance roles.
+    - credentials - Provides the types and built in credentials providers
+      the SDK will use to retrieve AWS credentials to make API requests with.
+      Nested under this folder are also additional credentials providers such as
+      stscreds for assuming IAM roles, and ec2rolecreds for EC2 Instance roles.
 
-      * endpoints - Provides the AWS Regions and Endpoints metadata for the SDK.
-        Use this to lookup AWS service endpoint information such as which services
-        are in a region, and what regions a service is in. Constants are also provided
-        for all region identifiers, e.g UsWest2RegionID for "us-west-2".
+    - endpoints - Provides the AWS Regions and Endpoints metadata for the SDK.
+      Use this to lookup AWS service endpoint information such as which services
+      are in a region, and what regions a service is in. Constants are also provided
+      for all region identifiers, e.g UsWest2RegionID for "us-west-2".
 
-      * session - Provides initial default configuration, and load
-        configuration from external sources such as environment and shared
-        credentials file.
+    - session - Provides initial default configuration, and load
+      configuration from external sources such as environment and shared
+      credentials file.
 
-      * request - Provides the API request sending, and retry logic for the SDK.
-        This package also includes utilities for defining your own request
-        retryer, and configuring how the SDK processes the request.
+    - request - Provides the API request sending, and retry logic for the SDK.
+      This package also includes utilities for defining your own request
+      retryer, and configuring how the SDK processes the request.
 
-  * service - Clients for AWS services. All services supported by the SDK are
-    available under this folder.
+- service - Clients for AWS services. All services supported by the SDK are
+  available under this folder.
 
 ### How to Use the SDK's AWS Service Clients
 
@@ -238,15 +193,15 @@ its default credential chain. See the session package for more information
 on this chain, and how to configure it. The common items in the credential
 chain are the following:
 
-  * Environment Credentials - Set of environment variables that are useful
-    when sub processes are created for specific roles.
+- Environment Credentials - Set of environment variables that are useful
+  when sub processes are created for specific roles.
 
-  * Shared Credentials file (~/.aws/credentials) - This file stores your
-    credentials based on a profile name and is useful for local development.
+- Shared Credentials file (~/.aws/credentials) - This file stores your
+  credentials based on a profile name and is useful for local development.
 
-  * EC2 Instance Role Credentials - Use EC2 Instance Role to assign credentials
-    to application running on an EC2 instance. This removes the need to manage
-    credential files in production.
+- EC2 Instance Role Credentials - Use EC2 Instance Role to assign credentials
+  to application running on an EC2 instance. This removes the need to manage
+  credential files in production.
 
 Credentials can be configured in code as well by setting the Config's Credentials
 value to a custom provider or using one of the providers included with the
@@ -346,40 +301,40 @@ and an error. The SDK provides methods for making the API call in multiple ways.
 In this list we'll use the S3 ListObjects API as an example for the different
 ways of making API requests.
 
-  * ListObjects - Base API operation that will make the API request to the service.
+- ListObjects - Base API operation that will make the API request to the service.
 
-  * ListObjectsRequest - API methods suffixed with Request will construct the
-    API request, but not send it. This is also helpful when you want to get a
-    presigned URL for a request, and share the presigned URL instead of your
-    application making the request directly.
+- ListObjectsRequest - API methods suffixed with Request will construct the
+  API request, but not send it. This is also helpful when you want to get a
+  presigned URL for a request, and share the presigned URL instead of your
+  application making the request directly.
 
-  * ListObjectsPages - Same as the base API operation, but uses a callback to
-    automatically handle pagination of the API's response.
+- ListObjectsPages - Same as the base API operation, but uses a callback to
+  automatically handle pagination of the API's response.
 
-  * ListObjectsWithContext - Same as base API operation, but adds support for
-    the Context pattern. This is helpful for controlling the canceling of in
-    flight requests. See the Go standard library context package for more
-    information. This method also takes request package's Option functional
-    options as the variadic argument for modifying how the request will be
-    made, or extracting information from the raw HTTP response.
+- ListObjectsWithContext - Same as base API operation, but adds support for
+  the Context pattern. This is helpful for controlling the canceling of in
+  flight requests. See the Go standard library context package for more
+  information. This method also takes request package's Option functional
+  options as the variadic argument for modifying how the request will be
+  made, or extracting information from the raw HTTP response.
 
-  * ListObjectsPagesWithContext - same as ListObjectsPages, but adds support for
-    the Context pattern. Similar to ListObjectsWithContext this method also
-    takes the request package's Option function option types as the variadic
-    argument.
+- ListObjectsPagesWithContext - same as ListObjectsPages, but adds support for
+  the Context pattern. Similar to ListObjectsWithContext this method also
+  takes the request package's Option function option types as the variadic
+  argument.
 
 In addition to the API operations the SDK also includes several higher level
 methods that abstract checking for and waiting for an AWS resource to be in
 a desired state. In this list we'll use WaitUntilBucketExists to demonstrate
 the different forms of waiters.
 
-  * WaitUntilBucketExists. - Method to make API request to query an AWS service for
-    a resource's state. Will return successfully when that state is accomplished.
+- WaitUntilBucketExists. - Method to make API request to query an AWS service for
+  a resource's state. Will return successfully when that state is accomplished.
 
-  * WaitUntilBucketExistsWithContext - Same as WaitUntilBucketExists, but adds
-    support for the Context pattern. In addition these methods take request
-    package's WaiterOptions to configure the waiter, and how underlying request
-    will be made by the SDK.
+- WaitUntilBucketExistsWithContext - Same as WaitUntilBucketExists, but adds
+  support for the Context pattern. In addition these methods take request
+  package's WaiterOptions to configure the waiter, and how underlying request
+  will be made by the SDK.
 
 The API method will document which error codes the service might return for
 the operation. These errors will also be available as const strings prefixed
@@ -452,43 +407,7 @@ be request.WaiterResourceNotReadyErrorCode.
       panic(fmt.Errorf("failed to wait for bucket to exist, %v", err))
   }
   fmt.Println("Bucket", myBucket, "exists")
-```    
-
-## Getting Help
-
-Please use these community resources for getting help. We use the GitHub issues
-for tracking bugs and feature requests.
-
-* Ask a question on [StackOverflow](http://stackoverflow.com/) and tag it with the [`aws-sdk-go`](http://stackoverflow.com/questions/tagged/aws-sdk-go) tag.
-* Come join the AWS SDK for Go community chat on [gitter](https://gitter.im/aws/aws-sdk-go).
-* Open a support ticket with [AWS Support](http://docs.aws.amazon.com/awssupport/latest/user/getting-started.html).
-* If you think you may have found a bug, please open an [issue](https://github.com/aws/aws-sdk-go/issues/new/choose).
-
-This SDK implements AWS service APIs. For general issues regarding the AWS services and their limitations, you may also take a look at the [Amazon Web Services Discussion Forums](https://forums.aws.amazon.com/).
-
-### Opening Issues
-
-If you encounter a bug with the AWS SDK for Go we would like to hear about it.
-Search the [existing issues](https://github.com/aws/aws-sdk-go/issues) and see
-if others are also experiencing the issue before opening a new issue. Please
-include the version of AWS SDK for Go, Go language, and OS you’re using. Please
-also include reproduction case when appropriate.
-
-The GitHub issues are intended for bug reports and feature requests. For help
-and questions with using AWS SDK for Go please make use of the resources listed
-in the [Getting Help](https://github.com/aws/aws-sdk-go#getting-help) section.
-Keeping the list of open issues lean will help us respond in a timely manner.
-
-## Contributing
-
-We work hard to provide a high-quality and useful SDK for our AWS services, and we greatly value feedback and contributions from our community. Please review our [contributing guidelines](./CONTRIBUTING.md) before submitting any [issues] or [pull requests][pr] to ensure we have all the necessary information to effectively respond to your bug report or contribution.
-
-## Maintenance and support for SDK major versions
-
-For information about maintenance and support for SDK major versions and our underlying dependencies, see the following in the AWS SDKs and Tools Shared Configuration and Credentials Reference Guide:
-
-* [AWS SDKs and Tools Maintenance Policy](https://docs.aws.amazon.com/credref/latest/refdocs/maint-policy.html)
-* [AWS SDKs and Tools Version Support Matrix](https://docs.aws.amazon.com/credref/latest/refdocs/version-support-matrix.html)
+```
 
 ## Resources
 
@@ -496,7 +415,7 @@ For information about maintenance and support for SDK major versions and our und
 is a general introduction on how to configure and make requests with the SDK.
 If this is your first time using the SDK, this documentation and the API
 documentation will help you get started. This document focuses on the syntax
-and behavior of the SDK. The [Service Developer Guide](https://aws.amazon.com/documentation/) 
+and behavior of the SDK. The [Service Developer Guide](https://aws.amazon.com/documentation/)
 will help you get started using specific AWS services.
 
 [SDK API Reference Documentation](https://docs.aws.amazon.com/sdk-for-go/api/) - Use this
@@ -507,20 +426,10 @@ API operation require parameters.
 
 [Service Documentation](https://aws.amazon.com/documentation/) - Use this
 documentation to learn how to interface with AWS services. These guides are
-great for getting started with a service, or when looking for more 
-information about a service. While this document is not required for coding, 
+great for getting started with a service, or when looking for more
+information about a service. While this document is not required for coding,
 services may supply helpful samples to look out for.
 
 [SDK Examples](https://github.com/aws/aws-sdk-go/tree/main/example) -
 Included in the SDK's repo are several hand crafted examples using the SDK
 features and AWS services.
-
-[Forum](https://forums.aws.amazon.com/forum.jspa?forumID=293) - Ask questions, get help, and give feedback
-
-[Issues][issues] - Report issues, submit pull requests, and get involved
-  (see [Apache 2.0 License][license])
-
-
-[issues]: https://github.com/aws/aws-sdk-go/issues
-[pr]: https://github.com/aws/aws-sdk-go/pulls
-[license]: http://aws.amazon.com/apache2.0/

@@ -23,37 +23,37 @@ import (
 // can be stubbed out for unit testing your code with the SDK without needing
 // to inject custom request handlers into the SDK's request pipeline.
 //
-//    // myFunc uses an SDK service client to make a request to
-//    // AWS CodePipeline.
-//    func myFunc(svc codepipelineiface.CodePipelineAPI) bool {
-//        // Make svc.AcknowledgeJob request
-//    }
+//	// myFunc uses an SDK service client to make a request to
+//	// AWS CodePipeline.
+//	func myFunc(svc codepipelineiface.CodePipelineAPI) bool {
+//	    // Make svc.AcknowledgeJob request
+//	}
 //
-//    func main() {
-//        sess := session.New()
-//        svc := codepipeline.New(sess)
+//	func main() {
+//	    sess := session.New()
+//	    svc := codepipeline.New(sess)
 //
-//        myFunc(svc)
-//    }
+//	    myFunc(svc)
+//	}
 //
 // In your _test.go file:
 //
-//    // Define a mock struct to be used in your unit tests of myFunc.
-//    type mockCodePipelineClient struct {
-//        codepipelineiface.CodePipelineAPI
-//    }
-//    func (m *mockCodePipelineClient) AcknowledgeJob(input *codepipeline.AcknowledgeJobInput) (*codepipeline.AcknowledgeJobOutput, error) {
-//        // mock response/functionality
-//    }
+//	// Define a mock struct to be used in your unit tests of myFunc.
+//	type mockCodePipelineClient struct {
+//	    codepipelineiface.CodePipelineAPI
+//	}
+//	func (m *mockCodePipelineClient) AcknowledgeJob(input *codepipeline.AcknowledgeJobInput) (*codepipeline.AcknowledgeJobOutput, error) {
+//	    // mock response/functionality
+//	}
 //
-//    func TestMyFunc(t *testing.T) {
-//        // Setup Test
-//        mockSvc := &mockCodePipelineClient{}
+//	func TestMyFunc(t *testing.T) {
+//	    // Setup Test
+//	    mockSvc := &mockCodePipelineClient{}
 //
-//        myfunc(mockSvc)
+//	    myfunc(mockSvc)
 //
-//        // Verify myFunc's functionality
-//    }
+//	    // Verify myFunc's functionality
+//	}
 //
 // It is important to note that this interface will have breaking changes
 // when the service model is updated and adds new API operations, paginators,
@@ -152,6 +152,17 @@ type CodePipelineAPI interface {
 	ListPipelinesPages(*codepipeline.ListPipelinesInput, func(*codepipeline.ListPipelinesOutput, bool) bool) error
 	ListPipelinesPagesWithContext(aws.Context, *codepipeline.ListPipelinesInput, func(*codepipeline.ListPipelinesOutput, bool) bool, ...request.Option) error
 
+	ListRuleExecutions(*codepipeline.ListRuleExecutionsInput) (*codepipeline.ListRuleExecutionsOutput, error)
+	ListRuleExecutionsWithContext(aws.Context, *codepipeline.ListRuleExecutionsInput, ...request.Option) (*codepipeline.ListRuleExecutionsOutput, error)
+	ListRuleExecutionsRequest(*codepipeline.ListRuleExecutionsInput) (*request.Request, *codepipeline.ListRuleExecutionsOutput)
+
+	ListRuleExecutionsPages(*codepipeline.ListRuleExecutionsInput, func(*codepipeline.ListRuleExecutionsOutput, bool) bool) error
+	ListRuleExecutionsPagesWithContext(aws.Context, *codepipeline.ListRuleExecutionsInput, func(*codepipeline.ListRuleExecutionsOutput, bool) bool, ...request.Option) error
+
+	ListRuleTypes(*codepipeline.ListRuleTypesInput) (*codepipeline.ListRuleTypesOutput, error)
+	ListRuleTypesWithContext(aws.Context, *codepipeline.ListRuleTypesInput, ...request.Option) (*codepipeline.ListRuleTypesOutput, error)
+	ListRuleTypesRequest(*codepipeline.ListRuleTypesInput) (*request.Request, *codepipeline.ListRuleTypesOutput)
+
 	ListTagsForResource(*codepipeline.ListTagsForResourceInput) (*codepipeline.ListTagsForResourceOutput, error)
 	ListTagsForResourceWithContext(aws.Context, *codepipeline.ListTagsForResourceInput, ...request.Option) (*codepipeline.ListTagsForResourceOutput, error)
 	ListTagsForResourceRequest(*codepipeline.ListTagsForResourceInput) (*request.Request, *codepipeline.ListTagsForResourceOutput)
@@ -165,6 +176,10 @@ type CodePipelineAPI interface {
 
 	ListWebhooksPages(*codepipeline.ListWebhooksInput, func(*codepipeline.ListWebhooksOutput, bool) bool) error
 	ListWebhooksPagesWithContext(aws.Context, *codepipeline.ListWebhooksInput, func(*codepipeline.ListWebhooksOutput, bool) bool, ...request.Option) error
+
+	OverrideStageCondition(*codepipeline.OverrideStageConditionInput) (*codepipeline.OverrideStageConditionOutput, error)
+	OverrideStageConditionWithContext(aws.Context, *codepipeline.OverrideStageConditionInput, ...request.Option) (*codepipeline.OverrideStageConditionOutput, error)
+	OverrideStageConditionRequest(*codepipeline.OverrideStageConditionInput) (*request.Request, *codepipeline.OverrideStageConditionOutput)
 
 	PollForJobs(*codepipeline.PollForJobsInput) (*codepipeline.PollForJobsOutput, error)
 	PollForJobsWithContext(aws.Context, *codepipeline.PollForJobsInput, ...request.Option) (*codepipeline.PollForJobsOutput, error)
@@ -209,6 +224,10 @@ type CodePipelineAPI interface {
 	RetryStageExecution(*codepipeline.RetryStageExecutionInput) (*codepipeline.RetryStageExecutionOutput, error)
 	RetryStageExecutionWithContext(aws.Context, *codepipeline.RetryStageExecutionInput, ...request.Option) (*codepipeline.RetryStageExecutionOutput, error)
 	RetryStageExecutionRequest(*codepipeline.RetryStageExecutionInput) (*request.Request, *codepipeline.RetryStageExecutionOutput)
+
+	RollbackStage(*codepipeline.RollbackStageInput) (*codepipeline.RollbackStageOutput, error)
+	RollbackStageWithContext(aws.Context, *codepipeline.RollbackStageInput, ...request.Option) (*codepipeline.RollbackStageOutput, error)
+	RollbackStageRequest(*codepipeline.RollbackStageInput) (*request.Request, *codepipeline.RollbackStageOutput)
 
 	StartPipelineExecution(*codepipeline.StartPipelineExecutionInput) (*codepipeline.StartPipelineExecutionOutput, error)
 	StartPipelineExecutionWithContext(aws.Context, *codepipeline.StartPipelineExecutionInput, ...request.Option) (*codepipeline.StartPipelineExecutionOutput, error)

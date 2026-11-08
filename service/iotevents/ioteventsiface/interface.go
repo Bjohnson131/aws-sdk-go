@@ -23,43 +23,47 @@ import (
 // can be stubbed out for unit testing your code with the SDK without needing
 // to inject custom request handlers into the SDK's request pipeline.
 //
-//    // myFunc uses an SDK service client to make a request to
-//    // AWS IoT Events.
-//    func myFunc(svc ioteventsiface.IoTEventsAPI) bool {
-//        // Make svc.CreateDetectorModel request
-//    }
+//	// myFunc uses an SDK service client to make a request to
+//	// AWS IoT Events.
+//	func myFunc(svc ioteventsiface.IoTEventsAPI) bool {
+//	    // Make svc.CreateAlarmModel request
+//	}
 //
-//    func main() {
-//        sess := session.New()
-//        svc := iotevents.New(sess)
+//	func main() {
+//	    sess := session.New()
+//	    svc := iotevents.New(sess)
 //
-//        myFunc(svc)
-//    }
+//	    myFunc(svc)
+//	}
 //
 // In your _test.go file:
 //
-//    // Define a mock struct to be used in your unit tests of myFunc.
-//    type mockIoTEventsClient struct {
-//        ioteventsiface.IoTEventsAPI
-//    }
-//    func (m *mockIoTEventsClient) CreateDetectorModel(input *iotevents.CreateDetectorModelInput) (*iotevents.CreateDetectorModelOutput, error) {
-//        // mock response/functionality
-//    }
+//	// Define a mock struct to be used in your unit tests of myFunc.
+//	type mockIoTEventsClient struct {
+//	    ioteventsiface.IoTEventsAPI
+//	}
+//	func (m *mockIoTEventsClient) CreateAlarmModel(input *iotevents.CreateAlarmModelInput) (*iotevents.CreateAlarmModelOutput, error) {
+//	    // mock response/functionality
+//	}
 //
-//    func TestMyFunc(t *testing.T) {
-//        // Setup Test
-//        mockSvc := &mockIoTEventsClient{}
+//	func TestMyFunc(t *testing.T) {
+//	    // Setup Test
+//	    mockSvc := &mockIoTEventsClient{}
 //
-//        myfunc(mockSvc)
+//	    myfunc(mockSvc)
 //
-//        // Verify myFunc's functionality
-//    }
+//	    // Verify myFunc's functionality
+//	}
 //
 // It is important to note that this interface will have breaking changes
 // when the service model is updated and adds new API operations, paginators,
 // and waiters. Its suggested to use the pattern above for testing, or using
 // tooling to generate mocks to satisfy the interfaces.
 type IoTEventsAPI interface {
+	CreateAlarmModel(*iotevents.CreateAlarmModelInput) (*iotevents.CreateAlarmModelOutput, error)
+	CreateAlarmModelWithContext(aws.Context, *iotevents.CreateAlarmModelInput, ...request.Option) (*iotevents.CreateAlarmModelOutput, error)
+	CreateAlarmModelRequest(*iotevents.CreateAlarmModelInput) (*request.Request, *iotevents.CreateAlarmModelOutput)
+
 	CreateDetectorModel(*iotevents.CreateDetectorModelInput) (*iotevents.CreateDetectorModelOutput, error)
 	CreateDetectorModelWithContext(aws.Context, *iotevents.CreateDetectorModelInput, ...request.Option) (*iotevents.CreateDetectorModelOutput, error)
 	CreateDetectorModelRequest(*iotevents.CreateDetectorModelInput) (*request.Request, *iotevents.CreateDetectorModelOutput)
@@ -68,6 +72,10 @@ type IoTEventsAPI interface {
 	CreateInputWithContext(aws.Context, *iotevents.CreateInputInput, ...request.Option) (*iotevents.CreateInputOutput, error)
 	CreateInputRequest(*iotevents.CreateInputInput) (*request.Request, *iotevents.CreateInputOutput)
 
+	DeleteAlarmModel(*iotevents.DeleteAlarmModelInput) (*iotevents.DeleteAlarmModelOutput, error)
+	DeleteAlarmModelWithContext(aws.Context, *iotevents.DeleteAlarmModelInput, ...request.Option) (*iotevents.DeleteAlarmModelOutput, error)
+	DeleteAlarmModelRequest(*iotevents.DeleteAlarmModelInput) (*request.Request, *iotevents.DeleteAlarmModelOutput)
+
 	DeleteDetectorModel(*iotevents.DeleteDetectorModelInput) (*iotevents.DeleteDetectorModelOutput, error)
 	DeleteDetectorModelWithContext(aws.Context, *iotevents.DeleteDetectorModelInput, ...request.Option) (*iotevents.DeleteDetectorModelOutput, error)
 	DeleteDetectorModelRequest(*iotevents.DeleteDetectorModelInput) (*request.Request, *iotevents.DeleteDetectorModelOutput)
@@ -75,6 +83,10 @@ type IoTEventsAPI interface {
 	DeleteInput(*iotevents.DeleteInputInput) (*iotevents.DeleteInputOutput, error)
 	DeleteInputWithContext(aws.Context, *iotevents.DeleteInputInput, ...request.Option) (*iotevents.DeleteInputOutput, error)
 	DeleteInputRequest(*iotevents.DeleteInputInput) (*request.Request, *iotevents.DeleteInputOutput)
+
+	DescribeAlarmModel(*iotevents.DescribeAlarmModelInput) (*iotevents.DescribeAlarmModelOutput, error)
+	DescribeAlarmModelWithContext(aws.Context, *iotevents.DescribeAlarmModelInput, ...request.Option) (*iotevents.DescribeAlarmModelOutput, error)
+	DescribeAlarmModelRequest(*iotevents.DescribeAlarmModelInput) (*request.Request, *iotevents.DescribeAlarmModelOutput)
 
 	DescribeDetectorModel(*iotevents.DescribeDetectorModelInput) (*iotevents.DescribeDetectorModelOutput, error)
 	DescribeDetectorModelWithContext(aws.Context, *iotevents.DescribeDetectorModelInput, ...request.Option) (*iotevents.DescribeDetectorModelOutput, error)
@@ -96,6 +108,14 @@ type IoTEventsAPI interface {
 	GetDetectorModelAnalysisResultsWithContext(aws.Context, *iotevents.GetDetectorModelAnalysisResultsInput, ...request.Option) (*iotevents.GetDetectorModelAnalysisResultsOutput, error)
 	GetDetectorModelAnalysisResultsRequest(*iotevents.GetDetectorModelAnalysisResultsInput) (*request.Request, *iotevents.GetDetectorModelAnalysisResultsOutput)
 
+	ListAlarmModelVersions(*iotevents.ListAlarmModelVersionsInput) (*iotevents.ListAlarmModelVersionsOutput, error)
+	ListAlarmModelVersionsWithContext(aws.Context, *iotevents.ListAlarmModelVersionsInput, ...request.Option) (*iotevents.ListAlarmModelVersionsOutput, error)
+	ListAlarmModelVersionsRequest(*iotevents.ListAlarmModelVersionsInput) (*request.Request, *iotevents.ListAlarmModelVersionsOutput)
+
+	ListAlarmModels(*iotevents.ListAlarmModelsInput) (*iotevents.ListAlarmModelsOutput, error)
+	ListAlarmModelsWithContext(aws.Context, *iotevents.ListAlarmModelsInput, ...request.Option) (*iotevents.ListAlarmModelsOutput, error)
+	ListAlarmModelsRequest(*iotevents.ListAlarmModelsInput) (*request.Request, *iotevents.ListAlarmModelsOutput)
+
 	ListDetectorModelVersions(*iotevents.ListDetectorModelVersionsInput) (*iotevents.ListDetectorModelVersionsOutput, error)
 	ListDetectorModelVersionsWithContext(aws.Context, *iotevents.ListDetectorModelVersionsInput, ...request.Option) (*iotevents.ListDetectorModelVersionsOutput, error)
 	ListDetectorModelVersionsRequest(*iotevents.ListDetectorModelVersionsInput) (*request.Request, *iotevents.ListDetectorModelVersionsOutput)
@@ -103,6 +123,10 @@ type IoTEventsAPI interface {
 	ListDetectorModels(*iotevents.ListDetectorModelsInput) (*iotevents.ListDetectorModelsOutput, error)
 	ListDetectorModelsWithContext(aws.Context, *iotevents.ListDetectorModelsInput, ...request.Option) (*iotevents.ListDetectorModelsOutput, error)
 	ListDetectorModelsRequest(*iotevents.ListDetectorModelsInput) (*request.Request, *iotevents.ListDetectorModelsOutput)
+
+	ListInputRoutings(*iotevents.ListInputRoutingsInput) (*iotevents.ListInputRoutingsOutput, error)
+	ListInputRoutingsWithContext(aws.Context, *iotevents.ListInputRoutingsInput, ...request.Option) (*iotevents.ListInputRoutingsOutput, error)
+	ListInputRoutingsRequest(*iotevents.ListInputRoutingsInput) (*request.Request, *iotevents.ListInputRoutingsOutput)
 
 	ListInputs(*iotevents.ListInputsInput) (*iotevents.ListInputsOutput, error)
 	ListInputsWithContext(aws.Context, *iotevents.ListInputsInput, ...request.Option) (*iotevents.ListInputsOutput, error)
@@ -127,6 +151,10 @@ type IoTEventsAPI interface {
 	UntagResource(*iotevents.UntagResourceInput) (*iotevents.UntagResourceOutput, error)
 	UntagResourceWithContext(aws.Context, *iotevents.UntagResourceInput, ...request.Option) (*iotevents.UntagResourceOutput, error)
 	UntagResourceRequest(*iotevents.UntagResourceInput) (*request.Request, *iotevents.UntagResourceOutput)
+
+	UpdateAlarmModel(*iotevents.UpdateAlarmModelInput) (*iotevents.UpdateAlarmModelOutput, error)
+	UpdateAlarmModelWithContext(aws.Context, *iotevents.UpdateAlarmModelInput, ...request.Option) (*iotevents.UpdateAlarmModelOutput, error)
+	UpdateAlarmModelRequest(*iotevents.UpdateAlarmModelInput) (*request.Request, *iotevents.UpdateAlarmModelOutput)
 
 	UpdateDetectorModel(*iotevents.UpdateDetectorModelInput) (*iotevents.UpdateDetectorModelOutput, error)
 	UpdateDetectorModelWithContext(aws.Context, *iotevents.UpdateDetectorModelInput, ...request.Option) (*iotevents.UpdateDetectorModelOutput, error)

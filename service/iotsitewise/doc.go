@@ -3,19 +3,19 @@
 // Package iotsitewise provides the client and types for making API
 // requests to AWS IoT SiteWise.
 //
-// Welcome to the AWS IoT SiteWise API Reference. AWS IoT SiteWise is an AWS
-// service that connects Industrial Internet of Things (IIoT) (https://en.wikipedia.org/wiki/Internet_of_things#Industrial_applications)
-// devices to the power of the AWS Cloud. For more information, see the AWS
-// IoT SiteWise User Guide (https://docs.aws.amazon.com/iot-sitewise/latest/userguide/).
-// For information about AWS IoT SiteWise quotas, see Quotas (https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html)
-// in the AWS IoT SiteWise User Guide.
+// Welcome to the IoT SiteWise API Reference. IoT SiteWise is an Amazon Web
+// Services service that connects Industrial Internet of Things (IIoT) (https://en.wikipedia.org/wiki/Internet_of_things#Industrial_applications)
+// devices to the power of the Amazon Web Services Cloud. For more information,
+// see the IoT SiteWise User Guide (https://docs.aws.amazon.com/iot-sitewise/latest/userguide/).
+// For information about IoT SiteWise quotas, see Quotas (https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html)
+// in the IoT SiteWise User Guide.
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/iotsitewise-2019-12-02 for more information on this service.
 //
 // See iotsitewise package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/iotsitewise/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS IoT SiteWise with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -30,4 +30,7 @@
 // See the AWS IoT SiteWise client IoTSiteWise for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/iotsitewise/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package iotsitewise

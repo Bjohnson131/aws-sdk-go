@@ -11,9 +11,14 @@ const (
 	// ErrCodeAccessDeniedFault for service response error code
 	// "AccessDeniedFault".
 	//
-	// AWS DMS was denied access to the endpoint. Check that the role is correctly
-	// configured.
+	// DMS was denied access to the endpoint. Check that the role is correctly configured.
 	ErrCodeAccessDeniedFault = "AccessDeniedFault"
+
+	// ErrCodeCollectorNotFoundFault for service response error code
+	// "CollectorNotFoundFault".
+	//
+	// The specified collector doesn't exist.
+	ErrCodeCollectorNotFoundFault = "CollectorNotFoundFault"
 
 	// ErrCodeInsufficientResourceCapacityFault for service response error code
 	// "InsufficientResourceCapacityFault".
@@ -27,6 +32,12 @@ const (
 	// The certificate was not valid.
 	ErrCodeInvalidCertificateFault = "InvalidCertificateFault"
 
+	// ErrCodeInvalidOperationFault for service response error code
+	// "InvalidOperationFault".
+	//
+	// The action or operation requested isn't valid.
+	ErrCodeInvalidOperationFault = "InvalidOperationFault"
+
 	// ErrCodeInvalidResourceStateFault for service response error code
 	// "InvalidResourceStateFault".
 	//
@@ -37,7 +48,7 @@ const (
 	// ErrCodeInvalidSubnet for service response error code
 	// "InvalidSubnet".
 	//
-	// The subnet provided is invalid.
+	// The subnet provided isn't valid.
 	ErrCodeInvalidSubnet = "InvalidSubnet"
 
 	// ErrCodeKMSAccessDeniedFault for service response error code
@@ -50,38 +61,37 @@ const (
 	// ErrCodeKMSDisabledFault for service response error code
 	// "KMSDisabledFault".
 	//
-	// The specified master key (CMK) isn't enabled.
+	// The specified KMS key isn't enabled.
 	ErrCodeKMSDisabledFault = "KMSDisabledFault"
 
 	// ErrCodeKMSFault for service response error code
 	// "KMSFault".
 	//
-	// An AWS Key Management Service (AWS KMS) error is preventing access to AWS
-	// KMS.
+	// An Key Management Service (KMS) error is preventing access to KMS.
 	ErrCodeKMSFault = "KMSFault"
 
 	// ErrCodeKMSInvalidStateFault for service response error code
 	// "KMSInvalidStateFault".
 	//
-	// The state of the specified AWS KMS resource isn't valid for this request.
+	// The state of the specified KMS resource isn't valid for this request.
 	ErrCodeKMSInvalidStateFault = "KMSInvalidStateFault"
 
 	// ErrCodeKMSKeyNotAccessibleFault for service response error code
 	// "KMSKeyNotAccessibleFault".
 	//
-	// AWS DMS cannot access the AWS KMS key.
+	// DMS cannot access the KMS key.
 	ErrCodeKMSKeyNotAccessibleFault = "KMSKeyNotAccessibleFault"
 
 	// ErrCodeKMSNotFoundFault for service response error code
 	// "KMSNotFoundFault".
 	//
-	// The specified AWS KMS entity or resource can't be found.
+	// The specified KMS entity or resource can't be found.
 	ErrCodeKMSNotFoundFault = "KMSNotFoundFault"
 
 	// ErrCodeKMSThrottlingFault for service response error code
 	// "KMSThrottlingFault".
 	//
-	// This request triggered AWS KMS request throttling.
+	// This request triggered KMS request throttling.
 	ErrCodeKMSThrottlingFault = "KMSThrottlingFault"
 
 	// ErrCodeReplicationSubnetGroupDoesNotCoverEnoughAZs for service response error code
@@ -154,8 +164,10 @@ const (
 
 var exceptionFromCode = map[string]func(protocol.ResponseMetadata) error{
 	"AccessDeniedFault":                           newErrorAccessDeniedFault,
+	"CollectorNotFoundFault":                      newErrorCollectorNotFoundFault,
 	"InsufficientResourceCapacityFault":           newErrorInsufficientResourceCapacityFault,
 	"InvalidCertificateFault":                     newErrorInvalidCertificateFault,
+	"InvalidOperationFault":                       newErrorInvalidOperationFault,
 	"InvalidResourceStateFault":                   newErrorInvalidResourceStateFault,
 	"InvalidSubnet":                               newErrorInvalidSubnet,
 	"KMSAccessDeniedFault":                        newErrorKMSAccessDeniedFault,

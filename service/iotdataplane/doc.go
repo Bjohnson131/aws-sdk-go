@@ -3,25 +3,24 @@
 // Package iotdataplane provides the client and types for making API
 // requests to AWS IoT Data Plane.
 //
-// AWS IoT-Data enables secure, bi-directional communication between Internet-connected
+// IoT data enables secure, bi-directional communication between Internet-connected
 // things (such as sensors, actuators, embedded devices, or smart appliances)
-// and the AWS cloud. It implements a broker for applications and things to
-// publish messages over HTTP (Publish) and retrieve, update, and delete shadows.
-// A shadow is a persistent representation of your things and their state in
-// the AWS cloud.
+// and the Amazon Web Services cloud. It implements a broker for applications
+// and things to publish messages over HTTP (Publish) and retrieve, update,
+// and delete shadows. A shadow is a persistent representation of your things
+// and their state in the Amazon Web Services cloud.
 //
-// Find the endpoint address for actions in the AWS IoT data plane by running
-// this CLI command:
+// Find the endpoint address for actions in IoT data by running this CLI command:
 //
 // aws iot describe-endpoint --endpoint-type iot:Data-ATS
 //
-// The service name used by AWS Signature Version 4 (https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)
+// The service name used by Amazon Web ServicesSignature Version 4 (https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)
 // to sign requests is: iotdevicegateway.
 //
 // See iotdataplane package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/iotdataplane/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS IoT Data Plane with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -36,4 +35,7 @@
 // See the AWS IoT Data Plane client IoTDataPlane for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/iotdataplane/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package iotdataplane

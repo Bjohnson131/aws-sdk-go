@@ -3,17 +3,17 @@
 // Package servicequotas provides the client and types for making API
 // requests to Service Quotas.
 //
-// With Service Quotas, you can view and manage your quotas easily as your AWS
-// workloads grow. Quotas, also referred to as limits, are the maximum number
-// of resources that you can create in your AWS account. For more information,
-// see the Service Quotas User Guide (https://docs.aws.amazon.com/servicequotas/latest/userguide/).
+// With Service Quotas, you can view and manage your quotas easily as your Amazon
+// Web Services workloads grow. Quotas, also referred to as limits, are the
+// maximum number of resources that you can create in your Amazon Web Services
+// account. For more information, see the Service Quotas User Guide (https://docs.aws.amazon.com/servicequotas/latest/userguide/).
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24 for more information on this service.
 //
 // See servicequotas package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/servicequotas/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact Service Quotas with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -28,4 +28,7 @@
 // See the Service Quotas client ServiceQuotas for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/servicequotas/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package servicequotas

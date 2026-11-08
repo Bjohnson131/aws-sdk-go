@@ -3,14 +3,14 @@
 // Package glue provides the client and types for making API
 // requests to AWS Glue.
 //
-// Defines the public endpoint for the AWS Glue service.
+// Defines the public endpoint for the Glue service.
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31 for more information on this service.
 //
 // See glue package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/glue/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS Glue with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -25,4 +25,7 @@
 // See the AWS Glue client Glue for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/glue/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package glue

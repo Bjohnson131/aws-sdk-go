@@ -28,6 +28,12 @@ const (
 	// The certificate is invalid.
 	ErrCodeCertificateValidationException = "CertificateValidationException"
 
+	// ErrCodeConflictException for service response error code
+	// "ConflictException".
+	//
+	// A resource with the same name already exists.
+	ErrCodeConflictException = "ConflictException"
+
 	// ErrCodeConflictingResourceUpdateException for service response error code
 	// "ConflictingResourceUpdateException".
 	//
@@ -58,6 +64,13 @@ const (
 	//
 	// An unexpected error has occurred.
 	ErrCodeInternalFailureException = "InternalFailureException"
+
+	// ErrCodeInternalServerException for service response error code
+	// "InternalServerException".
+	//
+	// Internal error from the service that indicates an unexpected error or that
+	// the service is unavailable.
+	ErrCodeInternalServerException = "InternalServerException"
 
 	// ErrCodeInvalidAggregationException for service response error code
 	// "InvalidAggregationException".
@@ -133,6 +146,12 @@ const (
 	// The resource registration failed.
 	ErrCodeResourceRegistrationFailureException = "ResourceRegistrationFailureException"
 
+	// ErrCodeServiceQuotaExceededException for service response error code
+	// "ServiceQuotaExceededException".
+	//
+	// A limit has been exceeded.
+	ErrCodeServiceQuotaExceededException = "ServiceQuotaExceededException"
+
 	// ErrCodeServiceUnavailableException for service response error code
 	// "ServiceUnavailableException".
 	//
@@ -178,6 +197,12 @@ const (
 	// You are not authorized to perform this operation.
 	ErrCodeUnauthorizedException = "UnauthorizedException"
 
+	// ErrCodeValidationException for service response error code
+	// "ValidationException".
+	//
+	// The request is not valid.
+	ErrCodeValidationException = "ValidationException"
+
 	// ErrCodeVersionConflictException for service response error code
 	// "VersionConflictException".
 	//
@@ -196,11 +221,13 @@ var exceptionFromCode = map[string]func(protocol.ResponseMetadata) error{
 	"CertificateConflictException":         newErrorCertificateConflictException,
 	"CertificateStateException":            newErrorCertificateStateException,
 	"CertificateValidationException":       newErrorCertificateValidationException,
+	"ConflictException":                    newErrorConflictException,
 	"ConflictingResourceUpdateException":   newErrorConflictingResourceUpdateException,
 	"DeleteConflictException":              newErrorDeleteConflictException,
 	"IndexNotReadyException":               newErrorIndexNotReadyException,
 	"InternalException":                    newErrorInternalException,
 	"InternalFailureException":             newErrorInternalFailureException,
+	"InternalServerException":              newErrorInternalServerException,
 	"InvalidAggregationException":          newErrorInvalidAggregationException,
 	"InvalidQueryException":                newErrorInvalidQueryException,
 	"InvalidRequestException":              newErrorInvalidRequestException,
@@ -213,6 +240,7 @@ var exceptionFromCode = map[string]func(protocol.ResponseMetadata) error{
 	"ResourceAlreadyExistsException":       newErrorResourceAlreadyExistsException,
 	"ResourceNotFoundException":            newErrorResourceNotFoundException,
 	"ResourceRegistrationFailureException": newErrorResourceRegistrationFailureException,
+	"ServiceQuotaExceededException":        newErrorServiceQuotaExceededException,
 	"ServiceUnavailableException":          newErrorServiceUnavailableException,
 	"SqlParseException":                    newErrorSqlParseException,
 	"TaskAlreadyExistsException":           newErrorTaskAlreadyExistsException,
@@ -220,6 +248,7 @@ var exceptionFromCode = map[string]func(protocol.ResponseMetadata) error{
 	"TransferAlreadyCompletedException":    newErrorTransferAlreadyCompletedException,
 	"TransferConflictException":            newErrorTransferConflictException,
 	"UnauthorizedException":                newErrorUnauthorizedException,
+	"ValidationException":                  newErrorValidationException,
 	"VersionConflictException":             newErrorVersionConflictException,
 	"VersionsLimitExceededException":       newErrorVersionsLimitExceededException,
 }

@@ -26,7 +26,6 @@ func parseTime(layout, value string) *time.Time {
 }
 
 // To delete multiple images
-//
 // This example deletes images with the tags precise and trusty in a repository called
 // ubuntu in the default registry for an account.
 func ExampleECR_BatchDeleteImage_shared00() {
@@ -65,7 +64,6 @@ func ExampleECR_BatchDeleteImage_shared00() {
 }
 
 // To obtain multiple images in a single request
-//
 // This example obtains information for an image with a specified image digest ID from
 // the repository named ubuntu in the current account.
 func ExampleECR_BatchGetImage_shared00() {
@@ -89,6 +87,10 @@ func ExampleECR_BatchGetImage_shared00() {
 				fmt.Println(ecr.ErrCodeInvalidParameterException, aerr.Error())
 			case ecr.ErrCodeRepositoryNotFoundException:
 				fmt.Println(ecr.ErrCodeRepositoryNotFoundException, aerr.Error())
+			case ecr.ErrCodeLimitExceededException:
+				fmt.Println(ecr.ErrCodeLimitExceededException, aerr.Error())
+			case ecr.ErrCodeUnableToGetUpstreamImageException:
+				fmt.Println(ecr.ErrCodeUnableToGetUpstreamImageException, aerr.Error())
 			default:
 				fmt.Println(aerr.Error())
 			}
@@ -104,7 +106,6 @@ func ExampleECR_BatchGetImage_shared00() {
 }
 
 // To create a new repository
-//
 // This example creates a repository called nginx-web-app inside the project-a namespace
 // in the default registry for an account.
 func ExampleECR_CreateRepository_shared00() {
@@ -145,8 +146,60 @@ func ExampleECR_CreateRepository_shared00() {
 	fmt.Println(result)
 }
 
+// Create a new repository creation template
+// This example creates a repository creation template.
+func ExampleECR_CreateRepositoryCreationTemplate_shared00() {
+	svc := ecr.New(session.New())
+	input := &ecr.CreateRepositoryCreationTemplateInput{
+		AppliedFor: []*string{
+			aws.String("REPLICATION"),
+			aws.String("PULL_THROUGH_CACHE"),
+		},
+		Description: aws.String("Repos for testing images"),
+		EncryptionConfiguration: &ecr.EncryptionConfigurationForRepositoryCreationTemplate{
+			EncryptionType: aws.String("AES256"),
+		},
+		ImageTagMutability: aws.String("MUTABLE"),
+		LifecyclePolicy:    aws.String("{\r\n    \"rules\": [\r\n        {\r\n            \"rulePriority\": 1,\r\n            \"description\": \"Expire images older than 14 days\",\r\n            \"selection\": {\r\n                \"tagStatus\": \"untagged\",\r\n                \"countType\": \"sinceImagePushed\",\r\n                \"countUnit\": \"days\",\r\n                \"countNumber\": 14\r\n            },\r\n            \"action\": {\r\n                \"type\": \"expire\"\r\n            }\r\n        }\r\n    ]\r\n}"),
+		Prefix:             aws.String("eng/test"),
+		RepositoryPolicy:   aws.String("{\r\n  \"Version\": \"2012-10-17\",\r\n  \"Statement\": [\r\n    {\r\n      \"Sid\": \"LambdaECRPullPolicy\",\r\n      \"Effect\": \"Allow\",\r\n      \"Principal\": {\r\n        \"Service\": \"lambda.amazonaws.com\"\r\n      },\r\n      \"Action\": \"ecr:BatchGetImage\"\r\n    }\r\n  ]\r\n}"),
+		ResourceTags: []*ecr.Tag{
+			{
+				Key:   aws.String("environment"),
+				Value: aws.String("test"),
+			},
+		},
+	}
+
+	result, err := svc.CreateRepositoryCreationTemplate(input)
+	if err != nil {
+		if aerr, ok := err.(awserr.Error); ok {
+			switch aerr.Code() {
+			case ecr.ErrCodeServerException:
+				fmt.Println(ecr.ErrCodeServerException, aerr.Error())
+			case ecr.ErrCodeValidationException:
+				fmt.Println(ecr.ErrCodeValidationException, aerr.Error())
+			case ecr.ErrCodeInvalidParameterException:
+				fmt.Println(ecr.ErrCodeInvalidParameterException, aerr.Error())
+			case ecr.ErrCodeLimitExceededException:
+				fmt.Println(ecr.ErrCodeLimitExceededException, aerr.Error())
+			case ecr.ErrCodeTemplateAlreadyExistsException:
+				fmt.Println(ecr.ErrCodeTemplateAlreadyExistsException, aerr.Error())
+			default:
+				fmt.Println(aerr.Error())
+			}
+		} else {
+			// Print the error, cast err to awserr.Error to get the Code and
+			// Message from an error.
+			fmt.Println(err.Error())
+		}
+		return
+	}
+
+	fmt.Println(result)
+}
+
 // To force delete a repository
-//
 // This example force deletes a repository named ubuntu in the default registry for
 // an account. The force parameter is required if the repository contains images.
 func ExampleECR_DeleteRepository_shared00() {
@@ -184,8 +237,41 @@ func ExampleECR_DeleteRepository_shared00() {
 	fmt.Println(result)
 }
 
+// Delete a repository creation template
+// This example deletes a repository creation template.
+func ExampleECR_DeleteRepositoryCreationTemplate_shared00() {
+	svc := ecr.New(session.New())
+	input := &ecr.DeleteRepositoryCreationTemplateInput{
+		Prefix: aws.String("eng"),
+	}
+
+	result, err := svc.DeleteRepositoryCreationTemplate(input)
+	if err != nil {
+		if aerr, ok := err.(awserr.Error); ok {
+			switch aerr.Code() {
+			case ecr.ErrCodeServerException:
+				fmt.Println(ecr.ErrCodeServerException, aerr.Error())
+			case ecr.ErrCodeValidationException:
+				fmt.Println(ecr.ErrCodeValidationException, aerr.Error())
+			case ecr.ErrCodeInvalidParameterException:
+				fmt.Println(ecr.ErrCodeInvalidParameterException, aerr.Error())
+			case ecr.ErrCodeTemplateNotFoundException:
+				fmt.Println(ecr.ErrCodeTemplateNotFoundException, aerr.Error())
+			default:
+				fmt.Println(aerr.Error())
+			}
+		} else {
+			// Print the error, cast err to awserr.Error to get the Code and
+			// Message from an error.
+			fmt.Println(err.Error())
+		}
+		return
+	}
+
+	fmt.Println(result)
+}
+
 // To delete the policy associated with a repository
-//
 // This example deletes the policy associated with the repository named ubuntu in the
 // current account.
 func ExampleECR_DeleteRepositoryPolicy_shared00() {
@@ -221,7 +307,6 @@ func ExampleECR_DeleteRepositoryPolicy_shared00() {
 }
 
 // To describe all repositories in the current account
-//
 // The following example obtains a list and description of all repositories in the default
 // registry to which the current user has access.
 func ExampleECR_DescribeRepositories_shared00() {
@@ -252,8 +337,43 @@ func ExampleECR_DescribeRepositories_shared00() {
 	fmt.Println(result)
 }
 
+// Describe a repository creation template
+// This example describes the contents of a repository creation template.
+func ExampleECR_DescribeRepositoryCreationTemplates_shared00() {
+	svc := ecr.New(session.New())
+	input := &ecr.DescribeRepositoryCreationTemplatesInput{
+		MaxResults: aws.Int64(123),
+		NextToken:  aws.String(""),
+		Prefixes: []*string{
+			aws.String("eng"),
+		},
+	}
+
+	result, err := svc.DescribeRepositoryCreationTemplates(input)
+	if err != nil {
+		if aerr, ok := err.(awserr.Error); ok {
+			switch aerr.Code() {
+			case ecr.ErrCodeServerException:
+				fmt.Println(ecr.ErrCodeServerException, aerr.Error())
+			case ecr.ErrCodeValidationException:
+				fmt.Println(ecr.ErrCodeValidationException, aerr.Error())
+			case ecr.ErrCodeInvalidParameterException:
+				fmt.Println(ecr.ErrCodeInvalidParameterException, aerr.Error())
+			default:
+				fmt.Println(aerr.Error())
+			}
+		} else {
+			// Print the error, cast err to awserr.Error to get the Code and
+			// Message from an error.
+			fmt.Println(err.Error())
+		}
+		return
+	}
+
+	fmt.Println(result)
+}
+
 // To obtain an authorization token
-//
 // This example gets an authorization token for your default registry.
 func ExampleECR_GetAuthorizationToken_shared00() {
 	svc := ecr.New(session.New())
@@ -282,7 +402,6 @@ func ExampleECR_GetAuthorizationToken_shared00() {
 }
 
 // To get the current policy for a repository
-//
 // This example obtains the repository policy for the repository named ubuntu.
 func ExampleECR_GetRepositoryPolicy_shared00() {
 	svc := ecr.New(session.New())
@@ -317,7 +436,6 @@ func ExampleECR_GetRepositoryPolicy_shared00() {
 }
 
 // To list all images in a repository
-//
 // This example lists all of the images in the repository named ubuntu in the default
 // registry in the current account.
 func ExampleECR_ListImages_shared00() {
@@ -336,6 +454,49 @@ func ExampleECR_ListImages_shared00() {
 				fmt.Println(ecr.ErrCodeInvalidParameterException, aerr.Error())
 			case ecr.ErrCodeRepositoryNotFoundException:
 				fmt.Println(ecr.ErrCodeRepositoryNotFoundException, aerr.Error())
+			default:
+				fmt.Println(aerr.Error())
+			}
+		} else {
+			// Print the error, cast err to awserr.Error to get the Code and
+			// Message from an error.
+			fmt.Println(err.Error())
+		}
+		return
+	}
+
+	fmt.Println(result)
+}
+
+// Update a repository creation template
+// This example updates a repository creation template.
+func ExampleECR_UpdateRepositoryCreationTemplate_shared00() {
+	svc := ecr.New(session.New())
+	input := &ecr.UpdateRepositoryCreationTemplateInput{
+		AppliedFor: []*string{
+			aws.String("REPLICATION"),
+		},
+		Prefix: aws.String("eng/test"),
+		ResourceTags: []*ecr.Tag{
+			{
+				Key:   aws.String("environment"),
+				Value: aws.String("test"),
+			},
+		},
+	}
+
+	result, err := svc.UpdateRepositoryCreationTemplate(input)
+	if err != nil {
+		if aerr, ok := err.(awserr.Error); ok {
+			switch aerr.Code() {
+			case ecr.ErrCodeServerException:
+				fmt.Println(ecr.ErrCodeServerException, aerr.Error())
+			case ecr.ErrCodeValidationException:
+				fmt.Println(ecr.ErrCodeValidationException, aerr.Error())
+			case ecr.ErrCodeInvalidParameterException:
+				fmt.Println(ecr.ErrCodeInvalidParameterException, aerr.Error())
+			case ecr.ErrCodeTemplateNotFoundException:
+				fmt.Println(ecr.ErrCodeTemplateNotFoundException, aerr.Error())
 			default:
 				fmt.Println(aerr.Error())
 			}

@@ -3,17 +3,20 @@
 // Package ioteventsdata provides the client and types for making API
 // requests to AWS IoT Events Data.
 //
-// AWS IoT Events monitors your equipment or device fleets for failures or changes
-// in operation, and triggers actions when such events occur. AWS IoT Events
-// Data API commands enable you to send inputs to detectors, list detectors,
-// and view or update a detector's status.
+// IoT Events monitors your equipment or device fleets for failures or changes
+// in operation, and triggers actions when such events occur. You can use IoT
+// Events Data API commands to send inputs to detectors, list detectors, and
+// view or update a detector's status.
+//
+// For more information, see What is IoT Events? (https://docs.aws.amazon.com/iotevents/latest/developerguide/what-is-iotevents.html)
+// in the IoT Events Developer Guide.
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/iotevents-data-2018-10-23 for more information on this service.
 //
 // See ioteventsdata package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/ioteventsdata/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS IoT Events Data with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -28,4 +31,7 @@
 // See the AWS IoT Events Data client IoTEventsData for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/ioteventsdata/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package ioteventsdata

@@ -23,37 +23,37 @@ import (
 // can be stubbed out for unit testing your code with the SDK without needing
 // to inject custom request handlers into the SDK's request pipeline.
 //
-//    // myFunc uses an SDK service client to make a request to
-//    // Amazon Chime.
-//    func myFunc(svc chimeiface.ChimeAPI) bool {
-//        // Make svc.AssociatePhoneNumberWithUser request
-//    }
+//	// myFunc uses an SDK service client to make a request to
+//	// Amazon Chime.
+//	func myFunc(svc chimeiface.ChimeAPI) bool {
+//	    // Make svc.AssociatePhoneNumberWithUser request
+//	}
 //
-//    func main() {
-//        sess := session.New()
-//        svc := chime.New(sess)
+//	func main() {
+//	    sess := session.New()
+//	    svc := chime.New(sess)
 //
-//        myFunc(svc)
-//    }
+//	    myFunc(svc)
+//	}
 //
 // In your _test.go file:
 //
-//    // Define a mock struct to be used in your unit tests of myFunc.
-//    type mockChimeClient struct {
-//        chimeiface.ChimeAPI
-//    }
-//    func (m *mockChimeClient) AssociatePhoneNumberWithUser(input *chime.AssociatePhoneNumberWithUserInput) (*chime.AssociatePhoneNumberWithUserOutput, error) {
-//        // mock response/functionality
-//    }
+//	// Define a mock struct to be used in your unit tests of myFunc.
+//	type mockChimeClient struct {
+//	    chimeiface.ChimeAPI
+//	}
+//	func (m *mockChimeClient) AssociatePhoneNumberWithUser(input *chime.AssociatePhoneNumberWithUserInput) (*chime.AssociatePhoneNumberWithUserOutput, error) {
+//	    // mock response/functionality
+//	}
 //
-//    func TestMyFunc(t *testing.T) {
-//        // Setup Test
-//        mockSvc := &mockChimeClient{}
+//	func TestMyFunc(t *testing.T) {
+//	    // Setup Test
+//	    mockSvc := &mockChimeClient{}
 //
-//        myfunc(mockSvc)
+//	    myfunc(mockSvc)
 //
-//        // Verify myFunc's functionality
-//    }
+//	    // Verify myFunc's functionality
+//	}
 //
 // It is important to note that this interface will have breaking changes
 // when the service model is updated and adds new API operations, paginators,
@@ -147,6 +147,10 @@ type ChimeAPI interface {
 	CreateChannelModerator(*chime.CreateChannelModeratorInput) (*chime.CreateChannelModeratorOutput, error)
 	CreateChannelModeratorWithContext(aws.Context, *chime.CreateChannelModeratorInput, ...request.Option) (*chime.CreateChannelModeratorOutput, error)
 	CreateChannelModeratorRequest(*chime.CreateChannelModeratorInput) (*request.Request, *chime.CreateChannelModeratorOutput)
+
+	CreateMediaCapturePipeline(*chime.CreateMediaCapturePipelineInput) (*chime.CreateMediaCapturePipelineOutput, error)
+	CreateMediaCapturePipelineWithContext(aws.Context, *chime.CreateMediaCapturePipelineInput, ...request.Option) (*chime.CreateMediaCapturePipelineOutput, error)
+	CreateMediaCapturePipelineRequest(*chime.CreateMediaCapturePipelineInput) (*request.Request, *chime.CreateMediaCapturePipelineOutput)
 
 	CreateMeeting(*chime.CreateMeetingInput) (*chime.CreateMeetingOutput, error)
 	CreateMeetingWithContext(aws.Context, *chime.CreateMeetingInput, ...request.Option) (*chime.CreateMeetingOutput, error)
@@ -247,6 +251,10 @@ type ChimeAPI interface {
 	DeleteEventsConfiguration(*chime.DeleteEventsConfigurationInput) (*chime.DeleteEventsConfigurationOutput, error)
 	DeleteEventsConfigurationWithContext(aws.Context, *chime.DeleteEventsConfigurationInput, ...request.Option) (*chime.DeleteEventsConfigurationOutput, error)
 	DeleteEventsConfigurationRequest(*chime.DeleteEventsConfigurationInput) (*request.Request, *chime.DeleteEventsConfigurationOutput)
+
+	DeleteMediaCapturePipeline(*chime.DeleteMediaCapturePipelineInput) (*chime.DeleteMediaCapturePipelineOutput, error)
+	DeleteMediaCapturePipelineWithContext(aws.Context, *chime.DeleteMediaCapturePipelineInput, ...request.Option) (*chime.DeleteMediaCapturePipelineOutput, error)
+	DeleteMediaCapturePipelineRequest(*chime.DeleteMediaCapturePipelineInput) (*request.Request, *chime.DeleteMediaCapturePipelineOutput)
 
 	DeleteMeeting(*chime.DeleteMeetingInput) (*chime.DeleteMeetingOutput, error)
 	DeleteMeetingWithContext(aws.Context, *chime.DeleteMeetingInput, ...request.Option) (*chime.DeleteMeetingOutput, error)
@@ -395,6 +403,10 @@ type ChimeAPI interface {
 	GetGlobalSettings(*chime.GetGlobalSettingsInput) (*chime.GetGlobalSettingsOutput, error)
 	GetGlobalSettingsWithContext(aws.Context, *chime.GetGlobalSettingsInput, ...request.Option) (*chime.GetGlobalSettingsOutput, error)
 	GetGlobalSettingsRequest(*chime.GetGlobalSettingsInput) (*request.Request, *chime.GetGlobalSettingsOutput)
+
+	GetMediaCapturePipeline(*chime.GetMediaCapturePipelineInput) (*chime.GetMediaCapturePipelineOutput, error)
+	GetMediaCapturePipelineWithContext(aws.Context, *chime.GetMediaCapturePipelineInput, ...request.Option) (*chime.GetMediaCapturePipelineOutput, error)
+	GetMediaCapturePipelineRequest(*chime.GetMediaCapturePipelineInput) (*request.Request, *chime.GetMediaCapturePipelineOutput)
 
 	GetMeeting(*chime.GetMeetingInput) (*chime.GetMeetingOutput, error)
 	GetMeetingWithContext(aws.Context, *chime.GetMeetingInput, ...request.Option) (*chime.GetMeetingOutput, error)
@@ -583,6 +595,13 @@ type ChimeAPI interface {
 	ListChannelsModeratedByAppInstanceUserPages(*chime.ListChannelsModeratedByAppInstanceUserInput, func(*chime.ListChannelsModeratedByAppInstanceUserOutput, bool) bool) error
 	ListChannelsModeratedByAppInstanceUserPagesWithContext(aws.Context, *chime.ListChannelsModeratedByAppInstanceUserInput, func(*chime.ListChannelsModeratedByAppInstanceUserOutput, bool) bool, ...request.Option) error
 
+	ListMediaCapturePipelines(*chime.ListMediaCapturePipelinesInput) (*chime.ListMediaCapturePipelinesOutput, error)
+	ListMediaCapturePipelinesWithContext(aws.Context, *chime.ListMediaCapturePipelinesInput, ...request.Option) (*chime.ListMediaCapturePipelinesOutput, error)
+	ListMediaCapturePipelinesRequest(*chime.ListMediaCapturePipelinesInput) (*request.Request, *chime.ListMediaCapturePipelinesOutput)
+
+	ListMediaCapturePipelinesPages(*chime.ListMediaCapturePipelinesInput, func(*chime.ListMediaCapturePipelinesOutput, bool) bool) error
+	ListMediaCapturePipelinesPagesWithContext(aws.Context, *chime.ListMediaCapturePipelinesInput, func(*chime.ListMediaCapturePipelinesOutput, bool) bool, ...request.Option) error
+
 	ListMeetingTags(*chime.ListMeetingTagsInput) (*chime.ListMeetingTagsOutput, error)
 	ListMeetingTagsWithContext(aws.Context, *chime.ListMeetingTagsInput, ...request.Option) (*chime.ListMeetingTagsOutput, error)
 	ListMeetingTagsRequest(*chime.ListMeetingTagsInput) (*request.Request, *chime.ListMeetingTagsOutput)
@@ -763,6 +782,14 @@ type ChimeAPI interface {
 	SendChannelMessageWithContext(aws.Context, *chime.SendChannelMessageInput, ...request.Option) (*chime.SendChannelMessageOutput, error)
 	SendChannelMessageRequest(*chime.SendChannelMessageInput) (*request.Request, *chime.SendChannelMessageOutput)
 
+	StartMeetingTranscription(*chime.StartMeetingTranscriptionInput) (*chime.StartMeetingTranscriptionOutput, error)
+	StartMeetingTranscriptionWithContext(aws.Context, *chime.StartMeetingTranscriptionInput, ...request.Option) (*chime.StartMeetingTranscriptionOutput, error)
+	StartMeetingTranscriptionRequest(*chime.StartMeetingTranscriptionInput) (*request.Request, *chime.StartMeetingTranscriptionOutput)
+
+	StopMeetingTranscription(*chime.StopMeetingTranscriptionInput) (*chime.StopMeetingTranscriptionOutput, error)
+	StopMeetingTranscriptionWithContext(aws.Context, *chime.StopMeetingTranscriptionInput, ...request.Option) (*chime.StopMeetingTranscriptionOutput, error)
+	StopMeetingTranscriptionRequest(*chime.StopMeetingTranscriptionInput) (*request.Request, *chime.StopMeetingTranscriptionOutput)
+
 	TagAttendee(*chime.TagAttendeeInput) (*chime.TagAttendeeOutput, error)
 	TagAttendeeWithContext(aws.Context, *chime.TagAttendeeInput, ...request.Option) (*chime.TagAttendeeOutput, error)
 	TagAttendeeRequest(*chime.TagAttendeeInput) (*request.Request, *chime.TagAttendeeOutput)
@@ -847,6 +874,10 @@ type ChimeAPI interface {
 	UpdateSipMediaApplicationWithContext(aws.Context, *chime.UpdateSipMediaApplicationInput, ...request.Option) (*chime.UpdateSipMediaApplicationOutput, error)
 	UpdateSipMediaApplicationRequest(*chime.UpdateSipMediaApplicationInput) (*request.Request, *chime.UpdateSipMediaApplicationOutput)
 
+	UpdateSipMediaApplicationCall(*chime.UpdateSipMediaApplicationCallInput) (*chime.UpdateSipMediaApplicationCallOutput, error)
+	UpdateSipMediaApplicationCallWithContext(aws.Context, *chime.UpdateSipMediaApplicationCallInput, ...request.Option) (*chime.UpdateSipMediaApplicationCallOutput, error)
+	UpdateSipMediaApplicationCallRequest(*chime.UpdateSipMediaApplicationCallInput) (*request.Request, *chime.UpdateSipMediaApplicationCallOutput)
+
 	UpdateSipRule(*chime.UpdateSipRuleInput) (*chime.UpdateSipRuleOutput, error)
 	UpdateSipRuleWithContext(aws.Context, *chime.UpdateSipRuleInput, ...request.Option) (*chime.UpdateSipRuleOutput, error)
 	UpdateSipRuleRequest(*chime.UpdateSipRuleInput) (*request.Request, *chime.UpdateSipRuleOutput)
@@ -866,6 +897,10 @@ type ChimeAPI interface {
 	UpdateVoiceConnectorGroup(*chime.UpdateVoiceConnectorGroupInput) (*chime.UpdateVoiceConnectorGroupOutput, error)
 	UpdateVoiceConnectorGroupWithContext(aws.Context, *chime.UpdateVoiceConnectorGroupInput, ...request.Option) (*chime.UpdateVoiceConnectorGroupOutput, error)
 	UpdateVoiceConnectorGroupRequest(*chime.UpdateVoiceConnectorGroupInput) (*request.Request, *chime.UpdateVoiceConnectorGroupOutput)
+
+	ValidateE911Address(*chime.ValidateE911AddressInput) (*chime.ValidateE911AddressOutput, error)
+	ValidateE911AddressWithContext(aws.Context, *chime.ValidateE911AddressInput, ...request.Option) (*chime.ValidateE911AddressOutput, error)
+	ValidateE911AddressRequest(*chime.ValidateE911AddressInput) (*request.Request, *chime.ValidateE911AddressOutput)
 }
 
 var _ ChimeAPI = (*chime.Chime)(nil)

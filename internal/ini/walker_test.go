@@ -1,3 +1,4 @@
+//go:build go1.7
 // +build go1.7
 
 package ini
@@ -14,6 +15,9 @@ import (
 func TestValidDataFiles(t *testing.T) {
 	const expectedFileSuffix = "_expected"
 	filepath.Walk("./testdata/valid", func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
 		if strings.HasSuffix(path, expectedFileSuffix) {
 			return nil
 		}
@@ -67,24 +71,6 @@ func TestValidDataFiles(t *testing.T) {
 					if e != a {
 						t.Errorf("%s: expected %v, but received %v for profile %v", path, e, a, profile)
 					}
-				case int:
-					a := p.Int(k)
-					if int64(e) != a {
-						t.Errorf("%s: expected %v, but received %v", path, e, a)
-					}
-				case float64:
-					v := p.values[k]
-					if v.Type == IntegerType {
-						a := p.Int(k)
-						if int64(e) != a {
-							t.Errorf("%s: expected %v, but received %v", path, e, a)
-						}
-					} else {
-						a := p.Float64(k)
-						if e != a {
-							t.Errorf("%s: expected %v, but received %v", path, e, a)
-						}
-					}
 				default:
 					t.Errorf("unexpected type: %T", e)
 				}
@@ -106,11 +92,23 @@ func TestInvalidDataFiles(t *testing.T) {
 			expectedParseError: true,
 		},
 		{
+			path:               "./testdata/invalid/bad_syntax_2",
+			expectedParseError: true,
+		},
+		{
 			path:               "./testdata/invalid/incomplete_section_profile",
 			expectedParseError: true,
 		},
 		{
 			path:               "./testdata/invalid/syntax_error_comment",
+			expectedParseError: true,
+		},
+		{
+			path:               "./testdata/invalid/invalid_keys",
+			expectedParseError: true,
+		},
+		{
+			path:               "./testdata/invalid/bad_section_name",
 			expectedParseError: true,
 		},
 	}

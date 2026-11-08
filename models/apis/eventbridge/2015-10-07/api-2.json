@@ -5,11 +5,13 @@
     "endpointPrefix":"events",
     "jsonVersion":"1.1",
     "protocol":"json",
+    "protocols":["json"],
     "serviceFullName":"Amazon EventBridge",
     "serviceId":"EventBridge",
     "signatureVersion":"v4",
     "targetPrefix":"AWSEvents",
-    "uid":"eventbridge-2015-10-07"
+    "uid":"eventbridge-2015-10-07",
+    "auth":["aws.auth#sigv4"]
   },
   "operations":{
     "ActivateEventSource":{
@@ -82,6 +84,20 @@
       },
       "input":{"shape":"CreateConnectionRequest"},
       "output":{"shape":"CreateConnectionResponse"},
+      "errors":[
+        {"shape":"ResourceAlreadyExistsException"},
+        {"shape":"LimitExceededException"},
+        {"shape":"InternalException"}
+      ]
+    },
+    "CreateEndpoint":{
+      "name":"CreateEndpoint",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"CreateEndpointRequest"},
+      "output":{"shape":"CreateEndpointResponse"},
       "errors":[
         {"shape":"ResourceAlreadyExistsException"},
         {"shape":"LimitExceededException"},
@@ -193,6 +209,20 @@
         {"shape":"InternalException"}
       ]
     },
+    "DeleteEndpoint":{
+      "name":"DeleteEndpoint",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteEndpointRequest"},
+      "output":{"shape":"DeleteEndpointResponse"},
+      "errors":[
+        {"shape":"ConcurrentModificationException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InternalException"}
+      ]
+    },
     "DeleteEventBus":{
       "name":"DeleteEventBus",
       "http":{
@@ -267,6 +297,19 @@
       },
       "input":{"shape":"DescribeConnectionRequest"},
       "output":{"shape":"DescribeConnectionResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InternalException"}
+      ]
+    },
+    "DescribeEndpoint":{
+      "name":"DescribeEndpoint",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DescribeEndpointRequest"},
+      "output":{"shape":"DescribeEndpointResponse"},
       "errors":[
         {"shape":"ResourceNotFoundException"},
         {"shape":"InternalException"}
@@ -400,6 +443,18 @@
       },
       "input":{"shape":"ListConnectionsRequest"},
       "output":{"shape":"ListConnectionsResponse"},
+      "errors":[
+        {"shape":"InternalException"}
+      ]
+    },
+    "ListEndpoints":{
+      "name":"ListEndpoints",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListEndpointsRequest"},
+      "output":{"shape":"ListEndpointsResponse"},
       "errors":[
         {"shape":"InternalException"}
       ]
@@ -726,6 +781,35 @@
         {"shape":"InternalException"},
         {"shape":"LimitExceededException"}
       ]
+    },
+    "UpdateEndpoint":{
+      "name":"UpdateEndpoint",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateEndpointRequest"},
+      "output":{"shape":"UpdateEndpointResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"ConcurrentModificationException"},
+        {"shape":"InternalException"}
+      ]
+    },
+    "UpdateEventBus":{
+      "name":"UpdateEventBus",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"UpdateEventBusRequest"},
+      "output":{"shape":"UpdateEventBusResponse"},
+      "errors":[
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InternalException"},
+        {"shape":"ConcurrentModificationException"},
+        {"shape":"OperationDisabledException"}
+      ]
     }
   },
   "shapes":{
@@ -806,6 +890,12 @@
         "INACTIVE"
       ]
     },
+    "AppSyncParameters":{
+      "type":"structure",
+      "members":{
+        "GraphQLOperation":{"shape":"GraphQLOperation"}
+      }
+    },
     "Archive":{
       "type":"structure",
       "members":{
@@ -874,6 +964,13 @@
       "min":1,
       "pattern":"^[ \\t]*[^\\x00-\\x1F:\\x7F]+([ \\t]+[^\\x00-\\x1F:\\x7F]+)*[ \\t]*$"
     },
+    "AuthHeaderParametersSensitive":{
+      "type":"string",
+      "max":512,
+      "min":1,
+      "pattern":"^[ \\t]*[^\\x00-\\x1F:\\x7F]+([ \\t]+[^\\x00-\\x1F:\\x7F]+)*[ \\t]*$",
+      "sensitive":true
+    },
     "AwsVpcConfiguration":{
       "type":"structure",
       "required":["Subnets"],
@@ -923,6 +1020,35 @@
         "State":{"shape":"ReplayState"},
         "StateReason":{"shape":"ReplayStateReason"}
       }
+    },
+    "CapacityProvider":{
+      "type":"string",
+      "max":255,
+      "min":1
+    },
+    "CapacityProviderStrategy":{
+      "type":"list",
+      "member":{"shape":"CapacityProviderStrategyItem"},
+      "max":6
+    },
+    "CapacityProviderStrategyItem":{
+      "type":"structure",
+      "required":["capacityProvider"],
+      "members":{
+        "capacityProvider":{"shape":"CapacityProvider"},
+        "weight":{"shape":"CapacityProviderStrategyItemWeight"},
+        "base":{"shape":"CapacityProviderStrategyItemBase"}
+      }
+    },
+    "CapacityProviderStrategyItemBase":{
+      "type":"integer",
+      "max":100000,
+      "min":0
+    },
+    "CapacityProviderStrategyItemWeight":{
+      "type":"integer",
+      "max":1000,
+      "min":0
     },
     "ConcurrentModificationException":{
       "type":"structure",
@@ -995,7 +1121,7 @@
       "type":"structure",
       "members":{
         "Key":{"shape":"String"},
-        "Value":{"shape":"String"},
+        "Value":{"shape":"SensitiveString"},
         "IsValueSecret":{"shape":"Boolean"}
       }
     },
@@ -1014,7 +1140,7 @@
       "type":"structure",
       "members":{
         "Key":{"shape":"HeaderKey"},
-        "Value":{"shape":"HeaderValue"},
+        "Value":{"shape":"HeaderValueSensitive"},
         "IsValueSecret":{"shape":"Boolean"}
       }
     },
@@ -1065,7 +1191,7 @@
       "type":"structure",
       "members":{
         "Key":{"shape":"QueryStringKey"},
-        "Value":{"shape":"QueryStringValue"},
+        "Value":{"shape":"QueryStringValueSensitive"},
         "IsValueSecret":{"shape":"Boolean"}
       }
     },
@@ -1153,7 +1279,7 @@
       ],
       "members":{
         "ApiKeyName":{"shape":"AuthHeaderParameters"},
-        "ApiKeyValue":{"shape":"AuthHeaderParameters"}
+        "ApiKeyValue":{"shape":"AuthHeaderParametersSensitive"}
       }
     },
     "CreateConnectionAuthRequestParameters":{
@@ -1173,7 +1299,7 @@
       ],
       "members":{
         "Username":{"shape":"AuthHeaderParameters"},
-        "Password":{"shape":"AuthHeaderParameters"}
+        "Password":{"shape":"AuthHeaderParametersSensitive"}
       }
     },
     "CreateConnectionOAuthClientRequestParameters":{
@@ -1184,7 +1310,7 @@
       ],
       "members":{
         "ClientID":{"shape":"AuthHeaderParameters"},
-        "ClientSecret":{"shape":"AuthHeaderParameters"}
+        "ClientSecret":{"shape":"AuthHeaderParametersSensitive"}
       }
     },
     "CreateConnectionOAuthRequestParameters":{
@@ -1224,19 +1350,53 @@
         "LastModifiedTime":{"shape":"Timestamp"}
       }
     },
+    "CreateEndpointRequest":{
+      "type":"structure",
+      "required":[
+        "Name",
+        "RoutingConfig",
+        "EventBuses"
+      ],
+      "members":{
+        "Name":{"shape":"EndpointName"},
+        "Description":{"shape":"EndpointDescription"},
+        "RoutingConfig":{"shape":"RoutingConfig"},
+        "ReplicationConfig":{"shape":"ReplicationConfig"},
+        "EventBuses":{"shape":"EndpointEventBusList"},
+        "RoleArn":{"shape":"IamRoleArn"}
+      }
+    },
+    "CreateEndpointResponse":{
+      "type":"structure",
+      "members":{
+        "Name":{"shape":"EndpointName"},
+        "Arn":{"shape":"EndpointArn"},
+        "RoutingConfig":{"shape":"RoutingConfig"},
+        "ReplicationConfig":{"shape":"ReplicationConfig"},
+        "EventBuses":{"shape":"EndpointEventBusList"},
+        "RoleArn":{"shape":"IamRoleArn"},
+        "State":{"shape":"EndpointState"}
+      }
+    },
     "CreateEventBusRequest":{
       "type":"structure",
       "required":["Name"],
       "members":{
         "Name":{"shape":"EventBusName"},
         "EventSourceName":{"shape":"EventSourceName"},
+        "Description":{"shape":"EventBusDescription"},
+        "KmsKeyIdentifier":{"shape":"KmsKeyIdentifier"},
+        "DeadLetterConfig":{"shape":"DeadLetterConfig"},
         "Tags":{"shape":"TagList"}
       }
     },
     "CreateEventBusResponse":{
       "type":"structure",
       "members":{
-        "EventBusArn":{"shape":"String"}
+        "EventBusArn":{"shape":"String"},
+        "Description":{"shape":"EventBusDescription"},
+        "KmsKeyIdentifier":{"shape":"KmsKeyIdentifier"},
+        "DeadLetterConfig":{"shape":"DeadLetterConfig"}
       }
     },
     "CreatePartnerEventSourceRequest":{
@@ -1342,6 +1502,18 @@
         "LastAuthorizedTime":{"shape":"Timestamp"}
       }
     },
+    "DeleteEndpointRequest":{
+      "type":"structure",
+      "required":["Name"],
+      "members":{
+        "Name":{"shape":"EndpointName"}
+      }
+    },
+    "DeleteEndpointResponse":{
+      "type":"structure",
+      "members":{
+      }
+    },
     "DeleteEventBusRequest":{
       "type":"structure",
       "required":["Name"],
@@ -1437,6 +1609,32 @@
         "LastAuthorizedTime":{"shape":"Timestamp"}
       }
     },
+    "DescribeEndpointRequest":{
+      "type":"structure",
+      "required":["Name"],
+      "members":{
+        "Name":{"shape":"EndpointName"},
+        "HomeRegion":{"shape":"HomeRegion"}
+      }
+    },
+    "DescribeEndpointResponse":{
+      "type":"structure",
+      "members":{
+        "Name":{"shape":"EndpointName"},
+        "Description":{"shape":"EndpointDescription"},
+        "Arn":{"shape":"EndpointArn"},
+        "RoutingConfig":{"shape":"RoutingConfig"},
+        "ReplicationConfig":{"shape":"ReplicationConfig"},
+        "EventBuses":{"shape":"EndpointEventBusList"},
+        "RoleArn":{"shape":"IamRoleArn"},
+        "EndpointId":{"shape":"EndpointId"},
+        "EndpointUrl":{"shape":"EndpointUrl"},
+        "State":{"shape":"EndpointState"},
+        "StateReason":{"shape":"EndpointStateReason"},
+        "CreationTime":{"shape":"Timestamp"},
+        "LastModifiedTime":{"shape":"Timestamp"}
+      }
+    },
     "DescribeEventBusRequest":{
       "type":"structure",
       "members":{
@@ -1448,7 +1646,12 @@
       "members":{
         "Name":{"shape":"String"},
         "Arn":{"shape":"String"},
-        "Policy":{"shape":"String"}
+        "Description":{"shape":"EventBusDescription"},
+        "KmsKeyIdentifier":{"shape":"KmsKeyIdentifier"},
+        "DeadLetterConfig":{"shape":"DeadLetterConfig"},
+        "Policy":{"shape":"String"},
+        "CreationTime":{"shape":"Timestamp"},
+        "LastModifiedTime":{"shape":"Timestamp"}
       }
     },
     "DescribeEventSourceRequest":{
@@ -1547,7 +1750,15 @@
         "LaunchType":{"shape":"LaunchType"},
         "NetworkConfiguration":{"shape":"NetworkConfiguration"},
         "PlatformVersion":{"shape":"String"},
-        "Group":{"shape":"String"}
+        "Group":{"shape":"String"},
+        "CapacityProviderStrategy":{"shape":"CapacityProviderStrategy"},
+        "EnableECSManagedTags":{"shape":"Boolean"},
+        "EnableExecuteCommand":{"shape":"Boolean"},
+        "PlacementConstraints":{"shape":"PlacementConstraints"},
+        "PlacementStrategy":{"shape":"PlacementStrategies"},
+        "PropagateTags":{"shape":"PropagateTags"},
+        "ReferenceId":{"shape":"ReferenceId"},
+        "Tags":{"shape":"TagList"}
       }
     },
     "EnableRuleRequest":{
@@ -1558,6 +1769,88 @@
         "EventBusName":{"shape":"EventBusNameOrArn"}
       }
     },
+    "Endpoint":{
+      "type":"structure",
+      "members":{
+        "Name":{"shape":"EndpointName"},
+        "Description":{"shape":"EndpointDescription"},
+        "Arn":{"shape":"EndpointArn"},
+        "RoutingConfig":{"shape":"RoutingConfig"},
+        "ReplicationConfig":{"shape":"ReplicationConfig"},
+        "EventBuses":{"shape":"EndpointEventBusList"},
+        "RoleArn":{"shape":"IamRoleArn"},
+        "EndpointId":{"shape":"EndpointId"},
+        "EndpointUrl":{"shape":"EndpointUrl"},
+        "State":{"shape":"EndpointState"},
+        "StateReason":{"shape":"EndpointStateReason"},
+        "CreationTime":{"shape":"Timestamp"},
+        "LastModifiedTime":{"shape":"Timestamp"}
+      }
+    },
+    "EndpointArn":{
+      "type":"string",
+      "max":1600,
+      "min":1,
+      "pattern":"^arn:aws([a-z]|\\-)*:events:([a-z]|\\d|\\-)*:([0-9]{12})?:endpoint\\/[/\\.\\-_A-Za-z0-9]+$"
+    },
+    "EndpointDescription":{
+      "type":"string",
+      "max":512,
+      "pattern":".*"
+    },
+    "EndpointEventBus":{
+      "type":"structure",
+      "required":["EventBusArn"],
+      "members":{
+        "EventBusArn":{"shape":"NonPartnerEventBusArn"}
+      }
+    },
+    "EndpointEventBusList":{
+      "type":"list",
+      "member":{"shape":"EndpointEventBus"},
+      "max":2,
+      "min":2
+    },
+    "EndpointId":{
+      "type":"string",
+      "max":50,
+      "min":1,
+      "pattern":"^[A-Za-z0-9\\-]+[\\.][A-Za-z0-9\\-]+$"
+    },
+    "EndpointList":{
+      "type":"list",
+      "member":{"shape":"Endpoint"}
+    },
+    "EndpointName":{
+      "type":"string",
+      "max":64,
+      "min":1,
+      "pattern":"[\\.\\-_A-Za-z0-9]+"
+    },
+    "EndpointState":{
+      "type":"string",
+      "enum":[
+        "ACTIVE",
+        "CREATING",
+        "UPDATING",
+        "DELETING",
+        "CREATE_FAILED",
+        "UPDATE_FAILED",
+        "DELETE_FAILED"
+      ]
+    },
+    "EndpointStateReason":{
+      "type":"string",
+      "max":512,
+      "min":1,
+      "pattern":".*"
+    },
+    "EndpointUrl":{
+      "type":"string",
+      "max":256,
+      "min":1,
+      "pattern":"^(https://)?[\\.\\-a-z0-9]+$"
+    },
     "ErrorCode":{"type":"string"},
     "ErrorMessage":{"type":"string"},
     "EventBus":{
@@ -1565,8 +1858,15 @@
       "members":{
         "Name":{"shape":"String"},
         "Arn":{"shape":"String"},
-        "Policy":{"shape":"String"}
+        "Description":{"shape":"EventBusDescription"},
+        "Policy":{"shape":"String"},
+        "CreationTime":{"shape":"Timestamp"},
+        "LastModifiedTime":{"shape":"Timestamp"}
       }
+    },
+    "EventBusDescription":{
+      "type":"string",
+      "max":512
     },
     "EventBusList":{
       "type":"list",
@@ -1584,9 +1884,18 @@
       "min":1,
       "pattern":"(arn:aws[\\w-]*:events:[a-z]{2}-[a-z]+-[\\w-]+:[0-9]{12}:event-bus\\/)?[/\\.\\-_A-Za-z0-9]+"
     },
-    "EventId":{"type":"string"},
-    "EventPattern":{"type":"string"},
-    "EventResource":{"type":"string"},
+    "EventId":{
+      "type":"string",
+      "max":64
+    },
+    "EventPattern":{
+      "type":"string",
+      "max":4096
+    },
+    "EventResource":{
+      "type":"string",
+      "max":2048
+    },
     "EventResourceList":{
       "type":"list",
       "member":{"shape":"EventResource"}
@@ -1627,6 +1936,23 @@
       ]
     },
     "EventTime":{"type":"timestamp"},
+    "FailoverConfig":{
+      "type":"structure",
+      "required":[
+        "Primary",
+        "Secondary"
+      ],
+      "members":{
+        "Primary":{"shape":"Primary"},
+        "Secondary":{"shape":"Secondary"}
+      }
+    },
+    "GraphQLOperation":{
+      "type":"string",
+      "max":1048576,
+      "min":1,
+      "sensitive":true
+    },
     "HeaderKey":{
       "type":"string",
       "max":512,
@@ -1642,6 +1968,24 @@
       "max":512,
       "pattern":"^[ \\t]*[\\x20-\\x7E]+([ \\t]+[\\x20-\\x7E]+)*[ \\t]*$"
     },
+    "HeaderValueSensitive":{
+      "type":"string",
+      "max":512,
+      "pattern":"^[ \\t]*[\\x20-\\x7E]+([ \\t]+[\\x20-\\x7E]+)*[ \\t]*$",
+      "sensitive":true
+    },
+    "HealthCheck":{
+      "type":"string",
+      "max":1600,
+      "min":1,
+      "pattern":"^arn:aws([a-z]|\\-)*:route53:::healthcheck/[\\-a-z0-9]+$"
+    },
+    "HomeRegion":{
+      "type":"string",
+      "max":20,
+      "min":9,
+      "pattern":"^[\\-a-z0-9]+$"
+    },
     "HttpParameters":{
       "type":"structure",
       "members":{
@@ -1655,6 +1999,12 @@
       "max":2048,
       "min":1,
       "pattern":"^((%[0-9A-Fa-f]{2}|[-()_.!~*';/?:@\\x26=+$,A-Za-z0-9])+)([).!';/?:,])?$"
+    },
+    "IamRoleArn":{
+      "type":"string",
+      "max":256,
+      "min":1,
+      "pattern":"^arn:aws[a-z-]*:iam::\\d{12}:role\\/[\\w+=,.@/-]+$"
     },
     "IllegalStatusException":{
       "type":"structure",
@@ -1703,11 +2053,16 @@
         "PartitionKeyPath":{"shape":"TargetPartitionKeyPath"}
       }
     },
+    "KmsKeyIdentifier":{
+      "type":"string",
+      "max":2048
+    },
     "LaunchType":{
       "type":"string",
       "enum":[
         "EC2",
-        "FARGATE"
+        "FARGATE",
+        "EXTERNAL"
       ]
     },
     "LimitExceededException":{
@@ -1771,6 +2126,22 @@
       "type":"structure",
       "members":{
         "Connections":{"shape":"ConnectionResponseList"},
+        "NextToken":{"shape":"NextToken"}
+      }
+    },
+    "ListEndpointsRequest":{
+      "type":"structure",
+      "members":{
+        "NamePrefix":{"shape":"EndpointName"},
+        "HomeRegion":{"shape":"HomeRegion"},
+        "NextToken":{"shape":"NextToken"},
+        "MaxResults":{"shape":"LimitMax100"}
+      }
+    },
+    "ListEndpointsResponse":{
+      "type":"structure",
+      "members":{
+        "Endpoints":{"shape":"EndpointList"},
         "NextToken":{"shape":"NextToken"}
       }
     },
@@ -1938,7 +2309,10 @@
       "max":185,
       "min":0
     },
-    "MessageGroupId":{"type":"string"},
+    "MessageGroupId":{
+      "type":"string",
+      "max":100
+    },
     "NetworkConfiguration":{
       "type":"structure",
       "members":{
@@ -1949,6 +2323,12 @@
       "type":"string",
       "max":2048,
       "min":1
+    },
+    "NonPartnerEventBusArn":{
+      "type":"string",
+      "max":512,
+      "min":1,
+      "pattern":"^arn:aws[a-z-]*:events:[a-z]{2}-[a-z-]+-\\d+:\\d{12}:event-bus/[\\w.-]+$"
     },
     "NonPartnerEventBusName":{
       "type":"string",
@@ -2006,11 +2386,65 @@
       "type":"list",
       "member":{"shape":"PathParameter"}
     },
+    "PlacementConstraint":{
+      "type":"structure",
+      "members":{
+        "type":{"shape":"PlacementConstraintType"},
+        "expression":{"shape":"PlacementConstraintExpression"}
+      }
+    },
+    "PlacementConstraintExpression":{
+      "type":"string",
+      "max":2000
+    },
+    "PlacementConstraintType":{
+      "type":"string",
+      "enum":[
+        "distinctInstance",
+        "memberOf"
+      ]
+    },
+    "PlacementConstraints":{
+      "type":"list",
+      "member":{"shape":"PlacementConstraint"},
+      "max":10
+    },
+    "PlacementStrategies":{
+      "type":"list",
+      "member":{"shape":"PlacementStrategy"},
+      "max":5
+    },
+    "PlacementStrategy":{
+      "type":"structure",
+      "members":{
+        "type":{"shape":"PlacementStrategyType"},
+        "field":{"shape":"PlacementStrategyField"}
+      }
+    },
+    "PlacementStrategyField":{
+      "type":"string",
+      "max":255
+    },
+    "PlacementStrategyType":{
+      "type":"string",
+      "enum":[
+        "random",
+        "spread",
+        "binpack"
+      ]
+    },
     "PolicyLengthExceededException":{
       "type":"structure",
       "members":{
       },
       "exception":true
+    },
+    "Primary":{
+      "type":"structure",
+      "required":["HealthCheck"],
+      "members":{
+        "HealthCheck":{"shape":"HealthCheck"}
+      }
     },
     "Principal":{
       "type":"string",
@@ -2018,11 +2452,19 @@
       "min":1,
       "pattern":"(\\d{12}|\\*)"
     },
+    "PropagateTags":{
+      "type":"string",
+      "enum":["TASK_DEFINITION"]
+    },
     "PutEventsRequest":{
       "type":"structure",
       "required":["Entries"],
       "members":{
-        "Entries":{"shape":"PutEventsRequestEntryList"}
+        "Entries":{"shape":"PutEventsRequestEntryList"},
+        "EndpointId":{
+          "shape":"EndpointId",
+          "contextParam":{"name":"EndpointId"}
+        }
       }
     },
     "PutEventsRequestEntry":{
@@ -2181,19 +2623,23 @@
       "max":512,
       "pattern":"[^\\x00-\\x09\\x0B\\x0C\\x0E-\\x1F\\x7F]+"
     },
+    "QueryStringValueSensitive":{
+      "type":"string",
+      "max":512,
+      "pattern":"[^\\x00-\\x09\\x0B\\x0C\\x0E-\\x1F\\x7F]+",
+      "sensitive":true
+    },
     "RedshiftDataParameters":{
       "type":"structure",
-      "required":[
-        "Database",
-        "Sql"
-      ],
+      "required":["Database"],
       "members":{
         "SecretManagerArn":{"shape":"RedshiftSecretManagerArn"},
         "Database":{"shape":"Database"},
         "DbUser":{"shape":"DbUser"},
         "Sql":{"shape":"Sql"},
         "StatementName":{"shape":"StatementName"},
-        "WithEvent":{"shape":"Boolean"}
+        "WithEvent":{"shape":"Boolean"},
+        "Sqls":{"shape":"Sqls"}
       }
     },
     "RedshiftSecretManagerArn":{
@@ -2201,6 +2647,10 @@
       "max":1600,
       "min":1,
       "pattern":"(^arn:aws([a-z]|\\-)*:secretsmanager:[a-z0-9-.]+:.*)|(\\$(\\.[\\w_-]+(\\[(\\d+|\\*)\\])*)*)"
+    },
+    "ReferenceId":{
+      "type":"string",
+      "max":1024
     },
     "RemovePermissionRequest":{
       "type":"structure",
@@ -2305,6 +2755,19 @@
       "max":512,
       "pattern":".*"
     },
+    "ReplicationConfig":{
+      "type":"structure",
+      "members":{
+        "State":{"shape":"ReplicationState"}
+      }
+    },
+    "ReplicationState":{
+      "type":"string",
+      "enum":[
+        "ENABLED",
+        "DISABLED"
+      ]
+    },
     "ResourceAlreadyExistsException":{
       "type":"structure",
       "members":{
@@ -2337,6 +2800,19 @@
       "type":"string",
       "max":1600,
       "min":1
+    },
+    "Route":{
+      "type":"string",
+      "max":20,
+      "min":9,
+      "pattern":"^[\\-a-z0-9]+$"
+    },
+    "RoutingConfig":{
+      "type":"structure",
+      "required":["FailoverConfig"],
+      "members":{
+        "FailoverConfig":{"shape":"FailoverConfig"}
+      }
     },
     "Rule":{
       "type":"structure",
@@ -2379,7 +2855,8 @@
       "type":"string",
       "enum":[
         "ENABLED",
-        "DISABLED"
+        "DISABLED",
+        "ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS"
       ]
     },
     "RunCommandParameters":{
@@ -2460,16 +2937,35 @@
       "type":"string",
       "max":256
     },
+    "Secondary":{
+      "type":"structure",
+      "required":["Route"],
+      "members":{
+        "Route":{"shape":"Route"}
+      }
+    },
     "SecretsManagerSecretArn":{
       "type":"string",
       "max":2048,
       "min":20,
       "pattern":"^arn:aws([a-z]|\\-)*:secretsmanager:([a-z]|\\d|\\-)*:([0-9]{12})?:secret:[\\/_+=\\.@\\-A-Za-z0-9]+$"
     },
+    "SensitiveString":{
+      "type":"string",
+      "sensitive":true
+    },
     "Sql":{
       "type":"string",
       "max":100000,
-      "min":1
+      "min":1,
+      "sensitive":true
+    },
+    "Sqls":{
+      "type":"list",
+      "member":{"shape":"Sql"},
+      "max":40,
+      "min":0,
+      "sensitive":true
     },
     "SqsParameters":{
       "type":"structure",
@@ -2587,7 +3083,8 @@
         "RedshiftDataParameters":{"shape":"RedshiftDataParameters"},
         "SageMakerPipelineParameters":{"shape":"SageMakerPipelineParameters"},
         "DeadLetterConfig":{"shape":"DeadLetterConfig"},
-        "RetryPolicy":{"shape":"RetryPolicy"}
+        "RetryPolicy":{"shape":"RetryPolicy"},
+        "AppSyncParameters":{"shape":"AppSyncParameters"}
       }
     },
     "TargetArn":{
@@ -2719,7 +3216,7 @@
       "type":"structure",
       "members":{
         "ApiKeyName":{"shape":"AuthHeaderParameters"},
-        "ApiKeyValue":{"shape":"AuthHeaderParameters"}
+        "ApiKeyValue":{"shape":"AuthHeaderParametersSensitive"}
       }
     },
     "UpdateConnectionAuthRequestParameters":{
@@ -2735,14 +3232,14 @@
       "type":"structure",
       "members":{
         "Username":{"shape":"AuthHeaderParameters"},
-        "Password":{"shape":"AuthHeaderParameters"}
+        "Password":{"shape":"AuthHeaderParametersSensitive"}
       }
     },
     "UpdateConnectionOAuthClientRequestParameters":{
       "type":"structure",
       "members":{
         "ClientID":{"shape":"AuthHeaderParameters"},
-        "ClientSecret":{"shape":"AuthHeaderParameters"}
+        "ClientSecret":{"shape":"AuthHeaderParametersSensitive"}
       }
     },
     "UpdateConnectionOAuthRequestParameters":{
@@ -2772,6 +3269,51 @@
         "CreationTime":{"shape":"Timestamp"},
         "LastModifiedTime":{"shape":"Timestamp"},
         "LastAuthorizedTime":{"shape":"Timestamp"}
+      }
+    },
+    "UpdateEndpointRequest":{
+      "type":"structure",
+      "required":["Name"],
+      "members":{
+        "Name":{"shape":"EndpointName"},
+        "Description":{"shape":"EndpointDescription"},
+        "RoutingConfig":{"shape":"RoutingConfig"},
+        "ReplicationConfig":{"shape":"ReplicationConfig"},
+        "EventBuses":{"shape":"EndpointEventBusList"},
+        "RoleArn":{"shape":"IamRoleArn"}
+      }
+    },
+    "UpdateEndpointResponse":{
+      "type":"structure",
+      "members":{
+        "Name":{"shape":"EndpointName"},
+        "Arn":{"shape":"EndpointArn"},
+        "RoutingConfig":{"shape":"RoutingConfig"},
+        "ReplicationConfig":{"shape":"ReplicationConfig"},
+        "EventBuses":{"shape":"EndpointEventBusList"},
+        "RoleArn":{"shape":"IamRoleArn"},
+        "EndpointId":{"shape":"EndpointId"},
+        "EndpointUrl":{"shape":"EndpointUrl"},
+        "State":{"shape":"EndpointState"}
+      }
+    },
+    "UpdateEventBusRequest":{
+      "type":"structure",
+      "members":{
+        "Name":{"shape":"EventBusName"},
+        "KmsKeyIdentifier":{"shape":"KmsKeyIdentifier"},
+        "Description":{"shape":"EventBusDescription"},
+        "DeadLetterConfig":{"shape":"DeadLetterConfig"}
+      }
+    },
+    "UpdateEventBusResponse":{
+      "type":"structure",
+      "members":{
+        "Arn":{"shape":"String"},
+        "Name":{"shape":"EventBusName"},
+        "KmsKeyIdentifier":{"shape":"KmsKeyIdentifier"},
+        "Description":{"shape":"EventBusDescription"},
+        "DeadLetterConfig":{"shape":"DeadLetterConfig"}
       }
     }
   }

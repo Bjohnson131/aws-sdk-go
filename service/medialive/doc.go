@@ -3,14 +3,14 @@
 // Package medialive provides the client and types for making API
 // requests to AWS Elemental MediaLive.
 //
-// API for AWS Elemental MediaLive
+// # API for AWS Elemental MediaLive
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14 for more information on this service.
 //
 // See medialive package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/medialive/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS Elemental MediaLive with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -25,4 +25,7 @@
 // See the AWS Elemental MediaLive client MediaLive for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/medialive/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package medialive

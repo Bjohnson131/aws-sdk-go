@@ -15,7 +15,7 @@
 // See greengrass package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/greengrass/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS Greengrass with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -30,4 +30,7 @@
 // See the AWS Greengrass client Greengrass for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/greengrass/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package greengrass

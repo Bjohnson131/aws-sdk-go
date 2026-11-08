@@ -150,6 +150,26 @@ const (
 	// You have reached the maximum number of event subscriptions.
 	ErrCodeEventSubscriptionQuotaExceededFault = "EventSubscriptionQuotaExceeded"
 
+	// ErrCodeGlobalClusterAlreadyExistsFault for service response error code
+	// "GlobalClusterAlreadyExistsFault".
+	//
+	// The GlobalClusterIdentifier already exists. Choose a new global cluster identifier
+	// (unique name) to create a new global cluster.
+	ErrCodeGlobalClusterAlreadyExistsFault = "GlobalClusterAlreadyExistsFault"
+
+	// ErrCodeGlobalClusterNotFoundFault for service response error code
+	// "GlobalClusterNotFoundFault".
+	//
+	// The GlobalClusterIdentifier doesn't refer to an existing global cluster.
+	ErrCodeGlobalClusterNotFoundFault = "GlobalClusterNotFoundFault"
+
+	// ErrCodeGlobalClusterQuotaExceededFault for service response error code
+	// "GlobalClusterQuotaExceededFault".
+	//
+	// The number of global clusters for this account is already at the maximum
+	// allowed.
+	ErrCodeGlobalClusterQuotaExceededFault = "GlobalClusterQuotaExceededFault"
+
 	// ErrCodeInstanceQuotaExceededFault for service response error code
 	// "InstanceQuotaExceeded".
 	//
@@ -234,6 +254,12 @@ const (
 	// again.
 	ErrCodeInvalidEventSubscriptionStateFault = "InvalidEventSubscriptionState"
 
+	// ErrCodeInvalidGlobalClusterStateFault for service response error code
+	// "InvalidGlobalClusterStateFault".
+	//
+	// The requested operation can't be performed while the cluster is in this state.
+	ErrCodeInvalidGlobalClusterStateFault = "InvalidGlobalClusterStateFault"
+
 	// ErrCodeInvalidRestoreFault for service response error code
 	// "InvalidRestoreFault".
 	//
@@ -258,7 +284,7 @@ const (
 	// ErrCodeKMSKeyNotAccessibleFault for service response error code
 	// "KMSKeyNotAccessibleFault".
 	//
-	// An error occurred when accessing an AWS KMS key.
+	// An error occurred when accessing an KMS key.
 	ErrCodeKMSKeyNotAccessibleFault = "KMSKeyNotAccessibleFault"
 
 	// ErrCodeResourceNotFoundFault for service response error code

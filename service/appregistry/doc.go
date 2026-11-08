@@ -3,17 +3,17 @@
 // Package appregistry provides the client and types for making API
 // requests to AWS Service Catalog App Registry.
 //
-// AWS Service Catalog AppRegistry enables organizations to understand the application
-// context of their AWS resources. AppRegistry provides a repository of your
-// applications, their resources, and the application metadata that you use
-// within your enterprise.
+// Amazon Web Services Service Catalog AppRegistry enables organizations to
+// understand the application context of their Amazon Web Services resources.
+// AppRegistry provides a repository of your applications, their resources,
+// and the application metadata that you use within your enterprise.
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/AWS242AppRegistry-2020-06-24 for more information on this service.
 //
 // See appregistry package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/appregistry/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS Service Catalog App Registry with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -28,4 +28,7 @@
 // See the AWS Service Catalog App Registry client AppRegistry for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/appregistry/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package appregistry

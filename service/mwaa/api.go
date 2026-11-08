@@ -29,14 +29,13 @@ const opCreateCliToken = "CreateCliToken"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CreateCliTokenRequest method.
+//	req, resp := client.CreateCliTokenRequest(params)
 //
-//    // Example sending a request using the CreateCliTokenRequest method.
-//    req, resp := client.CreateCliTokenRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/CreateCliToken
 func (c *MWAA) CreateCliTokenRequest(input *CreateCliTokenInput) (req *request.Request, output *CreateCliTokenOutput) {
@@ -59,7 +58,8 @@ func (c *MWAA) CreateCliTokenRequest(input *CreateCliTokenInput) (req *request.R
 
 // CreateCliToken API operation for AmazonMWAA.
 //
-// Create a CLI token to use Airflow CLI.
+// Creates a CLI token for the Airflow CLI. To learn more, see Creating an Apache
+// Airflow CLI token (https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-cli.html).
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -69,8 +69,8 @@ func (c *MWAA) CreateCliTokenRequest(input *CreateCliTokenInput) (req *request.R
 // API operation CreateCliToken for usage and error information.
 //
 // Returned Error Types:
-//   * ResourceNotFoundException
-//   ResourceNotFoundException: The resource is not available.
+//   - ResourceNotFoundException
+//     ResourceNotFoundException: The resource is not available.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/CreateCliToken
 func (c *MWAA) CreateCliToken(input *CreateCliTokenInput) (*CreateCliTokenOutput, error) {
@@ -110,14 +110,13 @@ const opCreateEnvironment = "CreateEnvironment"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CreateEnvironmentRequest method.
+//	req, resp := client.CreateEnvironmentRequest(params)
 //
-//    // Example sending a request using the CreateEnvironmentRequest method.
-//    req, resp := client.CreateEnvironmentRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/CreateEnvironment
 func (c *MWAA) CreateEnvironmentRequest(input *CreateEnvironmentInput) (req *request.Request, output *CreateEnvironmentOutput) {
@@ -140,7 +139,7 @@ func (c *MWAA) CreateEnvironmentRequest(input *CreateEnvironmentInput) (req *req
 
 // CreateEnvironment API operation for AmazonMWAA.
 //
-// JSON blob that describes the environment to create.
+// Creates an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -150,11 +149,12 @@ func (c *MWAA) CreateEnvironmentRequest(input *CreateEnvironmentInput) (req *req
 // API operation CreateEnvironment for usage and error information.
 //
 // Returned Error Types:
-//   * ValidationException
-//   ValidationException: The provided input is not valid.
 //
-//   * InternalServerException
-//   InternalServerException: An internal error has occurred.
+//   - ValidationException
+//     ValidationException: The provided input is not valid.
+//
+//   - InternalServerException
+//     InternalServerException: An internal error has occurred.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/CreateEnvironment
 func (c *MWAA) CreateEnvironment(input *CreateEnvironmentInput) (*CreateEnvironmentOutput, error) {
@@ -194,14 +194,13 @@ const opCreateWebLoginToken = "CreateWebLoginToken"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CreateWebLoginTokenRequest method.
+//	req, resp := client.CreateWebLoginTokenRequest(params)
 //
-//    // Example sending a request using the CreateWebLoginTokenRequest method.
-//    req, resp := client.CreateWebLoginTokenRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/CreateWebLoginToken
 func (c *MWAA) CreateWebLoginTokenRequest(input *CreateWebLoginTokenInput) (req *request.Request, output *CreateWebLoginTokenOutput) {
@@ -224,8 +223,8 @@ func (c *MWAA) CreateWebLoginTokenRequest(input *CreateWebLoginTokenInput) (req 
 
 // CreateWebLoginToken API operation for AmazonMWAA.
 //
-// Create a JWT token to be used to login to Airflow Web UI with claims based
-// Authentication.
+// Creates a web login token for the Airflow Web UI. To learn more, see Creating
+// an Apache Airflow web login token (https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-web.html).
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -235,18 +234,19 @@ func (c *MWAA) CreateWebLoginTokenRequest(input *CreateWebLoginTokenInput) (req 
 // API operation CreateWebLoginToken for usage and error information.
 //
 // Returned Error Types:
-//   * AccessDeniedException
-//   Access to the Airflow Web UI or CLI has been Denied. Please follow the MWAA
-//   user guide to setup permissions to access the Web UI and CLI functionality.
 //
-//   * ResourceNotFoundException
-//   ResourceNotFoundException: The resource is not available.
+//   - AccessDeniedException
+//     Access to the Apache Airflow Web UI or CLI has been denied due to insufficient
+//     permissions. To learn more, see Accessing an Amazon MWAA environment (https://docs.aws.amazon.com/mwaa/latest/userguide/access-policies.html).
 //
-//   * ValidationException
-//   ValidationException: The provided input is not valid.
+//   - ResourceNotFoundException
+//     ResourceNotFoundException: The resource is not available.
 //
-//   * InternalServerException
-//   InternalServerException: An internal error has occurred.
+//   - ValidationException
+//     ValidationException: The provided input is not valid.
+//
+//   - InternalServerException
+//     InternalServerException: An internal error has occurred.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/CreateWebLoginToken
 func (c *MWAA) CreateWebLoginToken(input *CreateWebLoginTokenInput) (*CreateWebLoginTokenOutput, error) {
@@ -286,14 +286,13 @@ const opDeleteEnvironment = "DeleteEnvironment"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DeleteEnvironmentRequest method.
+//	req, resp := client.DeleteEnvironmentRequest(params)
 //
-//    // Example sending a request using the DeleteEnvironmentRequest method.
-//    req, resp := client.DeleteEnvironmentRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/DeleteEnvironment
 func (c *MWAA) DeleteEnvironmentRequest(input *DeleteEnvironmentInput) (req *request.Request, output *DeleteEnvironmentOutput) {
@@ -317,7 +316,7 @@ func (c *MWAA) DeleteEnvironmentRequest(input *DeleteEnvironmentInput) (req *req
 
 // DeleteEnvironment API operation for AmazonMWAA.
 //
-// Delete an existing environment.
+// Deletes an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -327,14 +326,15 @@ func (c *MWAA) DeleteEnvironmentRequest(input *DeleteEnvironmentInput) (req *req
 // API operation DeleteEnvironment for usage and error information.
 //
 // Returned Error Types:
-//   * ResourceNotFoundException
-//   ResourceNotFoundException: The resource is not available.
 //
-//   * ValidationException
-//   ValidationException: The provided input is not valid.
+//   - ResourceNotFoundException
+//     ResourceNotFoundException: The resource is not available.
 //
-//   * InternalServerException
-//   InternalServerException: An internal error has occurred.
+//   - ValidationException
+//     ValidationException: The provided input is not valid.
+//
+//   - InternalServerException
+//     InternalServerException: An internal error has occurred.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/DeleteEnvironment
 func (c *MWAA) DeleteEnvironment(input *DeleteEnvironmentInput) (*DeleteEnvironmentOutput, error) {
@@ -374,14 +374,13 @@ const opGetEnvironment = "GetEnvironment"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the GetEnvironmentRequest method.
+//	req, resp := client.GetEnvironmentRequest(params)
 //
-//    // Example sending a request using the GetEnvironmentRequest method.
-//    req, resp := client.GetEnvironmentRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/GetEnvironment
 func (c *MWAA) GetEnvironmentRequest(input *GetEnvironmentInput) (req *request.Request, output *GetEnvironmentOutput) {
@@ -404,7 +403,7 @@ func (c *MWAA) GetEnvironmentRequest(input *GetEnvironmentInput) (req *request.R
 
 // GetEnvironment API operation for AmazonMWAA.
 //
-// Get details of an existing environment.
+// Describes an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -414,14 +413,15 @@ func (c *MWAA) GetEnvironmentRequest(input *GetEnvironmentInput) (req *request.R
 // API operation GetEnvironment for usage and error information.
 //
 // Returned Error Types:
-//   * ResourceNotFoundException
-//   ResourceNotFoundException: The resource is not available.
 //
-//   * ValidationException
-//   ValidationException: The provided input is not valid.
+//   - ResourceNotFoundException
+//     ResourceNotFoundException: The resource is not available.
 //
-//   * InternalServerException
-//   InternalServerException: An internal error has occurred.
+//   - ValidationException
+//     ValidationException: The provided input is not valid.
+//
+//   - InternalServerException
+//     InternalServerException: An internal error has occurred.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/GetEnvironment
 func (c *MWAA) GetEnvironment(input *GetEnvironmentInput) (*GetEnvironmentOutput, error) {
@@ -461,14 +461,13 @@ const opListEnvironments = "ListEnvironments"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the ListEnvironmentsRequest method.
+//	req, resp := client.ListEnvironmentsRequest(params)
 //
-//    // Example sending a request using the ListEnvironmentsRequest method.
-//    req, resp := client.ListEnvironmentsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/ListEnvironments
 func (c *MWAA) ListEnvironmentsRequest(input *ListEnvironmentsInput) (req *request.Request, output *ListEnvironmentsOutput) {
@@ -497,7 +496,7 @@ func (c *MWAA) ListEnvironmentsRequest(input *ListEnvironmentsInput) (req *reque
 
 // ListEnvironments API operation for AmazonMWAA.
 //
-// List Amazon MWAA Environments.
+// Lists the Amazon Managed Workflows for Apache Airflow (MWAA) environments.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -507,11 +506,12 @@ func (c *MWAA) ListEnvironmentsRequest(input *ListEnvironmentsInput) (req *reque
 // API operation ListEnvironments for usage and error information.
 //
 // Returned Error Types:
-//   * ValidationException
-//   ValidationException: The provided input is not valid.
 //
-//   * InternalServerException
-//   InternalServerException: An internal error has occurred.
+//   - ValidationException
+//     ValidationException: The provided input is not valid.
+//
+//   - InternalServerException
+//     InternalServerException: An internal error has occurred.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/ListEnvironments
 func (c *MWAA) ListEnvironments(input *ListEnvironmentsInput) (*ListEnvironmentsOutput, error) {
@@ -543,15 +543,14 @@ func (c *MWAA) ListEnvironmentsWithContext(ctx aws.Context, input *ListEnvironme
 //
 // Note: This operation can generate multiple requests to a service.
 //
-//    // Example iterating over at most 3 pages of a ListEnvironments operation.
-//    pageNum := 0
-//    err := client.ListEnvironmentsPages(params,
-//        func(page *mwaa.ListEnvironmentsOutput, lastPage bool) bool {
-//            pageNum++
-//            fmt.Println(page)
-//            return pageNum <= 3
-//        })
-//
+//	// Example iterating over at most 3 pages of a ListEnvironments operation.
+//	pageNum := 0
+//	err := client.ListEnvironmentsPages(params,
+//	    func(page *mwaa.ListEnvironmentsOutput, lastPage bool) bool {
+//	        pageNum++
+//	        fmt.Println(page)
+//	        return pageNum <= 3
+//	    })
 func (c *MWAA) ListEnvironmentsPages(input *ListEnvironmentsInput, fn func(*ListEnvironmentsOutput, bool) bool) error {
 	return c.ListEnvironmentsPagesWithContext(aws.BackgroundContext(), input, fn)
 }
@@ -603,14 +602,13 @@ const opListTagsForResource = "ListTagsForResource"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the ListTagsForResourceRequest method.
+//	req, resp := client.ListTagsForResourceRequest(params)
 //
-//    // Example sending a request using the ListTagsForResourceRequest method.
-//    req, resp := client.ListTagsForResourceRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/ListTagsForResource
 func (c *MWAA) ListTagsForResourceRequest(input *ListTagsForResourceInput) (req *request.Request, output *ListTagsForResourceOutput) {
@@ -633,7 +631,8 @@ func (c *MWAA) ListTagsForResourceRequest(input *ListTagsForResourceInput) (req 
 
 // ListTagsForResource API operation for AmazonMWAA.
 //
-// List the tags for MWAA environments.
+// Lists the key-value tag pairs associated to the Amazon Managed Workflows
+// for Apache Airflow (MWAA) environment. For example, "Environment": "Staging".
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -643,14 +642,15 @@ func (c *MWAA) ListTagsForResourceRequest(input *ListTagsForResourceInput) (req 
 // API operation ListTagsForResource for usage and error information.
 //
 // Returned Error Types:
-//   * ResourceNotFoundException
-//   ResourceNotFoundException: The resource is not available.
 //
-//   * ValidationException
-//   ValidationException: The provided input is not valid.
+//   - ResourceNotFoundException
+//     ResourceNotFoundException: The resource is not available.
 //
-//   * InternalServerException
-//   InternalServerException: An internal error has occurred.
+//   - ValidationException
+//     ValidationException: The provided input is not valid.
+//
+//   - InternalServerException
+//     InternalServerException: An internal error has occurred.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/ListTagsForResource
 func (c *MWAA) ListTagsForResource(input *ListTagsForResourceInput) (*ListTagsForResourceOutput, error) {
@@ -690,17 +690,21 @@ const opPublishMetrics = "PublishMetrics"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the PublishMetricsRequest method.
+//	req, resp := client.PublishMetricsRequest(params)
 //
-//    // Example sending a request using the PublishMetricsRequest method.
-//    req, resp := client.PublishMetricsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/PublishMetrics
+//
+// Deprecated: This API is for internal use and not meant for public use, and is no longer available.
 func (c *MWAA) PublishMetricsRequest(input *PublishMetricsInput) (req *request.Request, output *PublishMetricsOutput) {
+	if c.Client.Config.Logger != nil {
+		c.Client.Config.Logger.Log("This operation, PublishMetrics, has been deprecated")
+	}
 	op := &request.Operation{
 		Name:       opPublishMetrics,
 		HTTPMethod: "POST",
@@ -721,7 +725,7 @@ func (c *MWAA) PublishMetricsRequest(input *PublishMetricsInput) (req *request.R
 
 // PublishMetrics API operation for AmazonMWAA.
 //
-// An operation for publishing metrics from the customers to the Ops plane.
+// Internal only. Publishes environment health metrics to Amazon CloudWatch.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -731,13 +735,16 @@ func (c *MWAA) PublishMetricsRequest(input *PublishMetricsInput) (req *request.R
 // API operation PublishMetrics for usage and error information.
 //
 // Returned Error Types:
-//   * ValidationException
-//   ValidationException: The provided input is not valid.
 //
-//   * InternalServerException
-//   InternalServerException: An internal error has occurred.
+//   - ValidationException
+//     ValidationException: The provided input is not valid.
+//
+//   - InternalServerException
+//     InternalServerException: An internal error has occurred.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/PublishMetrics
+//
+// Deprecated: This API is for internal use and not meant for public use, and is no longer available.
 func (c *MWAA) PublishMetrics(input *PublishMetricsInput) (*PublishMetricsOutput, error) {
 	req, out := c.PublishMetricsRequest(input)
 	return out, req.Send()
@@ -752,6 +759,8 @@ func (c *MWAA) PublishMetrics(input *PublishMetricsInput) (*PublishMetricsOutput
 // the context is nil a panic will occur. In the future the SDK may create
 // sub-contexts for http.Requests. See https://golang.org/pkg/context/
 // for more information on using Contexts.
+//
+// Deprecated: This API is for internal use and not meant for public use, and is no longer available.
 func (c *MWAA) PublishMetricsWithContext(ctx aws.Context, input *PublishMetricsInput, opts ...request.Option) (*PublishMetricsOutput, error) {
 	req, out := c.PublishMetricsRequest(input)
 	req.SetContext(ctx)
@@ -775,14 +784,13 @@ const opTagResource = "TagResource"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the TagResourceRequest method.
+//	req, resp := client.TagResourceRequest(params)
 //
-//    // Example sending a request using the TagResourceRequest method.
-//    req, resp := client.TagResourceRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/TagResource
 func (c *MWAA) TagResourceRequest(input *TagResourceInput) (req *request.Request, output *TagResourceOutput) {
@@ -806,7 +814,8 @@ func (c *MWAA) TagResourceRequest(input *TagResourceInput) (req *request.Request
 
 // TagResource API operation for AmazonMWAA.
 //
-// Add tag to the MWAA environments.
+// Associates key-value tag pairs to your Amazon Managed Workflows for Apache
+// Airflow (MWAA) environment.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -816,14 +825,15 @@ func (c *MWAA) TagResourceRequest(input *TagResourceInput) (req *request.Request
 // API operation TagResource for usage and error information.
 //
 // Returned Error Types:
-//   * ResourceNotFoundException
-//   ResourceNotFoundException: The resource is not available.
 //
-//   * ValidationException
-//   ValidationException: The provided input is not valid.
+//   - ResourceNotFoundException
+//     ResourceNotFoundException: The resource is not available.
 //
-//   * InternalServerException
-//   InternalServerException: An internal error has occurred.
+//   - ValidationException
+//     ValidationException: The provided input is not valid.
+//
+//   - InternalServerException
+//     InternalServerException: An internal error has occurred.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/TagResource
 func (c *MWAA) TagResource(input *TagResourceInput) (*TagResourceOutput, error) {
@@ -863,14 +873,13 @@ const opUntagResource = "UntagResource"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the UntagResourceRequest method.
+//	req, resp := client.UntagResourceRequest(params)
 //
-//    // Example sending a request using the UntagResourceRequest method.
-//    req, resp := client.UntagResourceRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/UntagResource
 func (c *MWAA) UntagResourceRequest(input *UntagResourceInput) (req *request.Request, output *UntagResourceOutput) {
@@ -894,7 +903,8 @@ func (c *MWAA) UntagResourceRequest(input *UntagResourceInput) (req *request.Req
 
 // UntagResource API operation for AmazonMWAA.
 //
-// Remove a tag from the MWAA environments.
+// Removes key-value tag pairs associated to your Amazon Managed Workflows for
+// Apache Airflow (MWAA) environment. For example, "Environment": "Staging".
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -904,14 +914,15 @@ func (c *MWAA) UntagResourceRequest(input *UntagResourceInput) (req *request.Req
 // API operation UntagResource for usage and error information.
 //
 // Returned Error Types:
-//   * ResourceNotFoundException
-//   ResourceNotFoundException: The resource is not available.
 //
-//   * ValidationException
-//   ValidationException: The provided input is not valid.
+//   - ResourceNotFoundException
+//     ResourceNotFoundException: The resource is not available.
 //
-//   * InternalServerException
-//   InternalServerException: An internal error has occurred.
+//   - ValidationException
+//     ValidationException: The provided input is not valid.
+//
+//   - InternalServerException
+//     InternalServerException: An internal error has occurred.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/UntagResource
 func (c *MWAA) UntagResource(input *UntagResourceInput) (*UntagResourceOutput, error) {
@@ -951,14 +962,13 @@ const opUpdateEnvironment = "UpdateEnvironment"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the UpdateEnvironmentRequest method.
+//	req, resp := client.UpdateEnvironmentRequest(params)
 //
-//    // Example sending a request using the UpdateEnvironmentRequest method.
-//    req, resp := client.UpdateEnvironmentRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/UpdateEnvironment
 func (c *MWAA) UpdateEnvironmentRequest(input *UpdateEnvironmentInput) (req *request.Request, output *UpdateEnvironmentOutput) {
@@ -981,7 +991,7 @@ func (c *MWAA) UpdateEnvironmentRequest(input *UpdateEnvironmentInput) (req *req
 
 // UpdateEnvironment API operation for AmazonMWAA.
 //
-// Update an MWAA environment.
+// Updates an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 //
 // Returns awserr.Error for service API and SDK errors. Use runtime type assertions
 // with awserr.Error's Code and Message methods to get detailed information about
@@ -991,14 +1001,15 @@ func (c *MWAA) UpdateEnvironmentRequest(input *UpdateEnvironmentInput) (req *req
 // API operation UpdateEnvironment for usage and error information.
 //
 // Returned Error Types:
-//   * ResourceNotFoundException
-//   ResourceNotFoundException: The resource is not available.
 //
-//   * ValidationException
-//   ValidationException: The provided input is not valid.
+//   - ResourceNotFoundException
+//     ResourceNotFoundException: The resource is not available.
 //
-//   * InternalServerException
-//   InternalServerException: An internal error has occurred.
+//   - ValidationException
+//     ValidationException: The provided input is not valid.
+//
+//   - InternalServerException
+//     InternalServerException: An internal error has occurred.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/UpdateEnvironment
 func (c *MWAA) UpdateEnvironment(input *UpdateEnvironmentInput) (*UpdateEnvironmentOutput, error) {
@@ -1022,8 +1033,8 @@ func (c *MWAA) UpdateEnvironmentWithContext(ctx aws.Context, input *UpdateEnviro
 	return out, req.Send()
 }
 
-// Access to the Airflow Web UI or CLI has been Denied. Please follow the MWAA
-// user guide to setup permissions to access the Web UI and CLI functionality.
+// Access to the Apache Airflow Web UI or CLI has been denied due to insufficient
+// permissions. To learn more, see Accessing an Amazon MWAA environment (https://docs.aws.amazon.com/mwaa/latest/userguide/access-policies.html).
 type AccessDeniedException struct {
 	_            struct{}                  `type:"structure"`
 	RespMetadata protocol.ResponseMetadata `json:"-" xml:"-"`
@@ -1031,12 +1042,20 @@ type AccessDeniedException struct {
 	Message_ *string `locationName:"Message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s AccessDeniedException) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s AccessDeniedException) GoString() string {
 	return s.String()
 }
@@ -1080,20 +1099,28 @@ func (s *AccessDeniedException) RequestID() string {
 }
 
 type CreateCliTokenInput struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `type:"structure" nopayload:"true"`
 
-	// Create a CLI token request for a MWAA environment.
+	// The name of the Amazon MWAA environment. For example, MyMWAAEnvironment.
 	//
 	// Name is a required field
 	Name *string `location:"uri" locationName:"Name" min:"1" type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCliTokenInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCliTokenInput) GoString() string {
 	return s.String()
 }
@@ -1123,19 +1150,31 @@ func (s *CreateCliTokenInput) SetName(v string) *CreateCliTokenInput {
 type CreateCliTokenOutput struct {
 	_ struct{} `type:"structure"`
 
-	// Create an Airflow CLI login token response for the provided JWT token.
+	// An Airflow CLI login token.
+	//
+	// CliToken is a sensitive parameter and its value will be
+	// replaced with "sensitive" in string returned by CreateCliTokenOutput's
+	// String and GoString methods.
 	CliToken *string `type:"string" sensitive:"true"`
 
-	// Create an Airflow CLI login token response for the provided webserver hostname.
+	// The Airflow web server hostname for the environment.
 	WebServerHostname *string `min:"1" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCliTokenOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateCliTokenOutput) GoString() string {
 	return s.String()
 }
@@ -1158,118 +1197,199 @@ func (s *CreateCliTokenOutput) SetWebServerHostname(v string) *CreateCliTokenOut
 type CreateEnvironmentInput struct {
 	_ struct{} `type:"structure"`
 
-	// The Apache Airflow configuration setting you want to override in your environment.
-	// For more information, see Environment configuration (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
+	// A list of key-value pairs containing the Apache Airflow configuration options
+	// you want to attach to your environment. For more information, see Apache
+	// Airflow configuration options (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
+	//
+	// AirflowConfigurationOptions is a sensitive parameter and its value will be
+	// replaced with "sensitive" in string returned by CreateEnvironmentInput's
+	// String and GoString methods.
 	AirflowConfigurationOptions map[string]*string `type:"map" sensitive:"true"`
 
-	// The Apache Airflow version you want to use for your environment.
+	// The Apache Airflow version for your environment. If no value is specified,
+	// it defaults to the latest version. For more information, see Apache Airflow
+	// versions on Amazon Managed Workflows for Apache Airflow (MWAA) (https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html).
+	//
+	// Valid values: 1.10.12, 2.0.2, 2.2.2, 2.4.3, 2.5.1, 2.6.3, 2.7.2 2.8.1
 	AirflowVersion *string `min:"1" type:"string"`
 
-	// The relative path to the DAG folder on your Amazon S3 storage bucket. For
-	// example, dags. For more information, see Importing DAGs on Amazon MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+	// The relative path to the DAGs folder on your Amazon S3 bucket. For example,
+	// dags. For more information, see Adding or updating DAGs (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html).
 	//
 	// DagS3Path is a required field
 	DagS3Path *string `min:"1" type:"string" required:"true"`
 
-	// The environment class you want to use for your environment. The environment
-	// class determines the size of the containers and database used for your Apache
-	// Airflow services.
+	// Defines whether the VPC endpoints configured for the environment are created,
+	// and managed, by the customer or by Amazon MWAA. If set to SERVICE, Amazon
+	// MWAA will create and manage the required VPC endpoints in your VPC. If set
+	// to CUSTOMER, you must create, and manage, the VPC endpoints for your VPC.
+	// If you choose to create an environment in a shared VPC, you must set this
+	// value to CUSTOMER. In a shared VPC deployment, the environment will remain
+	// in PENDING status until you create the VPC endpoints. If you do not take
+	// action to create the endpoints within 72 hours, the status will change to
+	// CREATE_FAILED. You can delete the failed environment and create a new one.
+	EndpointManagement *string `type:"string" enum:"EndpointManagement"`
+
+	// The environment class type. Valid values: mw1.small, mw1.medium, mw1.large,
+	// mw1.xlarge, and mw1.2xlarge. For more information, see Amazon MWAA environment
+	// class (https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html).
 	EnvironmentClass *string `min:"1" type:"string"`
 
 	// The Amazon Resource Name (ARN) of the execution role for your environment.
-	// An execution role is an AWS Identity and Access Management (IAM) role that
-	// grants MWAA permission to access AWS services and resources used by your
-	// environment. For example, arn:aws:iam::123456789:role/my-execution-role.
-	// For more information, see Managing access to Amazon Managed Workflows for
-	// Apache Airflow (https://docs.aws.amazon.com/mwaa/latest/userguide/manage-access.html).
+	// An execution role is an Amazon Web Services Identity and Access Management
+	// (IAM) role that grants MWAA permission to access Amazon Web Services services
+	// and resources used by your environment. For example, arn:aws:iam::123456789:role/my-execution-role.
+	// For more information, see Amazon MWAA Execution role (https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html).
 	//
 	// ExecutionRoleArn is a required field
 	ExecutionRoleArn *string `min:"1" type:"string" required:"true"`
 
-	// The AWS Key Management Service (KMS) key to encrypt and decrypt the data
-	// in your environment. You can use an AWS KMS key managed by MWAA, or a custom
-	// KMS key (advanced). For more information, see Customer master keys (CMKs)
-	// (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html?icmpid=docs_console_unmapped#master_keys)
-	// in the AWS KMS developer guide.
+	// The Amazon Web Services Key Management Service (KMS) key to encrypt the data
+	// in your environment. You can use an Amazon Web Services owned CMK, or a Customer
+	// managed CMK (advanced). For more information, see Create an Amazon MWAA environment
+	// (https://docs.aws.amazon.com/mwaa/latest/userguide/create-environment.html).
 	KmsKey *string `min:"1" type:"string"`
 
-	// The Apache Airflow logs you want to send to Amazon CloudWatch Logs.
+	// Defines the Apache Airflow logs to send to CloudWatch Logs.
 	LoggingConfiguration *LoggingConfigurationInput `type:"structure"`
 
+	// The maximum number of web servers that you want to run in your environment.
+	// Amazon MWAA scales the number of Apache Airflow web servers up to the number
+	// you specify for MaxWebservers when you interact with your Apache Airflow
+	// environment using Apache Airflow REST API, or the Apache Airflow CLI. For
+	// example, in scenarios where your workload requires network calls to the Apache
+	// Airflow REST API with a high transaction-per-second (TPS) rate, Amazon MWAA
+	// will increase the number of web servers up to the number set in MaxWebserers.
+	// As TPS rates decrease Amazon MWAA disposes of the additional web servers,
+	// and scales down to the number set in MinxWebserers.
+	//
+	// Valid values: Accepts between 2 and 5. Defaults to 2.
+	MaxWebservers *int64 `min:"2" type:"integer"`
+
 	// The maximum number of workers that you want to run in your environment. MWAA
-	// scales the number of Apache Airflow workers and the Fargate containers that
-	// run your tasks up to the number you specify in this field. When there are
-	// no more tasks running, and no more in the queue, MWAA disposes of the extra
-	// containers leaving the one worker that is included with your environment.
+	// scales the number of Apache Airflow workers up to the number you specify
+	// in the MaxWorkers field. For example, 20. When there are no more tasks running,
+	// and no more in the queue, MWAA disposes of the extra workers leaving the
+	// one worker that is included with your environment, or the number you specify
+	// in MinWorkers.
 	MaxWorkers *int64 `min:"1" type:"integer"`
 
+	// The minimum number of web servers that you want to run in your environment.
+	// Amazon MWAA scales the number of Apache Airflow web servers up to the number
+	// you specify for MaxWebservers when you interact with your Apache Airflow
+	// environment using Apache Airflow REST API, or the Apache Airflow CLI. As
+	// the transaction-per-second rate, and the network load, decrease, Amazon MWAA
+	// disposes of the additional web servers, and scales down to the number set
+	// in MinxWebserers.
+	//
+	// Valid values: Accepts between 2 and 5. Defaults to 2.
+	MinWebservers *int64 `min:"2" type:"integer"`
+
 	// The minimum number of workers that you want to run in your environment. MWAA
-	// scales the number of Apache Airflow workers and the Fargate containers that
-	// run your tasks up to the number you specify in the MaxWorkers field. When
-	// there are no more tasks running, and no more in the queue, MWAA disposes
-	// of the extra containers leaving the worker count you specify in the MinWorkers
-	// field.
+	// scales the number of Apache Airflow workers up to the number you specify
+	// in the MaxWorkers field. When there are no more tasks running, and no more
+	// in the queue, MWAA disposes of the extra workers leaving the worker count
+	// you specify in the MinWorkers field. For example, 2.
 	MinWorkers *int64 `min:"1" type:"integer"`
 
-	// The name of your MWAA environment.
+	// The name of the Amazon MWAA environment. For example, MyMWAAEnvironment.
 	//
 	// Name is a required field
 	Name *string `location:"uri" locationName:"Name" min:"1" type:"string" required:"true"`
 
-	// The VPC networking components you want to use for your environment. At least
-	// two private subnet identifiers and one VPC security group identifier are
-	// required to create an environment. For more information, see Creating the
-	// VPC network for a MWAA environment (https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-mwaa.html).
+	// The VPC networking components used to secure and enable network traffic between
+	// the Amazon Web Services resources for your environment. For more information,
+	// see About networking on Amazon MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html).
 	//
 	// NetworkConfiguration is a required field
 	NetworkConfiguration *NetworkConfiguration `type:"structure" required:"true"`
 
-	// The plugins.zip file version you want to use.
+	// The version of the plugins.zip file on your Amazon S3 bucket. You must specify
+	// a version each time a plugins.zip file is updated. For more information,
+	// see How S3 Versioning works (https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html).
 	PluginsS3ObjectVersion *string `min:"1" type:"string"`
 
-	// The relative path to the plugins.zip file on your Amazon S3 storage bucket.
-	// For example, plugins.zip. If a relative path is provided in the request,
-	// then PluginsS3ObjectVersion is required. For more information, see Importing
-	// DAGs on Amazon MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+	// The relative path to the plugins.zip file on your Amazon S3 bucket. For example,
+	// plugins.zip. If specified, then the plugins.zip version is required. For
+	// more information, see Installing custom plugins (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import-plugins.html).
 	PluginsS3Path *string `min:"1" type:"string"`
 
-	// The requirements.txt file version you want to use.
+	// The version of the requirements.txt file on your Amazon S3 bucket. You must
+	// specify a version each time a requirements.txt file is updated. For more
+	// information, see How S3 Versioning works (https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html).
 	RequirementsS3ObjectVersion *string `min:"1" type:"string"`
 
-	// The relative path to the requirements.txt file on your Amazon S3 storage
-	// bucket. For example, requirements.txt. If a relative path is provided in
-	// the request, then RequirementsS3ObjectVersion is required. For more information,
-	// see Importing DAGs on Amazon MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+	// The relative path to the requirements.txt file on your Amazon S3 bucket.
+	// For example, requirements.txt. If specified, then a version is required.
+	// For more information, see Installing Python dependencies (https://docs.aws.amazon.com/mwaa/latest/userguide/working-dags-dependencies.html).
 	RequirementsS3Path *string `min:"1" type:"string"`
 
-	// The Amazon Resource Name (ARN) of your Amazon S3 storage bucket. For example,
-	// arn:aws:s3:::airflow-mybucketname.
+	// The number of Apache Airflow schedulers to run in your environment. Valid
+	// values:
+	//
+	//    * v2 - Accepts between 2 to 5. Defaults to 2.
+	//
+	//    * v1 - Accepts 1.
+	Schedulers *int64 `type:"integer"`
+
+	// The Amazon Resource Name (ARN) of the Amazon S3 bucket where your DAG code
+	// and supporting files are stored. For example, arn:aws:s3:::my-airflow-bucket-unique-name.
+	// For more information, see Create an Amazon S3 bucket for Amazon MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-s3-bucket.html).
 	//
 	// SourceBucketArn is a required field
 	SourceBucketArn *string `min:"1" type:"string" required:"true"`
 
-	// The metadata tags you want to attach to your environment. For more information,
-	// see Tagging AWS resources (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+	// The version of the startup shell script in your Amazon S3 bucket. You must
+	// specify the version ID (https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html)
+	// that Amazon S3 assigns to the file every time you update the script.
+	//
+	// Version IDs are Unicode, UTF-8 encoded, URL-ready, opaque strings that are
+	// no more than 1,024 bytes long. The following is an example:
+	//
+	// 3sL4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo
+	//
+	// For more information, see Using a startup script (https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html).
+	StartupScriptS3ObjectVersion *string `min:"1" type:"string"`
+
+	// The relative path to the startup shell script in your Amazon S3 bucket. For
+	// example, s3://mwaa-environment/startup.sh.
+	//
+	// Amazon MWAA runs the script as your environment starts, and before running
+	// the Apache Airflow process. You can use this script to install dependencies,
+	// modify Apache Airflow configuration options, and set environment variables.
+	// For more information, see Using a startup script (https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html).
+	StartupScriptS3Path *string `min:"1" type:"string"`
+
+	// The key-value tag pairs you want to associate to your environment. For example,
+	// "Environment": "Staging". For more information, see Tagging Amazon Web Services
+	// resources (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 	Tags map[string]*string `min:"1" type:"map"`
 
-	// The networking access of your Apache Airflow web server. A public network
-	// allows your Airflow UI to be accessed over the Internet by users granted
-	// access in your IAM policy. A private network limits access of your Airflow
-	// UI to users within your VPC. For more information, see Creating the VPC network
-	// for a MWAA environment (https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-mwaa.html).
+	// Defines the access mode for the Apache Airflow web server. For more information,
+	// see Apache Airflow access modes (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html).
 	WebserverAccessMode *string `type:"string" enum:"WebserverAccessMode"`
 
-	// The day and time you want MWAA to start weekly maintenance updates on your
-	// environment.
+	// The day and time of the week in Coordinated Universal Time (UTC) 24-hour
+	// standard time to start weekly maintenance updates of your environment in
+	// the following format: DAY:HH:MM. For example: TUE:03:30. You can specify
+	// a start time in 30 minute increments only.
 	WeeklyMaintenanceWindowStart *string `min:"1" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateEnvironmentInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateEnvironmentInput) GoString() string {
 	return s.String()
 }
@@ -1298,8 +1418,14 @@ func (s *CreateEnvironmentInput) Validate() error {
 	if s.KmsKey != nil && len(*s.KmsKey) < 1 {
 		invalidParams.Add(request.NewErrParamMinLen("KmsKey", 1))
 	}
+	if s.MaxWebservers != nil && *s.MaxWebservers < 2 {
+		invalidParams.Add(request.NewErrParamMinValue("MaxWebservers", 2))
+	}
 	if s.MaxWorkers != nil && *s.MaxWorkers < 1 {
 		invalidParams.Add(request.NewErrParamMinValue("MaxWorkers", 1))
+	}
+	if s.MinWebservers != nil && *s.MinWebservers < 2 {
+		invalidParams.Add(request.NewErrParamMinValue("MinWebservers", 2))
 	}
 	if s.MinWorkers != nil && *s.MinWorkers < 1 {
 		invalidParams.Add(request.NewErrParamMinValue("MinWorkers", 1))
@@ -1330,6 +1456,12 @@ func (s *CreateEnvironmentInput) Validate() error {
 	}
 	if s.SourceBucketArn != nil && len(*s.SourceBucketArn) < 1 {
 		invalidParams.Add(request.NewErrParamMinLen("SourceBucketArn", 1))
+	}
+	if s.StartupScriptS3ObjectVersion != nil && len(*s.StartupScriptS3ObjectVersion) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("StartupScriptS3ObjectVersion", 1))
+	}
+	if s.StartupScriptS3Path != nil && len(*s.StartupScriptS3Path) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("StartupScriptS3Path", 1))
 	}
 	if s.Tags != nil && len(s.Tags) < 1 {
 		invalidParams.Add(request.NewErrParamMinLen("Tags", 1))
@@ -1372,6 +1504,12 @@ func (s *CreateEnvironmentInput) SetDagS3Path(v string) *CreateEnvironmentInput 
 	return s
 }
 
+// SetEndpointManagement sets the EndpointManagement field's value.
+func (s *CreateEnvironmentInput) SetEndpointManagement(v string) *CreateEnvironmentInput {
+	s.EndpointManagement = &v
+	return s
+}
+
 // SetEnvironmentClass sets the EnvironmentClass field's value.
 func (s *CreateEnvironmentInput) SetEnvironmentClass(v string) *CreateEnvironmentInput {
 	s.EnvironmentClass = &v
@@ -1396,9 +1534,21 @@ func (s *CreateEnvironmentInput) SetLoggingConfiguration(v *LoggingConfiguration
 	return s
 }
 
+// SetMaxWebservers sets the MaxWebservers field's value.
+func (s *CreateEnvironmentInput) SetMaxWebservers(v int64) *CreateEnvironmentInput {
+	s.MaxWebservers = &v
+	return s
+}
+
 // SetMaxWorkers sets the MaxWorkers field's value.
 func (s *CreateEnvironmentInput) SetMaxWorkers(v int64) *CreateEnvironmentInput {
 	s.MaxWorkers = &v
+	return s
+}
+
+// SetMinWebservers sets the MinWebservers field's value.
+func (s *CreateEnvironmentInput) SetMinWebservers(v int64) *CreateEnvironmentInput {
+	s.MinWebservers = &v
 	return s
 }
 
@@ -1444,9 +1594,27 @@ func (s *CreateEnvironmentInput) SetRequirementsS3Path(v string) *CreateEnvironm
 	return s
 }
 
+// SetSchedulers sets the Schedulers field's value.
+func (s *CreateEnvironmentInput) SetSchedulers(v int64) *CreateEnvironmentInput {
+	s.Schedulers = &v
+	return s
+}
+
 // SetSourceBucketArn sets the SourceBucketArn field's value.
 func (s *CreateEnvironmentInput) SetSourceBucketArn(v string) *CreateEnvironmentInput {
 	s.SourceBucketArn = &v
+	return s
+}
+
+// SetStartupScriptS3ObjectVersion sets the StartupScriptS3ObjectVersion field's value.
+func (s *CreateEnvironmentInput) SetStartupScriptS3ObjectVersion(v string) *CreateEnvironmentInput {
+	s.StartupScriptS3ObjectVersion = &v
+	return s
+}
+
+// SetStartupScriptS3Path sets the StartupScriptS3Path field's value.
+func (s *CreateEnvironmentInput) SetStartupScriptS3Path(v string) *CreateEnvironmentInput {
+	s.StartupScriptS3Path = &v
 	return s
 }
 
@@ -1471,16 +1639,24 @@ func (s *CreateEnvironmentInput) SetWeeklyMaintenanceWindowStart(v string) *Crea
 type CreateEnvironmentOutput struct {
 	_ struct{} `type:"structure"`
 
-	// The resulting Amazon MWAA envirnonment ARN.
+	// The Amazon Resource Name (ARN) returned in the response for the environment.
 	Arn *string `min:"1" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateEnvironmentOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateEnvironmentOutput) GoString() string {
 	return s.String()
 }
@@ -1492,20 +1668,28 @@ func (s *CreateEnvironmentOutput) SetArn(v string) *CreateEnvironmentOutput {
 }
 
 type CreateWebLoginTokenInput struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `type:"structure" nopayload:"true"`
 
-	// Create an Airflow Web UI login token request for a MWAA environment.
+	// The name of the Amazon MWAA environment. For example, MyMWAAEnvironment.
 	//
 	// Name is a required field
 	Name *string `location:"uri" locationName:"Name" min:"1" type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateWebLoginTokenInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateWebLoginTokenInput) GoString() string {
 	return s.String()
 }
@@ -1535,22 +1719,52 @@ func (s *CreateWebLoginTokenInput) SetName(v string) *CreateWebLoginTokenInput {
 type CreateWebLoginTokenOutput struct {
 	_ struct{} `type:"structure"`
 
-	// Create an Airflow Web UI login token response for the provided webserver
-	// hostname.
+	// The user name of the Apache Airflow identity creating the web login token.
+	AirflowIdentity *string `min:"1" type:"string"`
+
+	// The name of the IAM identity creating the web login token. This might be
+	// an IAM user, or an assumed or federated identity. For example, assumed-role/Admin/your-name.
+	IamIdentity *string `type:"string"`
+
+	// The Airflow web server hostname for the environment.
 	WebServerHostname *string `min:"1" type:"string"`
 
-	// Create an Airflow Web UI login token response for the provided JWT token.
+	// An Airflow web server login token.
+	//
+	// WebToken is a sensitive parameter and its value will be
+	// replaced with "sensitive" in string returned by CreateWebLoginTokenOutput's
+	// String and GoString methods.
 	WebToken *string `type:"string" sensitive:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateWebLoginTokenOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateWebLoginTokenOutput) GoString() string {
 	return s.String()
+}
+
+// SetAirflowIdentity sets the AirflowIdentity field's value.
+func (s *CreateWebLoginTokenOutput) SetAirflowIdentity(v string) *CreateWebLoginTokenOutput {
+	s.AirflowIdentity = &v
+	return s
+}
+
+// SetIamIdentity sets the IamIdentity field's value.
+func (s *CreateWebLoginTokenOutput) SetIamIdentity(v string) *CreateWebLoginTokenOutput {
+	s.IamIdentity = &v
+	return s
 }
 
 // SetWebServerHostname sets the WebServerHostname field's value.
@@ -1566,20 +1780,28 @@ func (s *CreateWebLoginTokenOutput) SetWebToken(v string) *CreateWebLoginTokenOu
 }
 
 type DeleteEnvironmentInput struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `type:"structure" nopayload:"true"`
 
-	// The name of the environment to delete.
+	// The name of the Amazon MWAA environment. For example, MyMWAAEnvironment.
 	//
 	// Name is a required field
 	Name *string `location:"uri" locationName:"Name" min:"1" type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteEnvironmentInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteEnvironmentInput) GoString() string {
 	return s.String()
 }
@@ -1610,37 +1832,57 @@ type DeleteEnvironmentOutput struct {
 	_ struct{} `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteEnvironmentOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteEnvironmentOutput) GoString() string {
 	return s.String()
 }
 
-// Internal only API.
+// Internal only. Represents the dimensions of a metric. To learn more about
+// the metrics published to Amazon CloudWatch, see Amazon MWAA performance metrics
+// in Amazon CloudWatch (https://docs.aws.amazon.com/mwaa/latest/userguide/cw-metrics.html).
+//
+// Deprecated: This type is for internal use and not meant for public use. Data set for this type will be ignored.
 type Dimension struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `deprecated:"true" type:"structure"`
 
-	// Internal only API.
+	// Internal only. The name of the dimension.
 	//
 	// Name is a required field
 	Name *string `type:"string" required:"true"`
 
-	// Internal only API.
+	// Internal only. The value of the dimension.
 	//
 	// Value is a required field
 	Value *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Dimension) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Dimension) GoString() string {
 	return s.String()
 }
@@ -1673,93 +1915,264 @@ func (s *Dimension) SetValue(v string) *Dimension {
 	return s
 }
 
-// An Amazon MWAA environment.
+// Describes an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 type Environment struct {
 	_ struct{} `type:"structure"`
 
-	// The Airflow Configuration Options of the Amazon MWAA Environment.
-	AirflowConfigurationOptions map[string]*string `type:"map"`
+	// A list of key-value pairs containing the Apache Airflow configuration options
+	// attached to your environment. For more information, see Apache Airflow configuration
+	// options (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
+	//
+	// AirflowConfigurationOptions is a sensitive parameter and its value will be
+	// replaced with "sensitive" in string returned by Environment's
+	// String and GoString methods.
+	AirflowConfigurationOptions map[string]*string `type:"map" sensitive:"true"`
 
-	// The AirflowV ersion of the Amazon MWAA Environment.
+	// The Apache Airflow version on your environment.
+	//
+	// Valid values: 1.10.12, 2.0.2, 2.2.2, 2.4.3, 2.5.1, 2.6.3, 2.7.2, 2.8.1.
 	AirflowVersion *string `min:"1" type:"string"`
 
-	// The ARN of the Amazon MWAA Environment.
+	// The Amazon Resource Name (ARN) of the Amazon MWAA environment.
 	Arn *string `min:"1" type:"string"`
 
-	// The Created At date of the Amazon MWAA Environment.
+	// The queue ARN for the environment's Celery Executor (https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/celery.html).
+	// Amazon MWAA uses a Celery Executor to distribute tasks across multiple workers.
+	// When you create an environment in a shared VPC, you must provide access to
+	// the Celery Executor queue from your VPC.
+	CeleryExecutorQueue *string `min:"1" type:"string"`
+
+	// The day and time the environment was created.
 	CreatedAt *time.Time `type:"timestamp"`
 
-	// The Dags S3 Path of the Amazon MWAA Environment.
+	// The relative path to the DAGs folder in your Amazon S3 bucket. For example,
+	// s3://mwaa-environment/dags. For more information, see Adding or updating
+	// DAGs (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html).
 	DagS3Path *string `min:"1" type:"string"`
 
-	// The Environment Class (size) of the Amazon MWAA Environment.
+	// The VPC endpoint for the environment's Amazon RDS database.
+	DatabaseVpcEndpointService *string `min:"1" type:"string"`
+
+	// Defines whether the VPC endpoints configured for the environment are created,
+	// and managed, by the customer or by Amazon MWAA. If set to SERVICE, Amazon
+	// MWAA will create and manage the required VPC endpoints in your VPC. If set
+	// to CUSTOMER, you must create, and manage, the VPC endpoints in your VPC.
+	EndpointManagement *string `type:"string" enum:"EndpointManagement"`
+
+	// The environment class type. Valid values: mw1.small, mw1.medium, mw1.large,
+	// mw1.xlarge, and mw1.2xlarge. For more information, see Amazon MWAA environment
+	// class (https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html).
 	EnvironmentClass *string `min:"1" type:"string"`
 
-	// The Execution Role ARN of the Amazon MWAA Environment.
+	// The Amazon Resource Name (ARN) of the execution role in IAM that allows MWAA
+	// to access Amazon Web Services resources in your environment. For example,
+	// arn:aws:iam::123456789:role/my-execution-role. For more information, see
+	// Amazon MWAA Execution role (https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html).
 	ExecutionRoleArn *string `min:"1" type:"string"`
 
-	// The Kms Key of the Amazon MWAA Environment.
+	// The KMS encryption key used to encrypt the data in your environment.
 	KmsKey *string `min:"1" type:"string"`
 
-	// Last update information for the environment.
+	// The status of the last update on the environment.
 	LastUpdate *LastUpdate `type:"structure"`
 
-	// The Logging Configuration of the Amazon MWAA Environment.
+	// The Apache Airflow logs published to CloudWatch Logs.
 	LoggingConfiguration *LoggingConfiguration `type:"structure"`
 
-	// The maximum number of workers to run in your Amazon MWAA Environment.
+	// The maximum number of web servers that you want to run in your environment.
+	// Amazon MWAA scales the number of Apache Airflow web servers up to the number
+	// you specify for MaxWebservers when you interact with your Apache Airflow
+	// environment using Apache Airflow REST API, or the Apache Airflow CLI. For
+	// example, in scenarios where your workload requires network calls to the Apache
+	// Airflow REST API with a high transaction-per-second (TPS) rate, Amazon MWAA
+	// will increase the number of web servers up to the number set in MaxWebserers.
+	// As TPS rates decrease Amazon MWAA disposes of the additional web servers,
+	// and scales down to the number set in MinxWebserers.
+	//
+	// Valid values: Accepts between 2 and 5. Defaults to 2.
+	MaxWebservers *int64 `min:"2" type:"integer"`
+
+	// The maximum number of workers that run in your environment. For example,
+	// 20.
 	MaxWorkers *int64 `min:"1" type:"integer"`
 
-	// The minimum number of workers to run in your Amazon MWAA Environment.
+	// The minimum number of web servers that you want to run in your environment.
+	// Amazon MWAA scales the number of Apache Airflow web servers up to the number
+	// you specify for MaxWebservers when you interact with your Apache Airflow
+	// environment using Apache Airflow REST API, or the Apache Airflow CLI. As
+	// the transaction-per-second rate, and the network load, decrease, Amazon MWAA
+	// disposes of the additional web servers, and scales down to the number set
+	// in MinxWebserers.
+	//
+	// Valid values: Accepts between 2 and 5. Defaults to 2.
+	MinWebservers *int64 `min:"2" type:"integer"`
+
+	// The minimum number of workers that run in your environment. For example,
+	// 2.
 	MinWorkers *int64 `min:"1" type:"integer"`
 
-	// The name of the Amazon MWAA Environment.
+	// The name of the Amazon MWAA environment. For example, MyMWAAEnvironment.
 	Name *string `min:"1" type:"string"`
 
-	// Provide the security group and subnet IDs for the workers and scheduler.
+	// Describes the VPC networking components used to secure and enable network
+	// traffic between the Amazon Web Services resources for your environment. For
+	// more information, see About networking on Amazon MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html).
 	NetworkConfiguration *NetworkConfiguration `type:"structure"`
 
-	// The Plugins.zip S3 Object Version of the Amazon MWAA Environment.
+	// The version of the plugins.zip file in your Amazon S3 bucket. You must specify
+	// the version ID (https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html)
+	// that Amazon S3 assigns to the file.
+	//
+	// Version IDs are Unicode, UTF-8 encoded, URL-ready, opaque strings that are
+	// no more than 1,024 bytes long. The following is an example:
+	//
+	// 3sL4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo
+	//
+	// For more information, see Installing custom plugins (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import-plugins.html).
 	PluginsS3ObjectVersion *string `min:"1" type:"string"`
 
-	// The Plugins.zip S3 Path of the Amazon MWAA Environment.
+	// The relative path to the file in your Amazon S3 bucket. For example, s3://mwaa-environment/plugins.zip.
+	// For more information, see Installing custom plugins (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import-plugins.html).
 	PluginsS3Path *string `min:"1" type:"string"`
 
-	// The Requirements.txt file S3 Object Version of the Amazon MWAA Environment.
+	// The version of the requirements.txt file on your Amazon S3 bucket. You must
+	// specify the version ID (https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html)
+	// that Amazon S3 assigns to the file.
+	//
+	// Version IDs are Unicode, UTF-8 encoded, URL-ready, opaque strings that are
+	// no more than 1,024 bytes long. The following is an example:
+	//
+	// 3sL4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo
+	//
+	// For more information, see Installing Python dependencies (https://docs.aws.amazon.com/mwaa/latest/userguide/working-dags-dependencies.html).
 	RequirementsS3ObjectVersion *string `min:"1" type:"string"`
 
-	// The Requirement.txt S3 Path of the Amazon MWAA Environment.
+	// The relative path to the requirements.txt file in your Amazon S3 bucket.
+	// For example, s3://mwaa-environment/requirements.txt. For more information,
+	// see Installing Python dependencies (https://docs.aws.amazon.com/mwaa/latest/userguide/working-dags-dependencies.html).
 	RequirementsS3Path *string `min:"1" type:"string"`
 
-	// The Service Role ARN of the Amazon MWAA Environment.
+	// The number of Apache Airflow schedulers that run in your Amazon MWAA environment.
+	Schedulers *int64 `type:"integer"`
+
+	// The Amazon Resource Name (ARN) for the service-linked role of the environment.
+	// For more information, see Amazon MWAA Service-linked role (https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-slr.html).
 	ServiceRoleArn *string `min:"1" type:"string"`
 
-	// The Source S3 Bucket ARN of the Amazon MWAA Environment.
+	// The Amazon Resource Name (ARN) of the Amazon S3 bucket where your DAG code
+	// and supporting files are stored. For example, arn:aws:s3:::my-airflow-bucket-unique-name.
+	// For more information, see Create an Amazon S3 bucket for Amazon MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-s3-bucket.html).
 	SourceBucketArn *string `min:"1" type:"string"`
 
-	// The status of the Amazon MWAA Environment.
+	// The version of the startup shell script in your Amazon S3 bucket. You must
+	// specify the version ID (https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html)
+	// that Amazon S3 assigns to the file.
+	//
+	// Version IDs are Unicode, UTF-8 encoded, URL-ready, opaque strings that are
+	// no more than 1,024 bytes long. The following is an example:
+	//
+	// 3sL4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo
+	//
+	// For more information, see Using a startup script (https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html).
+	StartupScriptS3ObjectVersion *string `type:"string"`
+
+	// The relative path to the startup shell script in your Amazon S3 bucket. For
+	// example, s3://mwaa-environment/startup.sh.
+	//
+	// Amazon MWAA runs the script as your environment starts, and before running
+	// the Apache Airflow process. You can use this script to install dependencies,
+	// modify Apache Airflow configuration options, and set environment variables.
+	// For more information, see Using a startup script (https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html).
+	StartupScriptS3Path *string `type:"string"`
+
+	// The status of the Amazon MWAA environment.
+	//
+	// Valid values:
+	//
+	//    * CREATING - Indicates the request to create the environment is in progress.
+	//
+	//    * CREATING_SNAPSHOT - Indicates the request to update environment details,
+	//    or upgrade the environment version, is in progress and Amazon MWAA is
+	//    creating a storage volume snapshot of the Amazon RDS database cluster
+	//    associated with the environment. A database snapshot is a backup created
+	//    at a specific point in time. Amazon MWAA uses snapshots to recover environment
+	//    metadata if the process to update or upgrade an environment fails.
+	//
+	//    * CREATE_FAILED - Indicates the request to create the environment failed,
+	//    and the environment could not be created.
+	//
+	//    * AVAILABLE - Indicates the request was successful and the environment
+	//    is ready to use.
+	//
+	//    * PENDING - Indicates the request was successful, but the process to create
+	//    the environment is paused until you create the required VPC endpoints
+	//    in your VPC. After you create the VPC endpoints, the process resumes.
+	//
+	//    * UPDATING - Indicates the request to update the environment is in progress.
+	//
+	//    * ROLLING_BACK - Indicates the request to update environment details,
+	//    or upgrade the environment version, failed and Amazon MWAA is restoring
+	//    the environment using the latest storage volume snapshot.
+	//
+	//    * DELETING - Indicates the request to delete the environment is in progress.
+	//
+	//    * DELETED - Indicates the request to delete the environment is complete,
+	//    and the environment has been deleted.
+	//
+	//    * UNAVAILABLE - Indicates the request failed, but the environment did
+	//    not return to its previous state and is not stable.
+	//
+	//    * UPDATE_FAILED - Indicates the request to update the environment failed,
+	//    and the environment was restored to its previous state successfully and
+	//    is ready to use.
+	//
+	//    * MAINTENANCE - Indicates that the environment is undergoing maintenance.
+	//    Depending on the type of work Amazon MWAA is performing, your environment
+	//    might become unavailable during this process. After all operations are
+	//    done, your environment will return to its status prior to mainteneace
+	//    operations.
+	//
+	// We recommend reviewing our troubleshooting guide for a list of common errors
+	// and their solutions. For more information, see Amazon MWAA troubleshooting
+	// (https://docs.aws.amazon.com/mwaa/latest/userguide/troubleshooting.html).
 	Status *string `type:"string" enum:"EnvironmentStatus"`
 
-	// The Tags of the Amazon MWAA Environment.
+	// The key-value tag pairs associated to your environment. For example, "Environment":
+	// "Staging". For more information, see Tagging Amazon Web Services resources
+	// (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 	Tags map[string]*string `min:"1" type:"map"`
 
-	// The Webserver Access Mode of the Amazon MWAA Environment (public or private
-	// only).
+	// The Apache Airflow web server access mode. For more information, see Apache
+	// Airflow access modes (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html).
 	WebserverAccessMode *string `type:"string" enum:"WebserverAccessMode"`
 
-	// The Webserver URL of the Amazon MWAA Environment.
+	// The Apache Airflow web server host name for the Amazon MWAA environment.
+	// For more information, see Accessing the Apache Airflow UI (https://docs.aws.amazon.com/mwaa/latest/userguide/access-airflow-ui.html).
 	WebserverUrl *string `min:"1" type:"string"`
 
-	// The Weekly Maintenance Window Start of the Amazon MWAA Environment.
+	// The VPC endpoint for the environment's web server.
+	WebserverVpcEndpointService *string `min:"1" type:"string"`
+
+	// The day and time of the week in Coordinated Universal Time (UTC) 24-hour
+	// standard time that weekly maintenance updates are scheduled. For example:
+	// TUE:03:30.
 	WeeklyMaintenanceWindowStart *string `min:"1" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Environment) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Environment) GoString() string {
 	return s.String()
 }
@@ -1782,6 +2195,12 @@ func (s *Environment) SetArn(v string) *Environment {
 	return s
 }
 
+// SetCeleryExecutorQueue sets the CeleryExecutorQueue field's value.
+func (s *Environment) SetCeleryExecutorQueue(v string) *Environment {
+	s.CeleryExecutorQueue = &v
+	return s
+}
+
 // SetCreatedAt sets the CreatedAt field's value.
 func (s *Environment) SetCreatedAt(v time.Time) *Environment {
 	s.CreatedAt = &v
@@ -1791,6 +2210,18 @@ func (s *Environment) SetCreatedAt(v time.Time) *Environment {
 // SetDagS3Path sets the DagS3Path field's value.
 func (s *Environment) SetDagS3Path(v string) *Environment {
 	s.DagS3Path = &v
+	return s
+}
+
+// SetDatabaseVpcEndpointService sets the DatabaseVpcEndpointService field's value.
+func (s *Environment) SetDatabaseVpcEndpointService(v string) *Environment {
+	s.DatabaseVpcEndpointService = &v
+	return s
+}
+
+// SetEndpointManagement sets the EndpointManagement field's value.
+func (s *Environment) SetEndpointManagement(v string) *Environment {
+	s.EndpointManagement = &v
 	return s
 }
 
@@ -1824,9 +2255,21 @@ func (s *Environment) SetLoggingConfiguration(v *LoggingConfiguration) *Environm
 	return s
 }
 
+// SetMaxWebservers sets the MaxWebservers field's value.
+func (s *Environment) SetMaxWebservers(v int64) *Environment {
+	s.MaxWebservers = &v
+	return s
+}
+
 // SetMaxWorkers sets the MaxWorkers field's value.
 func (s *Environment) SetMaxWorkers(v int64) *Environment {
 	s.MaxWorkers = &v
+	return s
+}
+
+// SetMinWebservers sets the MinWebservers field's value.
+func (s *Environment) SetMinWebservers(v int64) *Environment {
+	s.MinWebservers = &v
 	return s
 }
 
@@ -1872,6 +2315,12 @@ func (s *Environment) SetRequirementsS3Path(v string) *Environment {
 	return s
 }
 
+// SetSchedulers sets the Schedulers field's value.
+func (s *Environment) SetSchedulers(v int64) *Environment {
+	s.Schedulers = &v
+	return s
+}
+
 // SetServiceRoleArn sets the ServiceRoleArn field's value.
 func (s *Environment) SetServiceRoleArn(v string) *Environment {
 	s.ServiceRoleArn = &v
@@ -1881,6 +2330,18 @@ func (s *Environment) SetServiceRoleArn(v string) *Environment {
 // SetSourceBucketArn sets the SourceBucketArn field's value.
 func (s *Environment) SetSourceBucketArn(v string) *Environment {
 	s.SourceBucketArn = &v
+	return s
+}
+
+// SetStartupScriptS3ObjectVersion sets the StartupScriptS3ObjectVersion field's value.
+func (s *Environment) SetStartupScriptS3ObjectVersion(v string) *Environment {
+	s.StartupScriptS3ObjectVersion = &v
+	return s
+}
+
+// SetStartupScriptS3Path sets the StartupScriptS3Path field's value.
+func (s *Environment) SetStartupScriptS3Path(v string) *Environment {
+	s.StartupScriptS3Path = &v
 	return s
 }
 
@@ -1908,6 +2369,12 @@ func (s *Environment) SetWebserverUrl(v string) *Environment {
 	return s
 }
 
+// SetWebserverVpcEndpointService sets the WebserverVpcEndpointService field's value.
+func (s *Environment) SetWebserverVpcEndpointService(v string) *Environment {
+	s.WebserverVpcEndpointService = &v
+	return s
+}
+
 // SetWeeklyMaintenanceWindowStart sets the WeeklyMaintenanceWindowStart field's value.
 func (s *Environment) SetWeeklyMaintenanceWindowStart(v string) *Environment {
 	s.WeeklyMaintenanceWindowStart = &v
@@ -1915,20 +2382,28 @@ func (s *Environment) SetWeeklyMaintenanceWindowStart(v string) *Environment {
 }
 
 type GetEnvironmentInput struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `type:"structure" nopayload:"true"`
 
-	// The name of the environment to retrieve.
+	// The name of the Amazon MWAA environment. For example, MyMWAAEnvironment.
 	//
 	// Name is a required field
 	Name *string `location:"uri" locationName:"Name" min:"1" type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s GetEnvironmentInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s GetEnvironmentInput) GoString() string {
 	return s.String()
 }
@@ -1958,16 +2433,24 @@ func (s *GetEnvironmentInput) SetName(v string) *GetEnvironmentInput {
 type GetEnvironmentOutput struct {
 	_ struct{} `type:"structure"`
 
-	// A JSON blob with environment details.
+	// An object containing all available details about the environment.
 	Environment *Environment `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s GetEnvironmentOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s GetEnvironmentOutput) GoString() string {
 	return s.String()
 }
@@ -1986,12 +2469,20 @@ type InternalServerException struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InternalServerException) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InternalServerException) GoString() string {
 	return s.String()
 }
@@ -2034,26 +2525,39 @@ func (s *InternalServerException) RequestID() string {
 	return s.RespMetadata.RequestID
 }
 
-// Last update information for the environment.
+// Describes the status of the last update on the environment, and any errors
+// that were encountered.
 type LastUpdate struct {
 	_ struct{} `type:"structure"`
 
-	// Time that last update occurred.
+	// The day and time of the last update on the environment.
 	CreatedAt *time.Time `type:"timestamp"`
 
-	// Error string of last update, if applicable.
+	// The error that was encountered during the last update of the environment.
 	Error *UpdateError `type:"structure"`
 
-	// Status of last update of SUCCESS, FAILED, CREATING, DELETING.
+	// The source of the last update to the environment. Includes internal processes
+	// by Amazon MWAA, such as an environment maintenance update.
+	Source *string `min:"1" type:"string"`
+
+	// The status of the last update on the environment.
 	Status *string `type:"string" enum:"UpdateStatus"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s LastUpdate) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s LastUpdate) GoString() string {
 	return s.String()
 }
@@ -2070,6 +2574,12 @@ func (s *LastUpdate) SetError(v *UpdateError) *LastUpdate {
 	return s
 }
 
+// SetSource sets the Source field's value.
+func (s *LastUpdate) SetSource(v string) *LastUpdate {
+	s.Source = &v
+	return s
+}
+
 // SetStatus sets the Status field's value.
 func (s *LastUpdate) SetStatus(v string) *LastUpdate {
 	s.Status = &v
@@ -2077,21 +2587,30 @@ func (s *LastUpdate) SetStatus(v string) *LastUpdate {
 }
 
 type ListEnvironmentsInput struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `type:"structure" nopayload:"true"`
 
-	// The maximum results when listing MWAA environments.
+	// The maximum number of results to retrieve per page. For example, 5 environments
+	// per page.
 	MaxResults *int64 `location:"querystring" locationName:"MaxResults" min:"1" type:"integer"`
 
-	// The Next Token when listing MWAA environments.
+	// Retrieves the next page of the results.
 	NextToken *string `location:"querystring" locationName:"NextToken" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListEnvironmentsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListEnvironmentsInput) GoString() string {
 	return s.String()
 }
@@ -2124,21 +2643,29 @@ func (s *ListEnvironmentsInput) SetNextToken(v string) *ListEnvironmentsInput {
 type ListEnvironmentsOutput struct {
 	_ struct{} `type:"structure"`
 
-	// The list of Amazon MWAA Environments.
+	// Returns a list of Amazon MWAA environments.
 	//
 	// Environments is a required field
 	Environments []*string `type:"list" required:"true"`
 
-	// The Next Token when listing MWAA environments.
+	// Retrieves the next page of the results.
 	NextToken *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListEnvironmentsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListEnvironmentsOutput) GoString() string {
 	return s.String()
 }
@@ -2156,20 +2683,29 @@ func (s *ListEnvironmentsOutput) SetNextToken(v string) *ListEnvironmentsOutput 
 }
 
 type ListTagsForResourceInput struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `type:"structure" nopayload:"true"`
 
-	// The ARN of the MWAA environment.
+	// The Amazon Resource Name (ARN) of the Amazon MWAA environment. For example,
+	// arn:aws:airflow:us-east-1:123456789012:environment/MyMWAAEnvironment.
 	//
 	// ResourceArn is a required field
 	ResourceArn *string `location:"uri" locationName:"ResourceArn" min:"1" type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListTagsForResourceInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListTagsForResourceInput) GoString() string {
 	return s.String()
 }
@@ -2199,16 +2735,25 @@ func (s *ListTagsForResourceInput) SetResourceArn(v string) *ListTagsForResource
 type ListTagsForResourceOutput struct {
 	_ struct{} `type:"structure"`
 
-	// The tags of the MWAA environments.
+	// The key-value tag pairs associated to your environment. For more information,
+	// see Tagging Amazon Web Services resources (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 	Tags map[string]*string `min:"1" type:"map"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListTagsForResourceOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListTagsForResourceOutput) GoString() string {
 	return s.String()
 }
@@ -2219,42 +2764,41 @@ func (s *ListTagsForResourceOutput) SetTags(v map[string]*string) *ListTagsForRe
 	return s
 }
 
-// The Logging Configuration of your Amazon MWAA environment.
+// Describes the Apache Airflow log types that are published to CloudWatch Logs.
 type LoggingConfiguration struct {
 	_ struct{} `type:"structure"`
 
-	// A JSON blob that provides configuration to use for logging with respect to
-	// the various Apache Airflow services: DagProcessingLogs, SchedulerLogs, TaskLogs,
-	// WebserverLogs, and WorkerLogs.
+	// The Airflow DAG processing logs published to CloudWatch Logs and the log
+	// level.
 	DagProcessingLogs *ModuleLoggingConfiguration `type:"structure"`
 
-	// A JSON blob that provides configuration to use for logging with respect to
-	// the various Apache Airflow services: DagProcessingLogs, SchedulerLogs, TaskLogs,
-	// WebserverLogs, and WorkerLogs.
+	// The Airflow scheduler logs published to CloudWatch Logs and the log level.
 	SchedulerLogs *ModuleLoggingConfiguration `type:"structure"`
 
-	// A JSON blob that provides configuration to use for logging with respect to
-	// the various Apache Airflow services: DagProcessingLogs, SchedulerLogs, TaskLogs,
-	// WebserverLogs, and WorkerLogs.
+	// The Airflow task logs published to CloudWatch Logs and the log level.
 	TaskLogs *ModuleLoggingConfiguration `type:"structure"`
 
-	// A JSON blob that provides configuration to use for logging with respect to
-	// the various Apache Airflow services: DagProcessingLogs, SchedulerLogs, TaskLogs,
-	// WebserverLogs, and WorkerLogs.
+	// The Airflow web server logs published to CloudWatch Logs and the log level.
 	WebserverLogs *ModuleLoggingConfiguration `type:"structure"`
 
-	// A JSON blob that provides configuration to use for logging with respect to
-	// the various Apache Airflow services: DagProcessingLogs, SchedulerLogs, TaskLogs,
-	// WebserverLogs, and WorkerLogs.
+	// The Airflow worker logs published to CloudWatch Logs and the log level.
 	WorkerLogs *ModuleLoggingConfiguration `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s LoggingConfiguration) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s LoggingConfiguration) GoString() string {
 	return s.String()
 }
@@ -2289,42 +2833,40 @@ func (s *LoggingConfiguration) SetWorkerLogs(v *ModuleLoggingConfiguration) *Log
 	return s
 }
 
-// The Logging Configuration of your Amazon MWAA environment.
+// Defines the Apache Airflow log types to send to CloudWatch Logs.
 type LoggingConfigurationInput struct {
 	_ struct{} `type:"structure"`
 
-	// A JSON blob that provides configuration to use for logging with respect to
-	// the various Apache Airflow services: DagProcessingLogs, SchedulerLogs, TaskLogs,
-	// WebserverLogs, and WorkerLogs.
+	// Publishes Airflow DAG processing logs to CloudWatch Logs.
 	DagProcessingLogs *ModuleLoggingConfigurationInput `type:"structure"`
 
-	// A JSON blob that provides configuration to use for logging with respect to
-	// the various Apache Airflow services: DagProcessingLogs, SchedulerLogs, TaskLogs,
-	// WebserverLogs, and WorkerLogs.
+	// Publishes Airflow scheduler logs to CloudWatch Logs.
 	SchedulerLogs *ModuleLoggingConfigurationInput `type:"structure"`
 
-	// A JSON blob that provides configuration to use for logging with respect to
-	// the various Apache Airflow services: DagProcessingLogs, SchedulerLogs, TaskLogs,
-	// WebserverLogs, and WorkerLogs.
+	// Publishes Airflow task logs to CloudWatch Logs.
 	TaskLogs *ModuleLoggingConfigurationInput `type:"structure"`
 
-	// A JSON blob that provides configuration to use for logging with respect to
-	// the various Apache Airflow services: DagProcessingLogs, SchedulerLogs, TaskLogs,
-	// WebserverLogs, and WorkerLogs.
+	// Publishes Airflow web server logs to CloudWatch Logs.
 	WebserverLogs *ModuleLoggingConfigurationInput `type:"structure"`
 
-	// A JSON blob that provides configuration to use for logging with respect to
-	// the various Apache Airflow services: DagProcessingLogs, SchedulerLogs, TaskLogs,
-	// WebserverLogs, and WorkerLogs.
+	// Publishes Airflow worker logs to CloudWatch Logs.
 	WorkerLogs *ModuleLoggingConfigurationInput `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s LoggingConfigurationInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s LoggingConfigurationInput) GoString() string {
 	return s.String()
 }
@@ -2394,39 +2936,51 @@ func (s *LoggingConfigurationInput) SetWorkerLogs(v *ModuleLoggingConfigurationI
 	return s
 }
 
-// Internal only API.
+// Internal only. Collects Apache Airflow metrics. To learn more about the metrics
+// published to Amazon CloudWatch, see Amazon MWAA performance metrics in Amazon
+// CloudWatch (https://docs.aws.amazon.com/mwaa/latest/userguide/cw-metrics.html).
+//
+// Deprecated: This type is for internal use and not meant for public use. Data set for this type will be ignored.
 type MetricDatum struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `deprecated:"true" type:"structure"`
 
-	// Internal only API.
-	Dimensions []*Dimension `type:"list"`
+	// Internal only. The dimensions associated with the metric.
+	Dimensions []*Dimension `deprecated:"true" type:"list"`
 
-	// Internal only API.
+	// Internal only. The name of the metric.
 	//
 	// MetricName is a required field
 	MetricName *string `type:"string" required:"true"`
 
-	// Internal only API.
-	StatisticValues *StatisticSet `type:"structure"`
+	// Internal only. The statistical values for the metric.
+	StatisticValues *StatisticSet `deprecated:"true" type:"structure"`
 
-	// Internal only API.
+	// Internal only. The time the metric data was received.
 	//
 	// Timestamp is a required field
 	Timestamp *time.Time `type:"timestamp" required:"true"`
 
-	// Unit
+	// Internal only. The unit used to store the metric.
 	Unit *string `type:"string" enum:"Unit"`
 
-	// Internal only API.
+	// Internal only. The value for the metric.
 	Value *float64 `type:"double"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s MetricDatum) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s MetricDatum) GoString() string {
 	return s.String()
 }
@@ -2493,28 +3047,36 @@ func (s *MetricDatum) SetValue(v float64) *MetricDatum {
 	return s
 }
 
-// A JSON blob that provides configuration to use for logging with respect to
-// the various Apache Airflow services: DagProcessingLogs, SchedulerLogs, TaskLogs,
-// WebserverLogs, and WorkerLogs.
+// Describes the Apache Airflow log details for the log type (e.g. DagProcessingLogs).
 type ModuleLoggingConfiguration struct {
 	_ struct{} `type:"structure"`
 
-	// Provides the ARN for the CloudWatch group where the logs will be published.
+	// The Amazon Resource Name (ARN) for the CloudWatch Logs group where the Apache
+	// Airflow log type (e.g. DagProcessingLogs) is published. For example, arn:aws:logs:us-east-1:123456789012:log-group:airflow-MyMWAAEnvironment-MwaaEnvironment-DAGProcessing:*.
 	CloudWatchLogGroupArn *string `min:"1" type:"string"`
 
-	// Defines that the logging module is enabled.
+	// Indicates whether the Apache Airflow log type (e.g. DagProcessingLogs) is
+	// enabled.
 	Enabled *bool `type:"boolean"`
 
-	// Defines the log level, which can be CRITICAL, ERROR, WARNING, or INFO.
+	// The Apache Airflow log level for the log type (e.g. DagProcessingLogs).
 	LogLevel *string `type:"string" enum:"LoggingLevel"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModuleLoggingConfiguration) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModuleLoggingConfiguration) GoString() string {
 	return s.String()
 }
@@ -2537,29 +3099,36 @@ func (s *ModuleLoggingConfiguration) SetLogLevel(v string) *ModuleLoggingConfigu
 	return s
 }
 
-// A JSON blob that provides configuration to use for logging with respect to
-// the various Apache Airflow services: DagProcessingLogs, SchedulerLogs, TaskLogs,
-// WebserverLogs, and WorkerLogs.
+// Enables the Apache Airflow log type (e.g. DagProcessingLogs) and defines
+// the log level to send to CloudWatch Logs (e.g. INFO).
 type ModuleLoggingConfigurationInput struct {
 	_ struct{} `type:"structure"`
 
-	// Defines that the logging module is enabled.
+	// Indicates whether to enable the Apache Airflow log type (e.g. DagProcessingLogs).
 	//
 	// Enabled is a required field
 	Enabled *bool `type:"boolean" required:"true"`
 
-	// Defines the log level, which can be CRITICAL, ERROR, WARNING, or INFO.
+	// Defines the Apache Airflow log level (e.g. INFO) to send to CloudWatch Logs.
 	//
 	// LogLevel is a required field
 	LogLevel *string `type:"string" required:"true" enum:"LoggingLevel"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModuleLoggingConfigurationInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ModuleLoggingConfigurationInput) GoString() string {
 	return s.String()
 }
@@ -2592,25 +3161,35 @@ func (s *ModuleLoggingConfigurationInput) SetLogLevel(v string) *ModuleLoggingCo
 	return s
 }
 
-// Provide the security group and subnet IDs for the workers and scheduler.
+// Describes the VPC networking components used to secure and enable network
+// traffic between the Amazon Web Services resources for your environment. For
+// more information, see About networking on Amazon MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html).
 type NetworkConfiguration struct {
 	_ struct{} `type:"structure"`
 
-	// A JSON list of 1 or more security groups IDs by name, in the same VPC as
-	// the subnets.
+	// A list of security group IDs. For more information, see Security in your
+	// VPC on Amazon MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-security.html).
 	SecurityGroupIds []*string `min:"1" type:"list"`
 
-	// Provide a JSON list of 2 subnet IDs by name. These must be private subnets,
-	// in the same VPC, in two different availability zones.
+	// A list of subnet IDs. For more information, see About networking on Amazon
+	// MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html).
 	SubnetIds []*string `min:"2" type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NetworkConfiguration) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NetworkConfiguration) GoString() string {
 	return s.String()
 }
@@ -2643,27 +3222,37 @@ func (s *NetworkConfiguration) SetSubnetIds(v []*string) *NetworkConfiguration {
 	return s
 }
 
+// Deprecated: This type is for internal use and not meant for public use. Data set for this type will be ignored.
 type PublishMetricsInput struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `deprecated:"true" type:"structure"`
 
-	// Publishes environment metric data to Amazon CloudWatch.
+	// Internal only. The name of the environment.
 	//
 	// EnvironmentName is a required field
 	EnvironmentName *string `location:"uri" locationName:"EnvironmentName" min:"1" type:"string" required:"true"`
 
-	// Publishes metric data points to Amazon CloudWatch. CloudWatch associates
-	// the data points with the specified metrica.
+	// Internal only. Publishes metrics to Amazon CloudWatch. To learn more about
+	// the metrics published to Amazon CloudWatch, see Amazon MWAA performance metrics
+	// in Amazon CloudWatch (https://docs.aws.amazon.com/mwaa/latest/userguide/cw-metrics.html).
 	//
 	// MetricData is a required field
-	MetricData []*MetricDatum `type:"list" required:"true"`
+	MetricData []*MetricDatum `deprecated:"true" type:"list" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s PublishMetricsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s PublishMetricsInput) GoString() string {
 	return s.String()
 }
@@ -2709,16 +3298,25 @@ func (s *PublishMetricsInput) SetMetricData(v []*MetricDatum) *PublishMetricsInp
 	return s
 }
 
+// Deprecated: This type is for internal use and not meant for public use. Data set for this type will be ignored.
 type PublishMetricsOutput struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `deprecated:"true" type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s PublishMetricsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s PublishMetricsOutput) GoString() string {
 	return s.String()
 }
@@ -2731,12 +3329,20 @@ type ResourceNotFoundException struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ResourceNotFoundException) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ResourceNotFoundException) GoString() string {
 	return s.String()
 }
@@ -2779,29 +3385,41 @@ func (s *ResourceNotFoundException) RequestID() string {
 	return s.RespMetadata.RequestID
 }
 
-// Internal only API.
+// Internal only. Represents a set of statistics that describe a specific metric.
+// To learn more about the metrics published to Amazon CloudWatch, see Amazon
+// MWAA performance metrics in Amazon CloudWatch (https://docs.aws.amazon.com/mwaa/latest/userguide/cw-metrics.html).
+//
+// Deprecated: This type is for internal use and not meant for public use. Data set for this type will be ignored.
 type StatisticSet struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `deprecated:"true" type:"structure"`
 
-	// Internal only API.
+	// Internal only. The maximum value of the sample set.
 	Maximum *float64 `type:"double"`
 
-	// Internal only API.
+	// Internal only. The minimum value of the sample set.
 	Minimum *float64 `type:"double"`
 
-	// Internal only API.
+	// Internal only. The number of samples used for the statistic set.
 	SampleCount *int64 `type:"integer"`
 
-	// Internal only API.
+	// Internal only. The sum of values for the sample set.
 	Sum *float64 `type:"double"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s StatisticSet) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s StatisticSet) GoString() string {
 	return s.String()
 }
@@ -2833,23 +3451,34 @@ func (s *StatisticSet) SetSum(v float64) *StatisticSet {
 type TagResourceInput struct {
 	_ struct{} `type:"structure"`
 
-	// The tag resource ARN of the MWAA environments.
+	// The Amazon Resource Name (ARN) of the Amazon MWAA environment. For example,
+	// arn:aws:airflow:us-east-1:123456789012:environment/MyMWAAEnvironment.
 	//
 	// ResourceArn is a required field
 	ResourceArn *string `location:"uri" locationName:"ResourceArn" min:"1" type:"string" required:"true"`
 
-	// The tag resource tag of the MWAA environments.
+	// The key-value tag pairs you want to associate to your environment. For example,
+	// "Environment": "Staging". For more information, see Tagging Amazon Web Services
+	// resources (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 	//
 	// Tags is a required field
 	Tags map[string]*string `min:"1" type:"map" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagResourceInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagResourceInput) GoString() string {
 	return s.String()
 }
@@ -2892,36 +3521,53 @@ type TagResourceOutput struct {
 	_ struct{} `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagResourceOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagResourceOutput) GoString() string {
 	return s.String()
 }
 
 type UntagResourceInput struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `type:"structure" nopayload:"true"`
 
-	// The tag resource ARN of the MWAA environments.
+	// The Amazon Resource Name (ARN) of the Amazon MWAA environment. For example,
+	// arn:aws:airflow:us-east-1:123456789012:environment/MyMWAAEnvironment.
 	//
 	// ResourceArn is a required field
 	ResourceArn *string `location:"uri" locationName:"ResourceArn" min:"1" type:"string" required:"true"`
 
-	// The tag resource key of the MWAA environments.
+	// The key-value tag pair you want to remove. For example, "Environment": "Staging".
 	//
 	// TagKeys is a required field
 	TagKeys []*string `location:"querystring" locationName:"tagKeys" type:"list" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UntagResourceInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UntagResourceInput) GoString() string {
 	return s.String()
 }
@@ -2961,12 +3607,20 @@ type UntagResourceOutput struct {
 	_ struct{} `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UntagResourceOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UntagResourceOutput) GoString() string {
 	return s.String()
 }
@@ -2974,66 +3628,167 @@ func (s UntagResourceOutput) GoString() string {
 type UpdateEnvironmentInput struct {
 	_ struct{} `type:"structure"`
 
-	// The Airflow Configuration Options to update of your Amazon MWAA environment.
+	// A list of key-value pairs containing the Apache Airflow configuration options
+	// you want to attach to your environment. For more information, see Apache
+	// Airflow configuration options (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
+	//
+	// AirflowConfigurationOptions is a sensitive parameter and its value will be
+	// replaced with "sensitive" in string returned by UpdateEnvironmentInput's
+	// String and GoString methods.
 	AirflowConfigurationOptions map[string]*string `type:"map" sensitive:"true"`
 
-	// The Airflow Version to update of your Amazon MWAA environment.
+	// The Apache Airflow version for your environment. To upgrade your environment,
+	// specify a newer version of Apache Airflow supported by Amazon MWAA.
+	//
+	// Before you upgrade an environment, make sure your requirements, DAGs, plugins,
+	// and other resources used in your workflows are compatible with the new Apache
+	// Airflow version. For more information about updating your resources, see
+	// Upgrading an Amazon MWAA environment (https://docs.aws.amazon.com/mwaa/latest/userguide/upgrading-environment.html).
+	//
+	// Valid values: 1.10.12, 2.0.2, 2.2.2, 2.4.3, 2.5.1, 2.6.3, 2.7.2, 2.8.1.
 	AirflowVersion *string `min:"1" type:"string"`
 
-	// The Dags folder S3 Path to update of your Amazon MWAA environment.
+	// The relative path to the DAGs folder on your Amazon S3 bucket. For example,
+	// dags. For more information, see Adding or updating DAGs (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html).
 	DagS3Path *string `min:"1" type:"string"`
 
-	// The Environment Class to update of your Amazon MWAA environment.
+	// The environment class type. Valid values: mw1.small, mw1.medium, mw1.large,
+	// mw1.xlarge, and mw1.2xlarge. For more information, see Amazon MWAA environment
+	// class (https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html).
 	EnvironmentClass *string `min:"1" type:"string"`
 
-	// The Executio Role ARN to update of your Amazon MWAA environment.
+	// The Amazon Resource Name (ARN) of the execution role in IAM that allows MWAA
+	// to access Amazon Web Services resources in your environment. For example,
+	// arn:aws:iam::123456789:role/my-execution-role. For more information, see
+	// Amazon MWAA Execution role (https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html).
 	ExecutionRoleArn *string `min:"1" type:"string"`
 
-	// The Logging Configuration to update of your Amazon MWAA environment.
+	// The Apache Airflow log types to send to CloudWatch Logs.
 	LoggingConfiguration *LoggingConfigurationInput `type:"structure"`
 
-	// The maximum number of workers to update of your Amazon MWAA environment.
+	// The maximum number of web servers that you want to run in your environment.
+	// Amazon MWAA scales the number of Apache Airflow web servers up to the number
+	// you specify for MaxWebservers when you interact with your Apache Airflow
+	// environment using Apache Airflow REST API, or the Apache Airflow CLI. For
+	// example, in scenarios where your workload requires network calls to the Apache
+	// Airflow REST API with a high transaction-per-second (TPS) rate, Amazon MWAA
+	// will increase the number of web servers up to the number set in MaxWebserers.
+	// As TPS rates decrease Amazon MWAA disposes of the additional web servers,
+	// and scales down to the number set in MinxWebserers.
+	//
+	// Valid values: Accepts between 2 and 5. Defaults to 2.
+	MaxWebservers *int64 `min:"2" type:"integer"`
+
+	// The maximum number of workers that you want to run in your environment. MWAA
+	// scales the number of Apache Airflow workers up to the number you specify
+	// in the MaxWorkers field. For example, 20. When there are no more tasks running,
+	// and no more in the queue, MWAA disposes of the extra workers leaving the
+	// one worker that is included with your environment, or the number you specify
+	// in MinWorkers.
 	MaxWorkers *int64 `min:"1" type:"integer"`
 
-	// The minimum number of workers to update of your Amazon MWAA environment.
+	// The minimum number of web servers that you want to run in your environment.
+	// Amazon MWAA scales the number of Apache Airflow web servers up to the number
+	// you specify for MaxWebservers when you interact with your Apache Airflow
+	// environment using Apache Airflow REST API, or the Apache Airflow CLI. As
+	// the transaction-per-second rate, and the network load, decrease, Amazon MWAA
+	// disposes of the additional web servers, and scales down to the number set
+	// in MinxWebserers.
+	//
+	// Valid values: Accepts between 2 and 5. Defaults to 2.
+	MinWebservers *int64 `min:"2" type:"integer"`
+
+	// The minimum number of workers that you want to run in your environment. MWAA
+	// scales the number of Apache Airflow workers up to the number you specify
+	// in the MaxWorkers field. When there are no more tasks running, and no more
+	// in the queue, MWAA disposes of the extra workers leaving the worker count
+	// you specify in the MinWorkers field. For example, 2.
 	MinWorkers *int64 `min:"1" type:"integer"`
 
-	// The name of your Amazon MWAA environment that you wish to update.
+	// The name of your Amazon MWAA environment. For example, MyMWAAEnvironment.
 	//
 	// Name is a required field
 	Name *string `location:"uri" locationName:"Name" min:"1" type:"string" required:"true"`
 
-	// The Network Configuration to update of your Amazon MWAA environment.
+	// The VPC networking components used to secure and enable network traffic between
+	// the Amazon Web Services resources for your environment. For more information,
+	// see About networking on Amazon MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html).
 	NetworkConfiguration *UpdateNetworkConfigurationInput `type:"structure"`
 
-	// The Plugins.zip S3 Object Version to update of your Amazon MWAA environment.
+	// The version of the plugins.zip file on your Amazon S3 bucket. You must specify
+	// a version each time a plugins.zip file is updated. For more information,
+	// see How S3 Versioning works (https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html).
 	PluginsS3ObjectVersion *string `min:"1" type:"string"`
 
-	// The Plugins.zip S3 Path to update of your Amazon MWAA environment.
+	// The relative path to the plugins.zip file on your Amazon S3 bucket. For example,
+	// plugins.zip. If specified, then the plugins.zip version is required. For
+	// more information, see Installing custom plugins (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import-plugins.html).
 	PluginsS3Path *string `min:"1" type:"string"`
 
-	// The Requirements.txt S3 ObjectV ersion to update of your Amazon MWAA environment.
+	// The version of the requirements.txt file on your Amazon S3 bucket. You must
+	// specify a version each time a requirements.txt file is updated. For more
+	// information, see How S3 Versioning works (https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html).
 	RequirementsS3ObjectVersion *string `min:"1" type:"string"`
 
-	// The Requirements.txt S3 Path to update of your Amazon MWAA environment.
+	// The relative path to the requirements.txt file on your Amazon S3 bucket.
+	// For example, requirements.txt. If specified, then a file version is required.
+	// For more information, see Installing Python dependencies (https://docs.aws.amazon.com/mwaa/latest/userguide/working-dags-dependencies.html).
 	RequirementsS3Path *string `min:"1" type:"string"`
 
-	// The S3 Source Bucket ARN to update of your Amazon MWAA environment.
+	// The number of Apache Airflow schedulers to run in your Amazon MWAA environment.
+	Schedulers *int64 `type:"integer"`
+
+	// The Amazon Resource Name (ARN) of the Amazon S3 bucket where your DAG code
+	// and supporting files are stored. For example, arn:aws:s3:::my-airflow-bucket-unique-name.
+	// For more information, see Create an Amazon S3 bucket for Amazon MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-s3-bucket.html).
 	SourceBucketArn *string `min:"1" type:"string"`
 
-	// The Webserver Access Mode to update of your Amazon MWAA environment.
+	// The version of the startup shell script in your Amazon S3 bucket. You must
+	// specify the version ID (https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html)
+	// that Amazon S3 assigns to the file every time you update the script.
+	//
+	// Version IDs are Unicode, UTF-8 encoded, URL-ready, opaque strings that are
+	// no more than 1,024 bytes long. The following is an example:
+	//
+	// 3sL4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo
+	//
+	// For more information, see Using a startup script (https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html).
+	StartupScriptS3ObjectVersion *string `min:"1" type:"string"`
+
+	// The relative path to the startup shell script in your Amazon S3 bucket. For
+	// example, s3://mwaa-environment/startup.sh.
+	//
+	// Amazon MWAA runs the script as your environment starts, and before running
+	// the Apache Airflow process. You can use this script to install dependencies,
+	// modify Apache Airflow configuration options, and set environment variables.
+	// For more information, see Using a startup script (https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html).
+	StartupScriptS3Path *string `min:"1" type:"string"`
+
+	// The Apache Airflow Web server access mode. For more information, see Apache
+	// Airflow access modes (https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html).
 	WebserverAccessMode *string `type:"string" enum:"WebserverAccessMode"`
 
-	// The Weekly Maintenance Window Start to update of your Amazon MWAA environment.
+	// The day and time of the week in Coordinated Universal Time (UTC) 24-hour
+	// standard time to start weekly maintenance updates of your environment in
+	// the following format: DAY:HH:MM. For example: TUE:03:30. You can specify
+	// a start time in 30 minute increments only.
 	WeeklyMaintenanceWindowStart *string `min:"1" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateEnvironmentInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateEnvironmentInput) GoString() string {
 	return s.String()
 }
@@ -3053,8 +3808,14 @@ func (s *UpdateEnvironmentInput) Validate() error {
 	if s.ExecutionRoleArn != nil && len(*s.ExecutionRoleArn) < 1 {
 		invalidParams.Add(request.NewErrParamMinLen("ExecutionRoleArn", 1))
 	}
+	if s.MaxWebservers != nil && *s.MaxWebservers < 2 {
+		invalidParams.Add(request.NewErrParamMinValue("MaxWebservers", 2))
+	}
 	if s.MaxWorkers != nil && *s.MaxWorkers < 1 {
 		invalidParams.Add(request.NewErrParamMinValue("MaxWorkers", 1))
+	}
+	if s.MinWebservers != nil && *s.MinWebservers < 2 {
+		invalidParams.Add(request.NewErrParamMinValue("MinWebservers", 2))
 	}
 	if s.MinWorkers != nil && *s.MinWorkers < 1 {
 		invalidParams.Add(request.NewErrParamMinValue("MinWorkers", 1))
@@ -3079,6 +3840,12 @@ func (s *UpdateEnvironmentInput) Validate() error {
 	}
 	if s.SourceBucketArn != nil && len(*s.SourceBucketArn) < 1 {
 		invalidParams.Add(request.NewErrParamMinLen("SourceBucketArn", 1))
+	}
+	if s.StartupScriptS3ObjectVersion != nil && len(*s.StartupScriptS3ObjectVersion) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("StartupScriptS3ObjectVersion", 1))
+	}
+	if s.StartupScriptS3Path != nil && len(*s.StartupScriptS3Path) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("StartupScriptS3Path", 1))
 	}
 	if s.WeeklyMaintenanceWindowStart != nil && len(*s.WeeklyMaintenanceWindowStart) < 1 {
 		invalidParams.Add(request.NewErrParamMinLen("WeeklyMaintenanceWindowStart", 1))
@@ -3136,9 +3903,21 @@ func (s *UpdateEnvironmentInput) SetLoggingConfiguration(v *LoggingConfiguration
 	return s
 }
 
+// SetMaxWebservers sets the MaxWebservers field's value.
+func (s *UpdateEnvironmentInput) SetMaxWebservers(v int64) *UpdateEnvironmentInput {
+	s.MaxWebservers = &v
+	return s
+}
+
 // SetMaxWorkers sets the MaxWorkers field's value.
 func (s *UpdateEnvironmentInput) SetMaxWorkers(v int64) *UpdateEnvironmentInput {
 	s.MaxWorkers = &v
+	return s
+}
+
+// SetMinWebservers sets the MinWebservers field's value.
+func (s *UpdateEnvironmentInput) SetMinWebservers(v int64) *UpdateEnvironmentInput {
+	s.MinWebservers = &v
 	return s
 }
 
@@ -3184,9 +3963,27 @@ func (s *UpdateEnvironmentInput) SetRequirementsS3Path(v string) *UpdateEnvironm
 	return s
 }
 
+// SetSchedulers sets the Schedulers field's value.
+func (s *UpdateEnvironmentInput) SetSchedulers(v int64) *UpdateEnvironmentInput {
+	s.Schedulers = &v
+	return s
+}
+
 // SetSourceBucketArn sets the SourceBucketArn field's value.
 func (s *UpdateEnvironmentInput) SetSourceBucketArn(v string) *UpdateEnvironmentInput {
 	s.SourceBucketArn = &v
+	return s
+}
+
+// SetStartupScriptS3ObjectVersion sets the StartupScriptS3ObjectVersion field's value.
+func (s *UpdateEnvironmentInput) SetStartupScriptS3ObjectVersion(v string) *UpdateEnvironmentInput {
+	s.StartupScriptS3ObjectVersion = &v
+	return s
+}
+
+// SetStartupScriptS3Path sets the StartupScriptS3Path field's value.
+func (s *UpdateEnvironmentInput) SetStartupScriptS3Path(v string) *UpdateEnvironmentInput {
+	s.StartupScriptS3Path = &v
 	return s
 }
 
@@ -3205,16 +4002,25 @@ func (s *UpdateEnvironmentInput) SetWeeklyMaintenanceWindowStart(v string) *Upda
 type UpdateEnvironmentOutput struct {
 	_ struct{} `type:"structure"`
 
-	// The ARN to update of your Amazon MWAA environment.
+	// The Amazon Resource Name (ARN) of the Amazon MWAA environment. For example,
+	// arn:aws:airflow:us-east-1:123456789012:environment/MyMWAAEnvironment.
 	Arn *string `min:"1" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateEnvironmentOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateEnvironmentOutput) GoString() string {
 	return s.String()
 }
@@ -3225,23 +4031,31 @@ func (s *UpdateEnvironmentOutput) SetArn(v string) *UpdateEnvironmentOutput {
 	return s
 }
 
-// Error information of update, if applicable.
+// Describes the error(s) encountered with the last update of the environment.
 type UpdateError struct {
 	_ struct{} `type:"structure"`
 
-	// Error code of update.
+	// The error code that corresponds to the error with the last update.
 	ErrorCode *string `type:"string"`
 
-	// Error message of update.
+	// The error message that corresponds to the error code.
 	ErrorMessage *string `min:"1" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateError) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateError) GoString() string {
 	return s.String()
 }
@@ -3258,23 +4072,34 @@ func (s *UpdateError) SetErrorMessage(v string) *UpdateError {
 	return s
 }
 
-// Provide the security group and subnet IDs for the workers and scheduler.
+// Defines the VPC networking components used to secure and enable network traffic
+// between the Amazon Web Services resources for your environment. For more
+// information, see About networking on Amazon MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html).
 type UpdateNetworkConfigurationInput struct {
 	_ struct{} `type:"structure"`
 
-	// Provide a JSON list of 1 or more security groups IDs by name, in the same
-	// VPC as the subnets.
+	// A list of security group IDs. A security group must be attached to the same
+	// VPC as the subnets. For more information, see Security in your VPC on Amazon
+	// MWAA (https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-security.html).
 	//
 	// SecurityGroupIds is a required field
 	SecurityGroupIds []*string `min:"1" type:"list" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateNetworkConfigurationInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateNetworkConfigurationInput) GoString() string {
 	return s.String()
 }
@@ -3309,12 +4134,20 @@ type ValidationException struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ValidationException) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ValidationException) GoString() string {
 	return s.String()
 }
@@ -3358,6 +4191,22 @@ func (s *ValidationException) RequestID() string {
 }
 
 const (
+	// EndpointManagementCustomer is a EndpointManagement enum value
+	EndpointManagementCustomer = "CUSTOMER"
+
+	// EndpointManagementService is a EndpointManagement enum value
+	EndpointManagementService = "SERVICE"
+)
+
+// EndpointManagement_Values returns all elements of the EndpointManagement enum
+func EndpointManagement_Values() []string {
+	return []string{
+		EndpointManagementCustomer,
+		EndpointManagementService,
+	}
+}
+
+const (
 	// EnvironmentStatusCreating is a EnvironmentStatus enum value
 	EnvironmentStatusCreating = "CREATING"
 
@@ -3381,6 +4230,18 @@ const (
 
 	// EnvironmentStatusUpdateFailed is a EnvironmentStatus enum value
 	EnvironmentStatusUpdateFailed = "UPDATE_FAILED"
+
+	// EnvironmentStatusRollingBack is a EnvironmentStatus enum value
+	EnvironmentStatusRollingBack = "ROLLING_BACK"
+
+	// EnvironmentStatusCreatingSnapshot is a EnvironmentStatus enum value
+	EnvironmentStatusCreatingSnapshot = "CREATING_SNAPSHOT"
+
+	// EnvironmentStatusPending is a EnvironmentStatus enum value
+	EnvironmentStatusPending = "PENDING"
+
+	// EnvironmentStatusMaintenance is a EnvironmentStatus enum value
+	EnvironmentStatusMaintenance = "MAINTENANCE"
 )
 
 // EnvironmentStatus_Values returns all elements of the EnvironmentStatus enum
@@ -3394,6 +4255,10 @@ func EnvironmentStatus_Values() []string {
 		EnvironmentStatusDeleted,
 		EnvironmentStatusUnavailable,
 		EnvironmentStatusUpdateFailed,
+		EnvironmentStatusRollingBack,
+		EnvironmentStatusCreatingSnapshot,
+		EnvironmentStatusPending,
+		EnvironmentStatusMaintenance,
 	}
 }
 
@@ -3425,7 +4290,6 @@ func LoggingLevel_Values() []string {
 	}
 }
 
-// Unit
 const (
 	// UnitSeconds is a Unit enum value
 	UnitSeconds = "Seconds"

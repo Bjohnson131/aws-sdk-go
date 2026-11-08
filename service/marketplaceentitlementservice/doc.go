@@ -14,14 +14,14 @@
 //
 // Getting Entitlement Records
 //
-//    * GetEntitlements- Gets the entitlements for a Marketplace product.
+//   - GetEntitlements- Gets the entitlements for a Marketplace product.
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/entitlement.marketplace-2017-01-11 for more information on this service.
 //
 // See marketplaceentitlementservice package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/marketplaceentitlementservice/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS Marketplace Entitlement Service with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -36,4 +36,7 @@
 // See the AWS Marketplace Entitlement Service client MarketplaceEntitlementService for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/marketplaceentitlementservice/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package marketplaceentitlementservice

@@ -28,14 +28,13 @@ const opCreateCluster = "CreateCluster"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CreateClusterRequest method.
+//	req, resp := client.CreateClusterRequest(params)
 //
-//    // Example sending a request using the CreateClusterRequest method.
-//    req, resp := client.CreateClusterRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/CreateCluster
 func (c *DAX) CreateClusterRequest(input *CreateClusterInput) (req *request.Request, output *CreateClusterOutput) {
@@ -67,49 +66,55 @@ func (c *DAX) CreateClusterRequest(input *CreateClusterInput) (req *request.Requ
 // API operation CreateCluster for usage and error information.
 //
 // Returned Error Types:
-//   * ClusterAlreadyExistsFault
-//   You already have a DAX cluster with the given identifier.
 //
-//   * InvalidClusterStateFault
-//   The requested DAX cluster is not in the available state.
+//   - ClusterAlreadyExistsFault
+//     You already have a DAX cluster with the given identifier.
 //
-//   * InsufficientClusterCapacityFault
-//   There are not enough system resources to create the cluster you requested
-//   (or to resize an already-existing cluster).
+//   - InvalidClusterStateFault
+//     The requested DAX cluster is not in the available state.
 //
-//   * SubnetGroupNotFoundFault
-//   The requested subnet group name does not refer to an existing subnet group.
+//   - InsufficientClusterCapacityFault
+//     There are not enough system resources to create the cluster you requested
+//     (or to resize an already-existing cluster).
 //
-//   * InvalidParameterGroupStateFault
-//   One or more parameters in a parameter group are in an invalid state.
+//   - SubnetGroupNotFoundFault
+//     The requested subnet group name does not refer to an existing subnet group.
 //
-//   * ParameterGroupNotFoundFault
-//   The specified parameter group does not exist.
+//   - InvalidParameterGroupStateFault
+//     One or more parameters in a parameter group are in an invalid state.
 //
-//   * ClusterQuotaForCustomerExceededFault
-//   You have attempted to exceed the maximum number of DAX clusters for your
-//   AWS account.
+//   - ParameterGroupNotFoundFault
+//     The specified parameter group does not exist.
 //
-//   * NodeQuotaForClusterExceededFault
-//   You have attempted to exceed the maximum number of nodes for a DAX cluster.
+//   - ClusterQuotaForCustomerExceededFault
+//     You have attempted to exceed the maximum number of DAX clusters for your
+//     AWS account.
 //
-//   * NodeQuotaForCustomerExceededFault
-//   You have attempted to exceed the maximum number of nodes for your AWS account.
+//   - NodeQuotaForClusterExceededFault
+//     You have attempted to exceed the maximum number of nodes for a DAX cluster.
 //
-//   * InvalidVPCNetworkStateFault
-//   The VPC network is in an invalid state.
+//   - NodeQuotaForCustomerExceededFault
+//     You have attempted to exceed the maximum number of nodes for your AWS account.
 //
-//   * TagQuotaPerResourceExceeded
-//   You have exceeded the maximum number of tags for this DAX cluster.
+//   - InvalidVPCNetworkStateFault
+//     The VPC network is in an invalid state.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - TagQuotaPerResourceExceeded
+//     You have exceeded the maximum number of tags for this DAX cluster.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
+//
+//   - ServiceQuotaExceededException
+//     You have reached the maximum number of x509 certificates that can be created
+//     for encrypted clusters in a 30 day period. Contact AWS customer support to
+//     discuss options for continuing to create encrypted clusters.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/CreateCluster
 func (c *DAX) CreateCluster(input *CreateClusterInput) (*CreateClusterOutput, error) {
@@ -149,14 +154,13 @@ const opCreateParameterGroup = "CreateParameterGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CreateParameterGroupRequest method.
+//	req, resp := client.CreateParameterGroupRequest(params)
 //
-//    // Example sending a request using the CreateParameterGroupRequest method.
-//    req, resp := client.CreateParameterGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/CreateParameterGroup
 func (c *DAX) CreateParameterGroupRequest(input *CreateParameterGroupInput) (req *request.Request, output *CreateParameterGroupOutput) {
@@ -188,23 +192,24 @@ func (c *DAX) CreateParameterGroupRequest(input *CreateParameterGroupInput) (req
 // API operation CreateParameterGroup for usage and error information.
 //
 // Returned Error Types:
-//   * ParameterGroupQuotaExceededFault
-//   You have attempted to exceed the maximum number of parameter groups.
 //
-//   * ParameterGroupAlreadyExistsFault
-//   The specified parameter group already exists.
+//   - ParameterGroupQuotaExceededFault
+//     You have attempted to exceed the maximum number of parameter groups.
 //
-//   * InvalidParameterGroupStateFault
-//   One or more parameters in a parameter group are in an invalid state.
+//   - ParameterGroupAlreadyExistsFault
+//     The specified parameter group already exists.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - InvalidParameterGroupStateFault
+//     One or more parameters in a parameter group are in an invalid state.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/CreateParameterGroup
 func (c *DAX) CreateParameterGroup(input *CreateParameterGroupInput) (*CreateParameterGroupOutput, error) {
@@ -244,14 +249,13 @@ const opCreateSubnetGroup = "CreateSubnetGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the CreateSubnetGroupRequest method.
+//	req, resp := client.CreateSubnetGroupRequest(params)
 //
-//    // Example sending a request using the CreateSubnetGroupRequest method.
-//    req, resp := client.CreateSubnetGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/CreateSubnetGroup
 func (c *DAX) CreateSubnetGroupRequest(input *CreateSubnetGroupInput) (req *request.Request, output *CreateSubnetGroupOutput) {
@@ -282,22 +286,23 @@ func (c *DAX) CreateSubnetGroupRequest(input *CreateSubnetGroupInput) (req *requ
 // API operation CreateSubnetGroup for usage and error information.
 //
 // Returned Error Types:
-//   * SubnetGroupAlreadyExistsFault
-//   The specified subnet group already exists.
 //
-//   * SubnetGroupQuotaExceededFault
-//   The request cannot be processed because it would exceed the allowed number
-//   of subnets in a subnet group.
+//   - SubnetGroupAlreadyExistsFault
+//     The specified subnet group already exists.
 //
-//   * SubnetQuotaExceededFault
-//   The request cannot be processed because it would exceed the allowed number
-//   of subnets in a subnet group.
+//   - SubnetGroupQuotaExceededFault
+//     The request cannot be processed because it would exceed the allowed number
+//     of subnets in a subnet group.
 //
-//   * InvalidSubnet
-//   An invalid subnet identifier was specified.
+//   - SubnetQuotaExceededFault
+//     The request cannot be processed because it would exceed the allowed number
+//     of subnets in a subnet group.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - InvalidSubnet
+//     An invalid subnet identifier was specified.
+//
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/CreateSubnetGroup
 func (c *DAX) CreateSubnetGroup(input *CreateSubnetGroupInput) (*CreateSubnetGroupOutput, error) {
@@ -337,14 +342,13 @@ const opDecreaseReplicationFactor = "DecreaseReplicationFactor"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DecreaseReplicationFactorRequest method.
+//	req, resp := client.DecreaseReplicationFactorRequest(params)
 //
-//    // Example sending a request using the DecreaseReplicationFactorRequest method.
-//    req, resp := client.DecreaseReplicationFactorRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DecreaseReplicationFactor
 func (c *DAX) DecreaseReplicationFactorRequest(input *DecreaseReplicationFactorInput) (req *request.Request, output *DecreaseReplicationFactorOutput) {
@@ -378,23 +382,24 @@ func (c *DAX) DecreaseReplicationFactorRequest(input *DecreaseReplicationFactorI
 // API operation DecreaseReplicationFactor for usage and error information.
 //
 // Returned Error Types:
-//   * ClusterNotFoundFault
-//   The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * NodeNotFoundFault
-//   None of the nodes in the cluster have the given node ID.
+//   - ClusterNotFoundFault
+//     The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * InvalidClusterStateFault
-//   The requested DAX cluster is not in the available state.
+//   - NodeNotFoundFault
+//     None of the nodes in the cluster have the given node ID.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - InvalidClusterStateFault
+//     The requested DAX cluster is not in the available state.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DecreaseReplicationFactor
 func (c *DAX) DecreaseReplicationFactor(input *DecreaseReplicationFactorInput) (*DecreaseReplicationFactorOutput, error) {
@@ -434,14 +439,13 @@ const opDeleteCluster = "DeleteCluster"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DeleteClusterRequest method.
+//	req, resp := client.DeleteClusterRequest(params)
 //
-//    // Example sending a request using the DeleteClusterRequest method.
-//    req, resp := client.DeleteClusterRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DeleteCluster
 func (c *DAX) DeleteClusterRequest(input *DeleteClusterInput) (req *request.Request, output *DeleteClusterOutput) {
@@ -475,20 +479,21 @@ func (c *DAX) DeleteClusterRequest(input *DeleteClusterInput) (req *request.Requ
 // API operation DeleteCluster for usage and error information.
 //
 // Returned Error Types:
-//   * ClusterNotFoundFault
-//   The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * InvalidClusterStateFault
-//   The requested DAX cluster is not in the available state.
+//   - ClusterNotFoundFault
+//     The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - InvalidClusterStateFault
+//     The requested DAX cluster is not in the available state.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DeleteCluster
 func (c *DAX) DeleteCluster(input *DeleteClusterInput) (*DeleteClusterOutput, error) {
@@ -528,14 +533,13 @@ const opDeleteParameterGroup = "DeleteParameterGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DeleteParameterGroupRequest method.
+//	req, resp := client.DeleteParameterGroupRequest(params)
 //
-//    // Example sending a request using the DeleteParameterGroupRequest method.
-//    req, resp := client.DeleteParameterGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DeleteParameterGroup
 func (c *DAX) DeleteParameterGroupRequest(input *DeleteParameterGroupInput) (req *request.Request, output *DeleteParameterGroupOutput) {
@@ -567,20 +571,21 @@ func (c *DAX) DeleteParameterGroupRequest(input *DeleteParameterGroupInput) (req
 // API operation DeleteParameterGroup for usage and error information.
 //
 // Returned Error Types:
-//   * InvalidParameterGroupStateFault
-//   One or more parameters in a parameter group are in an invalid state.
 //
-//   * ParameterGroupNotFoundFault
-//   The specified parameter group does not exist.
+//   - InvalidParameterGroupStateFault
+//     One or more parameters in a parameter group are in an invalid state.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - ParameterGroupNotFoundFault
+//     The specified parameter group does not exist.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DeleteParameterGroup
 func (c *DAX) DeleteParameterGroup(input *DeleteParameterGroupInput) (*DeleteParameterGroupOutput, error) {
@@ -620,14 +625,13 @@ const opDeleteSubnetGroup = "DeleteSubnetGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DeleteSubnetGroupRequest method.
+//	req, resp := client.DeleteSubnetGroupRequest(params)
 //
-//    // Example sending a request using the DeleteSubnetGroupRequest method.
-//    req, resp := client.DeleteSubnetGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DeleteSubnetGroup
 func (c *DAX) DeleteSubnetGroupRequest(input *DeleteSubnetGroupInput) (req *request.Request, output *DeleteSubnetGroupOutput) {
@@ -660,14 +664,15 @@ func (c *DAX) DeleteSubnetGroupRequest(input *DeleteSubnetGroupInput) (req *requ
 // API operation DeleteSubnetGroup for usage and error information.
 //
 // Returned Error Types:
-//   * SubnetGroupInUseFault
-//   The specified subnet group is currently in use.
 //
-//   * SubnetGroupNotFoundFault
-//   The requested subnet group name does not refer to an existing subnet group.
+//   - SubnetGroupInUseFault
+//     The specified subnet group is currently in use.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - SubnetGroupNotFoundFault
+//     The requested subnet group name does not refer to an existing subnet group.
+//
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DeleteSubnetGroup
 func (c *DAX) DeleteSubnetGroup(input *DeleteSubnetGroupInput) (*DeleteSubnetGroupOutput, error) {
@@ -707,14 +712,13 @@ const opDescribeClusters = "DescribeClusters"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeClustersRequest method.
+//	req, resp := client.DescribeClustersRequest(params)
 //
-//    // Example sending a request using the DescribeClustersRequest method.
-//    req, resp := client.DescribeClustersRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeClusters
 func (c *DAX) DescribeClustersRequest(input *DescribeClustersInput) (req *request.Request, output *DescribeClustersOutput) {
@@ -761,17 +765,18 @@ func (c *DAX) DescribeClustersRequest(input *DescribeClustersInput) (req *reques
 // API operation DescribeClusters for usage and error information.
 //
 // Returned Error Types:
-//   * ClusterNotFoundFault
-//   The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - ClusterNotFoundFault
+//     The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeClusters
 func (c *DAX) DescribeClusters(input *DescribeClustersInput) (*DescribeClustersOutput, error) {
@@ -811,14 +816,13 @@ const opDescribeDefaultParameters = "DescribeDefaultParameters"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeDefaultParametersRequest method.
+//	req, resp := client.DescribeDefaultParametersRequest(params)
 //
-//    // Example sending a request using the DescribeDefaultParametersRequest method.
-//    req, resp := client.DescribeDefaultParametersRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeDefaultParameters
 func (c *DAX) DescribeDefaultParametersRequest(input *DescribeDefaultParametersInput) (req *request.Request, output *DescribeDefaultParametersOutput) {
@@ -849,14 +853,15 @@ func (c *DAX) DescribeDefaultParametersRequest(input *DescribeDefaultParametersI
 // API operation DescribeDefaultParameters for usage and error information.
 //
 // Returned Error Types:
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeDefaultParameters
 func (c *DAX) DescribeDefaultParameters(input *DescribeDefaultParametersInput) (*DescribeDefaultParametersOutput, error) {
@@ -896,14 +901,13 @@ const opDescribeEvents = "DescribeEvents"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeEventsRequest method.
+//	req, resp := client.DescribeEventsRequest(params)
 //
-//    // Example sending a request using the DescribeEventsRequest method.
-//    req, resp := client.DescribeEventsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeEvents
 func (c *DAX) DescribeEventsRequest(input *DescribeEventsInput) (req *request.Request, output *DescribeEventsOutput) {
@@ -939,14 +943,15 @@ func (c *DAX) DescribeEventsRequest(input *DescribeEventsInput) (req *request.Re
 // API operation DescribeEvents for usage and error information.
 //
 // Returned Error Types:
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeEvents
 func (c *DAX) DescribeEvents(input *DescribeEventsInput) (*DescribeEventsOutput, error) {
@@ -986,14 +991,13 @@ const opDescribeParameterGroups = "DescribeParameterGroups"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeParameterGroupsRequest method.
+//	req, resp := client.DescribeParameterGroupsRequest(params)
 //
-//    // Example sending a request using the DescribeParameterGroupsRequest method.
-//    req, resp := client.DescribeParameterGroupsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeParameterGroups
 func (c *DAX) DescribeParameterGroupsRequest(input *DescribeParameterGroupsInput) (req *request.Request, output *DescribeParameterGroupsOutput) {
@@ -1025,17 +1029,18 @@ func (c *DAX) DescribeParameterGroupsRequest(input *DescribeParameterGroupsInput
 // API operation DescribeParameterGroups for usage and error information.
 //
 // Returned Error Types:
-//   * ParameterGroupNotFoundFault
-//   The specified parameter group does not exist.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - ParameterGroupNotFoundFault
+//     The specified parameter group does not exist.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeParameterGroups
 func (c *DAX) DescribeParameterGroups(input *DescribeParameterGroupsInput) (*DescribeParameterGroupsOutput, error) {
@@ -1075,14 +1080,13 @@ const opDescribeParameters = "DescribeParameters"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeParametersRequest method.
+//	req, resp := client.DescribeParametersRequest(params)
 //
-//    // Example sending a request using the DescribeParametersRequest method.
-//    req, resp := client.DescribeParametersRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeParameters
 func (c *DAX) DescribeParametersRequest(input *DescribeParametersInput) (req *request.Request, output *DescribeParametersOutput) {
@@ -1113,17 +1117,18 @@ func (c *DAX) DescribeParametersRequest(input *DescribeParametersInput) (req *re
 // API operation DescribeParameters for usage and error information.
 //
 // Returned Error Types:
-//   * ParameterGroupNotFoundFault
-//   The specified parameter group does not exist.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - ParameterGroupNotFoundFault
+//     The specified parameter group does not exist.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeParameters
 func (c *DAX) DescribeParameters(input *DescribeParametersInput) (*DescribeParametersOutput, error) {
@@ -1163,14 +1168,13 @@ const opDescribeSubnetGroups = "DescribeSubnetGroups"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the DescribeSubnetGroupsRequest method.
+//	req, resp := client.DescribeSubnetGroupsRequest(params)
 //
-//    // Example sending a request using the DescribeSubnetGroupsRequest method.
-//    req, resp := client.DescribeSubnetGroupsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeSubnetGroups
 func (c *DAX) DescribeSubnetGroupsRequest(input *DescribeSubnetGroupsInput) (req *request.Request, output *DescribeSubnetGroupsOutput) {
@@ -1202,11 +1206,12 @@ func (c *DAX) DescribeSubnetGroupsRequest(input *DescribeSubnetGroupsInput) (req
 // API operation DescribeSubnetGroups for usage and error information.
 //
 // Returned Error Types:
-//   * SubnetGroupNotFoundFault
-//   The requested subnet group name does not refer to an existing subnet group.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - SubnetGroupNotFoundFault
+//     The requested subnet group name does not refer to an existing subnet group.
+//
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeSubnetGroups
 func (c *DAX) DescribeSubnetGroups(input *DescribeSubnetGroupsInput) (*DescribeSubnetGroupsOutput, error) {
@@ -1246,14 +1251,13 @@ const opIncreaseReplicationFactor = "IncreaseReplicationFactor"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the IncreaseReplicationFactorRequest method.
+//	req, resp := client.IncreaseReplicationFactorRequest(params)
 //
-//    // Example sending a request using the IncreaseReplicationFactorRequest method.
-//    req, resp := client.IncreaseReplicationFactorRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/IncreaseReplicationFactor
 func (c *DAX) IncreaseReplicationFactorRequest(input *IncreaseReplicationFactorInput) (req *request.Request, output *IncreaseReplicationFactorOutput) {
@@ -1284,33 +1288,34 @@ func (c *DAX) IncreaseReplicationFactorRequest(input *IncreaseReplicationFactorI
 // API operation IncreaseReplicationFactor for usage and error information.
 //
 // Returned Error Types:
-//   * ClusterNotFoundFault
-//   The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * InvalidClusterStateFault
-//   The requested DAX cluster is not in the available state.
+//   - ClusterNotFoundFault
+//     The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * InsufficientClusterCapacityFault
-//   There are not enough system resources to create the cluster you requested
-//   (or to resize an already-existing cluster).
+//   - InvalidClusterStateFault
+//     The requested DAX cluster is not in the available state.
 //
-//   * InvalidVPCNetworkStateFault
-//   The VPC network is in an invalid state.
+//   - InsufficientClusterCapacityFault
+//     There are not enough system resources to create the cluster you requested
+//     (or to resize an already-existing cluster).
 //
-//   * NodeQuotaForClusterExceededFault
-//   You have attempted to exceed the maximum number of nodes for a DAX cluster.
+//   - InvalidVPCNetworkStateFault
+//     The VPC network is in an invalid state.
 //
-//   * NodeQuotaForCustomerExceededFault
-//   You have attempted to exceed the maximum number of nodes for your AWS account.
+//   - NodeQuotaForClusterExceededFault
+//     You have attempted to exceed the maximum number of nodes for a DAX cluster.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - NodeQuotaForCustomerExceededFault
+//     You have attempted to exceed the maximum number of nodes for your AWS account.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/IncreaseReplicationFactor
 func (c *DAX) IncreaseReplicationFactor(input *IncreaseReplicationFactorInput) (*IncreaseReplicationFactorOutput, error) {
@@ -1350,14 +1355,13 @@ const opListTags = "ListTags"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the ListTagsRequest method.
+//	req, resp := client.ListTagsRequest(params)
 //
-//    // Example sending a request using the ListTagsRequest method.
-//    req, resp := client.ListTagsRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/ListTags
 func (c *DAX) ListTagsRequest(input *ListTagsInput) (req *request.Request, output *ListTagsOutput) {
@@ -1389,23 +1393,24 @@ func (c *DAX) ListTagsRequest(input *ListTagsInput) (req *request.Request, outpu
 // API operation ListTags for usage and error information.
 //
 // Returned Error Types:
-//   * ClusterNotFoundFault
-//   The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * InvalidARNFault
-//   The Amazon Resource Name (ARN) supplied in the request is not valid.
+//   - ClusterNotFoundFault
+//     The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * InvalidClusterStateFault
-//   The requested DAX cluster is not in the available state.
+//   - InvalidARNFault
+//     The Amazon Resource Name (ARN) supplied in the request is not valid.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - InvalidClusterStateFault
+//     The requested DAX cluster is not in the available state.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/ListTags
 func (c *DAX) ListTags(input *ListTagsInput) (*ListTagsOutput, error) {
@@ -1445,14 +1450,13 @@ const opRebootNode = "RebootNode"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the RebootNodeRequest method.
+//	req, resp := client.RebootNodeRequest(params)
 //
-//    // Example sending a request using the RebootNodeRequest method.
-//    req, resp := client.RebootNodeRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/RebootNode
 func (c *DAX) RebootNodeRequest(input *RebootNodeInput) (req *request.Request, output *RebootNodeOutput) {
@@ -1487,23 +1491,24 @@ func (c *DAX) RebootNodeRequest(input *RebootNodeInput) (req *request.Request, o
 // API operation RebootNode for usage and error information.
 //
 // Returned Error Types:
-//   * ClusterNotFoundFault
-//   The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * NodeNotFoundFault
-//   None of the nodes in the cluster have the given node ID.
+//   - ClusterNotFoundFault
+//     The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * InvalidClusterStateFault
-//   The requested DAX cluster is not in the available state.
+//   - NodeNotFoundFault
+//     None of the nodes in the cluster have the given node ID.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - InvalidClusterStateFault
+//     The requested DAX cluster is not in the available state.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/RebootNode
 func (c *DAX) RebootNode(input *RebootNodeInput) (*RebootNodeOutput, error) {
@@ -1543,14 +1548,13 @@ const opTagResource = "TagResource"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the TagResourceRequest method.
+//	req, resp := client.TagResourceRequest(params)
 //
-//    // Example sending a request using the TagResourceRequest method.
-//    req, resp := client.TagResourceRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/TagResource
 func (c *DAX) TagResourceRequest(input *TagResourceInput) (req *request.Request, output *TagResourceOutput) {
@@ -1582,26 +1586,27 @@ func (c *DAX) TagResourceRequest(input *TagResourceInput) (req *request.Request,
 // API operation TagResource for usage and error information.
 //
 // Returned Error Types:
-//   * ClusterNotFoundFault
-//   The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * TagQuotaPerResourceExceeded
-//   You have exceeded the maximum number of tags for this DAX cluster.
+//   - ClusterNotFoundFault
+//     The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * InvalidARNFault
-//   The Amazon Resource Name (ARN) supplied in the request is not valid.
+//   - TagQuotaPerResourceExceeded
+//     You have exceeded the maximum number of tags for this DAX cluster.
 //
-//   * InvalidClusterStateFault
-//   The requested DAX cluster is not in the available state.
+//   - InvalidARNFault
+//     The Amazon Resource Name (ARN) supplied in the request is not valid.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - InvalidClusterStateFault
+//     The requested DAX cluster is not in the available state.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/TagResource
 func (c *DAX) TagResource(input *TagResourceInput) (*TagResourceOutput, error) {
@@ -1641,14 +1646,13 @@ const opUntagResource = "UntagResource"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the UntagResourceRequest method.
+//	req, resp := client.UntagResourceRequest(params)
 //
-//    // Example sending a request using the UntagResourceRequest method.
-//    req, resp := client.UntagResourceRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/UntagResource
 func (c *DAX) UntagResourceRequest(input *UntagResourceInput) (req *request.Request, output *UntagResourceOutput) {
@@ -1680,26 +1684,27 @@ func (c *DAX) UntagResourceRequest(input *UntagResourceInput) (req *request.Requ
 // API operation UntagResource for usage and error information.
 //
 // Returned Error Types:
-//   * ClusterNotFoundFault
-//   The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * InvalidARNFault
-//   The Amazon Resource Name (ARN) supplied in the request is not valid.
+//   - ClusterNotFoundFault
+//     The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * TagNotFoundFault
-//   The tag does not exist.
+//   - InvalidARNFault
+//     The Amazon Resource Name (ARN) supplied in the request is not valid.
 //
-//   * InvalidClusterStateFault
-//   The requested DAX cluster is not in the available state.
+//   - TagNotFoundFault
+//     The tag does not exist.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - InvalidClusterStateFault
+//     The requested DAX cluster is not in the available state.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/UntagResource
 func (c *DAX) UntagResource(input *UntagResourceInput) (*UntagResourceOutput, error) {
@@ -1739,14 +1744,13 @@ const opUpdateCluster = "UpdateCluster"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the UpdateClusterRequest method.
+//	req, resp := client.UpdateClusterRequest(params)
 //
-//    // Example sending a request using the UpdateClusterRequest method.
-//    req, resp := client.UpdateClusterRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/UpdateCluster
 func (c *DAX) UpdateClusterRequest(input *UpdateClusterInput) (req *request.Request, output *UpdateClusterOutput) {
@@ -1779,26 +1783,27 @@ func (c *DAX) UpdateClusterRequest(input *UpdateClusterInput) (req *request.Requ
 // API operation UpdateCluster for usage and error information.
 //
 // Returned Error Types:
-//   * InvalidClusterStateFault
-//   The requested DAX cluster is not in the available state.
 //
-//   * ClusterNotFoundFault
-//   The requested cluster ID does not refer to an existing DAX cluster.
+//   - InvalidClusterStateFault
+//     The requested DAX cluster is not in the available state.
 //
-//   * InvalidParameterGroupStateFault
-//   One or more parameters in a parameter group are in an invalid state.
+//   - ClusterNotFoundFault
+//     The requested cluster ID does not refer to an existing DAX cluster.
 //
-//   * ParameterGroupNotFoundFault
-//   The specified parameter group does not exist.
+//   - InvalidParameterGroupStateFault
+//     One or more parameters in a parameter group are in an invalid state.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - ParameterGroupNotFoundFault
+//     The specified parameter group does not exist.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/UpdateCluster
 func (c *DAX) UpdateCluster(input *UpdateClusterInput) (*UpdateClusterOutput, error) {
@@ -1838,14 +1843,13 @@ const opUpdateParameterGroup = "UpdateParameterGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the UpdateParameterGroupRequest method.
+//	req, resp := client.UpdateParameterGroupRequest(params)
 //
-//    // Example sending a request using the UpdateParameterGroupRequest method.
-//    req, resp := client.UpdateParameterGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/UpdateParameterGroup
 func (c *DAX) UpdateParameterGroupRequest(input *UpdateParameterGroupInput) (req *request.Request, output *UpdateParameterGroupOutput) {
@@ -1877,20 +1881,21 @@ func (c *DAX) UpdateParameterGroupRequest(input *UpdateParameterGroupInput) (req
 // API operation UpdateParameterGroup for usage and error information.
 //
 // Returned Error Types:
-//   * InvalidParameterGroupStateFault
-//   One or more parameters in a parameter group are in an invalid state.
 //
-//   * ParameterGroupNotFoundFault
-//   The specified parameter group does not exist.
+//   - InvalidParameterGroupStateFault
+//     One or more parameters in a parameter group are in an invalid state.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - ParameterGroupNotFoundFault
+//     The specified parameter group does not exist.
 //
-//   * InvalidParameterValueException
-//   The value for a parameter is invalid.
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
-//   * InvalidParameterCombinationException
-//   Two or more incompatible parameters were specified.
+//   - InvalidParameterValueException
+//     The value for a parameter is invalid.
+//
+//   - InvalidParameterCombinationException
+//     Two or more incompatible parameters were specified.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/UpdateParameterGroup
 func (c *DAX) UpdateParameterGroup(input *UpdateParameterGroupInput) (*UpdateParameterGroupOutput, error) {
@@ -1930,14 +1935,13 @@ const opUpdateSubnetGroup = "UpdateSubnetGroup"
 // This method is useful when you want to inject custom logic or configuration
 // into the SDK's request lifecycle. Such as custom headers, or retry logic.
 //
+//	// Example sending a request using the UpdateSubnetGroupRequest method.
+//	req, resp := client.UpdateSubnetGroupRequest(params)
 //
-//    // Example sending a request using the UpdateSubnetGroupRequest method.
-//    req, resp := client.UpdateSubnetGroupRequest(params)
-//
-//    err := req.Send()
-//    if err == nil { // resp is now filled
-//        fmt.Println(resp)
-//    }
+//	err := req.Send()
+//	if err == nil { // resp is now filled
+//	    fmt.Println(resp)
+//	}
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/UpdateSubnetGroup
 func (c *DAX) UpdateSubnetGroupRequest(input *UpdateSubnetGroupInput) (req *request.Request, output *UpdateSubnetGroupOutput) {
@@ -1968,21 +1972,22 @@ func (c *DAX) UpdateSubnetGroupRequest(input *UpdateSubnetGroupInput) (req *requ
 // API operation UpdateSubnetGroup for usage and error information.
 //
 // Returned Error Types:
-//   * SubnetGroupNotFoundFault
-//   The requested subnet group name does not refer to an existing subnet group.
 //
-//   * SubnetQuotaExceededFault
-//   The request cannot be processed because it would exceed the allowed number
-//   of subnets in a subnet group.
+//   - SubnetGroupNotFoundFault
+//     The requested subnet group name does not refer to an existing subnet group.
 //
-//   * SubnetInUse
-//   The requested subnet is being used by another subnet group.
+//   - SubnetQuotaExceededFault
+//     The request cannot be processed because it would exceed the allowed number
+//     of subnets in a subnet group.
 //
-//   * InvalidSubnet
-//   An invalid subnet identifier was specified.
+//   - SubnetInUse
+//     The requested subnet is being used by another subnet group.
 //
-//   * ServiceLinkedRoleNotFoundFault
-//   The specified service linked role (SLR) was not found.
+//   - InvalidSubnet
+//     An invalid subnet identifier was specified.
+//
+//   - ServiceLinkedRoleNotFoundFault
+//     The specified service linked role (SLR) was not found.
 //
 // See also, https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/UpdateSubnetGroup
 func (c *DAX) UpdateSubnetGroup(input *UpdateSubnetGroupInput) (*UpdateSubnetGroupOutput, error) {
@@ -2017,11 +2022,15 @@ type Cluster struct {
 	// The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 	ClusterArn *string `type:"string"`
 
-	// The configuration endpoint for this DAX cluster, consisting of a DNS name
-	// and a port number. Client applications can specify this endpoint, rather
-	// than an individual node endpoint, and allow the DAX client software to intelligently
-	// route requests and responses to nodes in the DAX cluster.
+	// The endpoint for this DAX cluster, consisting of a DNS name, a port number,
+	// and a URL. Applications should use the URL to configure the DAX client to
+	// find their cluster.
 	ClusterDiscoveryEndpoint *Endpoint `type:"structure"`
+
+	// The type of encryption supported by the cluster's endpoint. Values are:
+	//
+	//    * NONE for no encryption TLS for Transport Layer Security
+	ClusterEndpointEncryptionType *string `type:"string" enum:"ClusterEndpointEncryptionType"`
 
 	// The name of the DAX cluster.
 	ClusterName *string `type:"string"`
@@ -2074,12 +2083,20 @@ type Cluster struct {
 	TotalNodes *int64 `type:"integer"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Cluster) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Cluster) GoString() string {
 	return s.String()
 }
@@ -2099,6 +2116,12 @@ func (s *Cluster) SetClusterArn(v string) *Cluster {
 // SetClusterDiscoveryEndpoint sets the ClusterDiscoveryEndpoint field's value.
 func (s *Cluster) SetClusterDiscoveryEndpoint(v *Endpoint) *Cluster {
 	s.ClusterDiscoveryEndpoint = v
+	return s
+}
+
+// SetClusterEndpointEncryptionType sets the ClusterEndpointEncryptionType field's value.
+func (s *Cluster) SetClusterEndpointEncryptionType(v string) *Cluster {
+	s.ClusterEndpointEncryptionType = &v
 	return s
 }
 
@@ -2194,12 +2217,20 @@ type ClusterAlreadyExistsFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ClusterAlreadyExistsFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ClusterAlreadyExistsFault) GoString() string {
 	return s.String()
 }
@@ -2250,12 +2281,20 @@ type ClusterNotFoundFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ClusterNotFoundFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ClusterNotFoundFault) GoString() string {
 	return s.String()
 }
@@ -2307,12 +2346,20 @@ type ClusterQuotaForCustomerExceededFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ClusterQuotaForCustomerExceededFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ClusterQuotaForCustomerExceededFault) GoString() string {
 	return s.String()
 }
@@ -2363,6 +2410,13 @@ type CreateClusterInput struct {
 	// list must equal the ReplicationFactor parameter. If you omit this parameter,
 	// DAX will spread the nodes across Availability Zones for the highest availability.
 	AvailabilityZones []*string `type:"list"`
+
+	// The type of encryption the cluster's endpoint should support. Values are:
+	//
+	//    * NONE for no encryption
+	//
+	//    * TLS for Transport Layer Security
+	ClusterEndpointEncryptionType *string `type:"string" enum:"ClusterEndpointEncryptionType"`
 
 	// The cluster identifier. This parameter is stored as a lowercase string.
 	//
@@ -2459,12 +2513,20 @@ type CreateClusterInput struct {
 	Tags []*Tag `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateClusterInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateClusterInput) GoString() string {
 	return s.String()
 }
@@ -2499,6 +2561,12 @@ func (s *CreateClusterInput) Validate() error {
 // SetAvailabilityZones sets the AvailabilityZones field's value.
 func (s *CreateClusterInput) SetAvailabilityZones(v []*string) *CreateClusterInput {
 	s.AvailabilityZones = v
+	return s
+}
+
+// SetClusterEndpointEncryptionType sets the ClusterEndpointEncryptionType field's value.
+func (s *CreateClusterInput) SetClusterEndpointEncryptionType(v string) *CreateClusterInput {
+	s.ClusterEndpointEncryptionType = &v
 	return s
 }
 
@@ -2581,12 +2649,20 @@ type CreateClusterOutput struct {
 	Cluster *Cluster `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateClusterOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateClusterOutput) GoString() string {
 	return s.String()
 }
@@ -2610,12 +2686,20 @@ type CreateParameterGroupInput struct {
 	ParameterGroupName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateParameterGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateParameterGroupInput) GoString() string {
 	return s.String()
 }
@@ -2652,12 +2736,20 @@ type CreateParameterGroupOutput struct {
 	ParameterGroup *ParameterGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateParameterGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateParameterGroupOutput) GoString() string {
 	return s.String()
 }
@@ -2685,12 +2777,20 @@ type CreateSubnetGroupInput struct {
 	SubnetIds []*string `type:"list" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateSubnetGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateSubnetGroupInput) GoString() string {
 	return s.String()
 }
@@ -2736,12 +2836,20 @@ type CreateSubnetGroupOutput struct {
 	SubnetGroup *SubnetGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateSubnetGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s CreateSubnetGroupOutput) GoString() string {
 	return s.String()
 }
@@ -2772,12 +2880,20 @@ type DecreaseReplicationFactorInput struct {
 	NodeIdsToRemove []*string `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DecreaseReplicationFactorInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DecreaseReplicationFactorInput) GoString() string {
 	return s.String()
 }
@@ -2830,12 +2946,20 @@ type DecreaseReplicationFactorOutput struct {
 	Cluster *Cluster `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DecreaseReplicationFactorOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DecreaseReplicationFactorOutput) GoString() string {
 	return s.String()
 }
@@ -2855,12 +2979,20 @@ type DeleteClusterInput struct {
 	ClusterName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteClusterInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteClusterInput) GoString() string {
 	return s.String()
 }
@@ -2891,12 +3023,20 @@ type DeleteClusterOutput struct {
 	Cluster *Cluster `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteClusterOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteClusterOutput) GoString() string {
 	return s.String()
 }
@@ -2916,12 +3056,20 @@ type DeleteParameterGroupInput struct {
 	ParameterGroupName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteParameterGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteParameterGroupInput) GoString() string {
 	return s.String()
 }
@@ -2953,12 +3101,20 @@ type DeleteParameterGroupOutput struct {
 	DeletionMessage *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteParameterGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteParameterGroupOutput) GoString() string {
 	return s.String()
 }
@@ -2978,12 +3134,20 @@ type DeleteSubnetGroupInput struct {
 	SubnetGroupName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteSubnetGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteSubnetGroupInput) GoString() string {
 	return s.String()
 }
@@ -3015,12 +3179,20 @@ type DeleteSubnetGroupOutput struct {
 	DeletionMessage *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteSubnetGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DeleteSubnetGroupOutput) GoString() string {
 	return s.String()
 }
@@ -3050,12 +3222,20 @@ type DescribeClustersInput struct {
 	NextToken *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeClustersInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeClustersInput) GoString() string {
 	return s.String()
 }
@@ -3089,12 +3269,20 @@ type DescribeClustersOutput struct {
 	NextToken *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeClustersOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeClustersOutput) GoString() string {
 	return s.String()
 }
@@ -3127,12 +3315,20 @@ type DescribeDefaultParametersInput struct {
 	NextToken *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeDefaultParametersInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeDefaultParametersInput) GoString() string {
 	return s.String()
 }
@@ -3159,12 +3355,20 @@ type DescribeDefaultParametersOutput struct {
 	Parameters []*Parameter `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeDefaultParametersOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeDefaultParametersOutput) GoString() string {
 	return s.String()
 }
@@ -3216,12 +3420,20 @@ type DescribeEventsInput struct {
 	StartTime *time.Time `type:"timestamp"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeEventsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeEventsInput) GoString() string {
 	return s.String()
 }
@@ -3278,12 +3490,20 @@ type DescribeEventsOutput struct {
 	NextToken *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeEventsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeEventsOutput) GoString() string {
 	return s.String()
 }
@@ -3319,12 +3539,20 @@ type DescribeParameterGroupsInput struct {
 	ParameterGroupNames []*string `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeParameterGroupsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeParameterGroupsInput) GoString() string {
 	return s.String()
 }
@@ -3358,12 +3586,20 @@ type DescribeParameterGroupsOutput struct {
 	ParameterGroups []*ParameterGroup `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeParameterGroupsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeParameterGroupsOutput) GoString() string {
 	return s.String()
 }
@@ -3405,12 +3641,20 @@ type DescribeParametersInput struct {
 	Source *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeParametersInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeParametersInput) GoString() string {
 	return s.String()
 }
@@ -3463,12 +3707,20 @@ type DescribeParametersOutput struct {
 	Parameters []*Parameter `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeParametersOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeParametersOutput) GoString() string {
 	return s.String()
 }
@@ -3504,12 +3756,20 @@ type DescribeSubnetGroupsInput struct {
 	SubnetGroupNames []*string `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeSubnetGroupsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeSubnetGroupsInput) GoString() string {
 	return s.String()
 }
@@ -3543,12 +3803,20 @@ type DescribeSubnetGroupsOutput struct {
 	SubnetGroups []*SubnetGroup `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeSubnetGroupsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s DescribeSubnetGroupsOutput) GoString() string {
 	return s.String()
 }
@@ -3566,8 +3834,7 @@ func (s *DescribeSubnetGroupsOutput) SetSubnetGroups(v []*SubnetGroup) *Describe
 }
 
 // Represents the information required for client programs to connect to the
-// configuration endpoint for a DAX cluster, or to an individual node within
-// the cluster.
+// endpoint for a DAX cluster.
 type Endpoint struct {
 	_ struct{} `type:"structure"`
 
@@ -3576,14 +3843,26 @@ type Endpoint struct {
 
 	// The port number that applications should use to connect to the endpoint.
 	Port *int64 `type:"integer"`
+
+	// The URL that applications should use to connect to the endpoint. The default
+	// ports are 8111 for the "dax" protocol and 9111 for the "daxs" protocol.
+	URL *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Endpoint) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Endpoint) GoString() string {
 	return s.String()
 }
@@ -3597,6 +3876,12 @@ func (s *Endpoint) SetAddress(v string) *Endpoint {
 // SetPort sets the Port field's value.
 func (s *Endpoint) SetPort(v int64) *Endpoint {
 	s.Port = &v
+	return s
+}
+
+// SetURL sets the URL field's value.
+func (s *Endpoint) SetURL(v string) *Endpoint {
+	s.URL = &v
 	return s
 }
 
@@ -3621,12 +3906,20 @@ type Event struct {
 	SourceType *string `type:"string" enum:"SourceType"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Event) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Event) GoString() string {
 	return s.String()
 }
@@ -3674,12 +3967,20 @@ type IncreaseReplicationFactorInput struct {
 	NewReplicationFactor *int64 `type:"integer" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s IncreaseReplicationFactorInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s IncreaseReplicationFactorInput) GoString() string {
 	return s.String()
 }
@@ -3725,12 +4026,20 @@ type IncreaseReplicationFactorOutput struct {
 	Cluster *Cluster `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s IncreaseReplicationFactorOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s IncreaseReplicationFactorOutput) GoString() string {
 	return s.String()
 }
@@ -3750,12 +4059,20 @@ type InsufficientClusterCapacityFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InsufficientClusterCapacityFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InsufficientClusterCapacityFault) GoString() string {
 	return s.String()
 }
@@ -3806,12 +4123,20 @@ type InvalidARNFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidARNFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidARNFault) GoString() string {
 	return s.String()
 }
@@ -3862,12 +4187,20 @@ type InvalidClusterStateFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidClusterStateFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidClusterStateFault) GoString() string {
 	return s.String()
 }
@@ -3918,12 +4251,20 @@ type InvalidParameterCombinationException struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidParameterCombinationException) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidParameterCombinationException) GoString() string {
 	return s.String()
 }
@@ -3974,12 +4315,20 @@ type InvalidParameterGroupStateFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidParameterGroupStateFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidParameterGroupStateFault) GoString() string {
 	return s.String()
 }
@@ -4030,12 +4379,20 @@ type InvalidParameterValueException struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidParameterValueException) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidParameterValueException) GoString() string {
 	return s.String()
 }
@@ -4086,12 +4443,20 @@ type InvalidSubnet struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidSubnet) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidSubnet) GoString() string {
 	return s.String()
 }
@@ -4142,12 +4507,20 @@ type InvalidVPCNetworkStateFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidVPCNetworkStateFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s InvalidVPCNetworkStateFault) GoString() string {
 	return s.String()
 }
@@ -4204,12 +4577,20 @@ type ListTagsInput struct {
 	ResourceName *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListTagsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListTagsInput) GoString() string {
 	return s.String()
 }
@@ -4250,12 +4631,20 @@ type ListTagsOutput struct {
 	Tags []*Tag `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListTagsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ListTagsOutput) GoString() string {
 	return s.String()
 }
@@ -4299,12 +4688,20 @@ type Node struct {
 	ParameterGroupStatus *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Node) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Node) GoString() string {
 	return s.String()
 }
@@ -4353,12 +4750,20 @@ type NodeNotFoundFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeNotFoundFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeNotFoundFault) GoString() string {
 	return s.String()
 }
@@ -4409,12 +4814,20 @@ type NodeQuotaForClusterExceededFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeQuotaForClusterExceededFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeQuotaForClusterExceededFault) GoString() string {
 	return s.String()
 }
@@ -4465,12 +4878,20 @@ type NodeQuotaForCustomerExceededFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeQuotaForCustomerExceededFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeQuotaForCustomerExceededFault) GoString() string {
 	return s.String()
 }
@@ -4524,12 +4945,20 @@ type NodeTypeSpecificValue struct {
 	Value *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeTypeSpecificValue) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NodeTypeSpecificValue) GoString() string {
 	return s.String()
 }
@@ -4555,16 +4984,26 @@ type NotificationConfiguration struct {
 	// The Amazon Resource Name (ARN) that identifies the topic.
 	TopicArn *string `type:"string"`
 
-	// The current state of the topic.
+	// The current state of the topic. A value of “active” means that notifications
+	// will be sent to the topic. A value of “inactive” means that notifications
+	// will not be sent to the topic.
 	TopicStatus *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NotificationConfiguration) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s NotificationConfiguration) GoString() string {
 	return s.String()
 }
@@ -4620,12 +5059,20 @@ type Parameter struct {
 	Source *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Parameter) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Parameter) GoString() string {
 	return s.String()
 }
@@ -4701,12 +5148,20 @@ type ParameterGroup struct {
 	ParameterGroupName *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterGroup) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterGroup) GoString() string {
 	return s.String()
 }
@@ -4731,12 +5186,20 @@ type ParameterGroupAlreadyExistsFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterGroupAlreadyExistsFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterGroupAlreadyExistsFault) GoString() string {
 	return s.String()
 }
@@ -4787,12 +5250,20 @@ type ParameterGroupNotFoundFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterGroupNotFoundFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterGroupNotFoundFault) GoString() string {
 	return s.String()
 }
@@ -4843,12 +5314,20 @@ type ParameterGroupQuotaExceededFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterGroupQuotaExceededFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterGroupQuotaExceededFault) GoString() string {
 	return s.String()
 }
@@ -4905,12 +5384,20 @@ type ParameterGroupStatus struct {
 	ParameterGroupName *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterGroupStatus) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterGroupStatus) GoString() string {
 	return s.String()
 }
@@ -4944,12 +5431,20 @@ type ParameterNameValue struct {
 	ParameterValue *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterNameValue) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ParameterNameValue) GoString() string {
 	return s.String()
 }
@@ -4980,12 +5475,20 @@ type RebootNodeInput struct {
 	NodeId *string `type:"string" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RebootNodeInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RebootNodeInput) GoString() string {
 	return s.String()
 }
@@ -5025,12 +5528,20 @@ type RebootNodeOutput struct {
 	Cluster *Cluster `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RebootNodeOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s RebootNodeOutput) GoString() string {
 	return s.String()
 }
@@ -5058,12 +5569,20 @@ type SSEDescription struct {
 	Status *string `type:"string" enum:"SSEStatus"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SSEDescription) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SSEDescription) GoString() string {
 	return s.String()
 }
@@ -5085,12 +5604,20 @@ type SSESpecification struct {
 	Enabled *bool `type:"boolean" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SSESpecification) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SSESpecification) GoString() string {
 	return s.String()
 }
@@ -5125,12 +5652,20 @@ type SecurityGroupMembership struct {
 	Status *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SecurityGroupMembership) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SecurityGroupMembership) GoString() string {
 	return s.String()
 }
@@ -5155,12 +5690,20 @@ type ServiceLinkedRoleNotFoundFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ServiceLinkedRoleNotFoundFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s ServiceLinkedRoleNotFoundFault) GoString() string {
 	return s.String()
 }
@@ -5203,6 +5746,72 @@ func (s *ServiceLinkedRoleNotFoundFault) RequestID() string {
 	return s.RespMetadata.RequestID
 }
 
+// You have reached the maximum number of x509 certificates that can be created
+// for encrypted clusters in a 30 day period. Contact AWS customer support to
+// discuss options for continuing to create encrypted clusters.
+type ServiceQuotaExceededException struct {
+	_            struct{}                  `type:"structure"`
+	RespMetadata protocol.ResponseMetadata `json:"-" xml:"-"`
+
+	Message_ *string `locationName:"message" type:"string"`
+}
+
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ServiceQuotaExceededException) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
+func (s ServiceQuotaExceededException) GoString() string {
+	return s.String()
+}
+
+func newErrorServiceQuotaExceededException(v protocol.ResponseMetadata) error {
+	return &ServiceQuotaExceededException{
+		RespMetadata: v,
+	}
+}
+
+// Code returns the exception type name.
+func (s *ServiceQuotaExceededException) Code() string {
+	return "ServiceQuotaExceededException"
+}
+
+// Message returns the exception's message.
+func (s *ServiceQuotaExceededException) Message() string {
+	if s.Message_ != nil {
+		return *s.Message_
+	}
+	return ""
+}
+
+// OrigErr always returns nil, satisfies awserr.Error interface.
+func (s *ServiceQuotaExceededException) OrigErr() error {
+	return nil
+}
+
+func (s *ServiceQuotaExceededException) Error() string {
+	return fmt.Sprintf("%s: %s", s.Code(), s.Message())
+}
+
+// Status code returns the HTTP status code for the request's response error.
+func (s *ServiceQuotaExceededException) StatusCode() int {
+	return s.RespMetadata.StatusCode
+}
+
+// RequestID returns the service's response RequestID for request.
+func (s *ServiceQuotaExceededException) RequestID() string {
+	return s.RespMetadata.RequestID
+}
+
 // Represents the subnet associated with a DAX cluster. This parameter refers
 // to subnets defined in Amazon Virtual Private Cloud (Amazon VPC) and used
 // with DAX.
@@ -5216,12 +5825,20 @@ type Subnet struct {
 	SubnetIdentifier *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Subnet) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Subnet) GoString() string {
 	return s.String()
 }
@@ -5240,9 +5857,9 @@ func (s *Subnet) SetSubnetIdentifier(v string) *Subnet {
 
 // Represents the output of one of the following actions:
 //
-//    * CreateSubnetGroup
+//   - CreateSubnetGroup
 //
-//    * ModifySubnetGroup
+//   - ModifySubnetGroup
 type SubnetGroup struct {
 	_ struct{} `type:"structure"`
 
@@ -5259,12 +5876,20 @@ type SubnetGroup struct {
 	VpcId *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetGroup) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetGroup) GoString() string {
 	return s.String()
 }
@@ -5301,12 +5926,20 @@ type SubnetGroupAlreadyExistsFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetGroupAlreadyExistsFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetGroupAlreadyExistsFault) GoString() string {
 	return s.String()
 }
@@ -5357,12 +5990,20 @@ type SubnetGroupInUseFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetGroupInUseFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetGroupInUseFault) GoString() string {
 	return s.String()
 }
@@ -5413,12 +6054,20 @@ type SubnetGroupNotFoundFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetGroupNotFoundFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetGroupNotFoundFault) GoString() string {
 	return s.String()
 }
@@ -5470,12 +6119,20 @@ type SubnetGroupQuotaExceededFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetGroupQuotaExceededFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetGroupQuotaExceededFault) GoString() string {
 	return s.String()
 }
@@ -5526,12 +6183,20 @@ type SubnetInUse struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetInUse) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetInUse) GoString() string {
 	return s.String()
 }
@@ -5583,12 +6248,20 @@ type SubnetQuotaExceededFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetQuotaExceededFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s SubnetQuotaExceededFault) GoString() string {
 	return s.String()
 }
@@ -5651,12 +6324,20 @@ type Tag struct {
 	Value *string `type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Tag) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s Tag) GoString() string {
 	return s.String()
 }
@@ -5681,12 +6362,20 @@ type TagNotFoundFault struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagNotFoundFault) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagNotFoundFault) GoString() string {
 	return s.String()
 }
@@ -5737,12 +6426,20 @@ type TagQuotaPerResourceExceeded struct {
 	Message_ *string `locationName:"message" type:"string"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagQuotaPerResourceExceeded) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagQuotaPerResourceExceeded) GoString() string {
 	return s.String()
 }
@@ -5799,12 +6496,20 @@ type TagResourceInput struct {
 	Tags []*Tag `type:"list" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagResourceInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagResourceInput) GoString() string {
 	return s.String()
 }
@@ -5844,12 +6549,20 @@ type TagResourceOutput struct {
 	Tags []*Tag `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagResourceOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s TagResourceOutput) GoString() string {
 	return s.String()
 }
@@ -5875,12 +6588,20 @@ type UntagResourceInput struct {
 	TagKeys []*string `type:"list" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UntagResourceInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UntagResourceInput) GoString() string {
 	return s.String()
 }
@@ -5920,12 +6641,20 @@ type UntagResourceOutput struct {
 	Tags []*Tag `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UntagResourceOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UntagResourceOutput) GoString() string {
 	return s.String()
 }
@@ -5950,7 +6679,9 @@ type UpdateClusterInput struct {
 	// The Amazon Resource Name (ARN) that identifies the topic.
 	NotificationTopicArn *string `type:"string"`
 
-	// The current state of the topic.
+	// The current state of the topic. A value of “active” means that notifications
+	// will be sent to the topic. A value of “inactive” means that notifications
+	// will not be sent to the topic.
 	NotificationTopicStatus *string `type:"string"`
 
 	// The name of a parameter group for this cluster.
@@ -5967,12 +6698,20 @@ type UpdateClusterInput struct {
 	SecurityGroupIds []*string `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateClusterInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateClusterInput) GoString() string {
 	return s.String()
 }
@@ -6039,12 +6778,20 @@ type UpdateClusterOutput struct {
 	Cluster *Cluster `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateClusterOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateClusterOutput) GoString() string {
 	return s.String()
 }
@@ -6066,16 +6813,27 @@ type UpdateParameterGroupInput struct {
 	// An array of name-value pairs for the parameters in the group. Each element
 	// in the array represents a single parameter.
 	//
+	// record-ttl-millis and query-ttl-millis are the only supported parameter names.
+	// For more details, see Configuring TTL Settings (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.cluster-management.html#DAX.cluster-management.custom-settings.ttl).
+	//
 	// ParameterNameValues is a required field
 	ParameterNameValues []*ParameterNameValue `type:"list" required:"true"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateParameterGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateParameterGroupInput) GoString() string {
 	return s.String()
 }
@@ -6115,12 +6873,20 @@ type UpdateParameterGroupOutput struct {
 	ParameterGroup *ParameterGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateParameterGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateParameterGroupOutput) GoString() string {
 	return s.String()
 }
@@ -6146,12 +6912,20 @@ type UpdateSubnetGroupInput struct {
 	SubnetIds []*string `type:"list"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateSubnetGroupInput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateSubnetGroupInput) GoString() string {
 	return s.String()
 }
@@ -6194,12 +6968,20 @@ type UpdateSubnetGroupOutput struct {
 	SubnetGroup *SubnetGroup `type:"structure"`
 }
 
-// String returns the string representation
+// String returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateSubnetGroupOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
-// GoString returns the string representation
+// GoString returns the string representation.
+//
+// API parameter values that are decorated as "sensitive" in the API will not
+// be included in the string output. The member name will be present, but the
+// value will be replaced with "sensitive".
 func (s UpdateSubnetGroupOutput) GoString() string {
 	return s.String()
 }
@@ -6223,6 +7005,22 @@ func ChangeType_Values() []string {
 	return []string{
 		ChangeTypeImmediate,
 		ChangeTypeRequiresReboot,
+	}
+}
+
+const (
+	// ClusterEndpointEncryptionTypeNone is a ClusterEndpointEncryptionType enum value
+	ClusterEndpointEncryptionTypeNone = "NONE"
+
+	// ClusterEndpointEncryptionTypeTls is a ClusterEndpointEncryptionType enum value
+	ClusterEndpointEncryptionTypeTls = "TLS"
+)
+
+// ClusterEndpointEncryptionType_Values returns all elements of the ClusterEndpointEncryptionType enum
+func ClusterEndpointEncryptionType_Values() []string {
+	return []string{
+		ClusterEndpointEncryptionTypeNone,
+		ClusterEndpointEncryptionTypeTls,
 	}
 }
 

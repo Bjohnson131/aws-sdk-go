@@ -3,50 +3,49 @@
 // Package cloud9 provides the client and types for making API
 // requests to AWS Cloud9.
 //
-// AWS Cloud9 is a collection of tools that you can use to code, build, run,
-// test, debug, and release software in the cloud.
+// Cloud9 is a collection of tools that you can use to code, build, run, test,
+// debug, and release software in the cloud.
 //
-// For more information about AWS Cloud9, see the AWS Cloud9 User Guide (https://docs.aws.amazon.com/cloud9/latest/user-guide).
+// For more information about Cloud9, see the Cloud9 User Guide (https://docs.aws.amazon.com/cloud9/latest/user-guide).
 //
-// AWS Cloud9 supports these operations:
+// Cloud9 supports these operations:
 //
-//    * CreateEnvironmentEC2: Creates an AWS Cloud9 development environment,
-//    launches an Amazon EC2 instance, and then connects from the instance to
-//    the environment.
+//   - CreateEnvironmentEC2: Creates an Cloud9 development environment, launches
+//     an Amazon EC2 instance, and then connects from the instance to the environment.
 //
-//    * CreateEnvironmentMembership: Adds an environment member to an environment.
+//   - CreateEnvironmentMembership: Adds an environment member to an environment.
 //
-//    * DeleteEnvironment: Deletes an environment. If an Amazon EC2 instance
-//    is connected to the environment, also terminates the instance.
+//   - DeleteEnvironment: Deletes an environment. If an Amazon EC2 instance
+//     is connected to the environment, also terminates the instance.
 //
-//    * DeleteEnvironmentMembership: Deletes an environment member from an environment.
+//   - DeleteEnvironmentMembership: Deletes an environment member from an environment.
 //
-//    * DescribeEnvironmentMemberships: Gets information about environment members
-//    for an environment.
+//   - DescribeEnvironmentMemberships: Gets information about environment members
+//     for an environment.
 //
-//    * DescribeEnvironments: Gets information about environments.
+//   - DescribeEnvironments: Gets information about environments.
 //
-//    * DescribeEnvironmentStatus: Gets status information for an environment.
+//   - DescribeEnvironmentStatus: Gets status information for an environment.
 //
-//    * ListEnvironments: Gets a list of environment identifiers.
+//   - ListEnvironments: Gets a list of environment identifiers.
 //
-//    * ListTagsForResource: Gets the tags for an environment.
+//   - ListTagsForResource: Gets the tags for an environment.
 //
-//    * TagResource: Adds tags to an environment.
+//   - TagResource: Adds tags to an environment.
 //
-//    * UntagResource: Removes tags from an environment.
+//   - UntagResource: Removes tags from an environment.
 //
-//    * UpdateEnvironment: Changes the settings of an existing environment.
+//   - UpdateEnvironment: Changes the settings of an existing environment.
 //
-//    * UpdateEnvironmentMembership: Changes the settings of an existing environment
-//    member for an environment.
+//   - UpdateEnvironmentMembership: Changes the settings of an existing environment
+//     member for an environment.
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/cloud9-2017-09-23 for more information on this service.
 //
 // See cloud9 package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/cloud9/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS Cloud9 with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -61,4 +60,7 @@
 // See the AWS Cloud9 client Cloud9 for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/cloud9/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package cloud9

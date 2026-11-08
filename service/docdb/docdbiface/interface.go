@@ -23,37 +23,37 @@ import (
 // can be stubbed out for unit testing your code with the SDK without needing
 // to inject custom request handlers into the SDK's request pipeline.
 //
-//    // myFunc uses an SDK service client to make a request to
-//    // Amazon DocumentDB with MongoDB compatibility.
-//    func myFunc(svc docdbiface.DocDBAPI) bool {
-//        // Make svc.AddSourceIdentifierToSubscription request
-//    }
+//	// myFunc uses an SDK service client to make a request to
+//	// Amazon DocumentDB with MongoDB compatibility.
+//	func myFunc(svc docdbiface.DocDBAPI) bool {
+//	    // Make svc.AddSourceIdentifierToSubscription request
+//	}
 //
-//    func main() {
-//        sess := session.New()
-//        svc := docdb.New(sess)
+//	func main() {
+//	    sess := session.New()
+//	    svc := docdb.New(sess)
 //
-//        myFunc(svc)
-//    }
+//	    myFunc(svc)
+//	}
 //
 // In your _test.go file:
 //
-//    // Define a mock struct to be used in your unit tests of myFunc.
-//    type mockDocDBClient struct {
-//        docdbiface.DocDBAPI
-//    }
-//    func (m *mockDocDBClient) AddSourceIdentifierToSubscription(input *docdb.AddSourceIdentifierToSubscriptionInput) (*docdb.AddSourceIdentifierToSubscriptionOutput, error) {
-//        // mock response/functionality
-//    }
+//	// Define a mock struct to be used in your unit tests of myFunc.
+//	type mockDocDBClient struct {
+//	    docdbiface.DocDBAPI
+//	}
+//	func (m *mockDocDBClient) AddSourceIdentifierToSubscription(input *docdb.AddSourceIdentifierToSubscriptionInput) (*docdb.AddSourceIdentifierToSubscriptionOutput, error) {
+//	    // mock response/functionality
+//	}
 //
-//    func TestMyFunc(t *testing.T) {
-//        // Setup Test
-//        mockSvc := &mockDocDBClient{}
+//	func TestMyFunc(t *testing.T) {
+//	    // Setup Test
+//	    mockSvc := &mockDocDBClient{}
 //
-//        myfunc(mockSvc)
+//	    myfunc(mockSvc)
 //
-//        // Verify myFunc's functionality
-//    }
+//	    // Verify myFunc's functionality
+//	}
 //
 // It is important to note that this interface will have breaking changes
 // when the service model is updated and adds new API operations, paginators,
@@ -104,6 +104,10 @@ type DocDBAPI interface {
 	CreateEventSubscriptionWithContext(aws.Context, *docdb.CreateEventSubscriptionInput, ...request.Option) (*docdb.CreateEventSubscriptionOutput, error)
 	CreateEventSubscriptionRequest(*docdb.CreateEventSubscriptionInput) (*request.Request, *docdb.CreateEventSubscriptionOutput)
 
+	CreateGlobalCluster(*docdb.CreateGlobalClusterInput) (*docdb.CreateGlobalClusterOutput, error)
+	CreateGlobalClusterWithContext(aws.Context, *docdb.CreateGlobalClusterInput, ...request.Option) (*docdb.CreateGlobalClusterOutput, error)
+	CreateGlobalClusterRequest(*docdb.CreateGlobalClusterInput) (*request.Request, *docdb.CreateGlobalClusterOutput)
+
 	DeleteDBCluster(*docdb.DeleteDBClusterInput) (*docdb.DeleteDBClusterOutput, error)
 	DeleteDBClusterWithContext(aws.Context, *docdb.DeleteDBClusterInput, ...request.Option) (*docdb.DeleteDBClusterOutput, error)
 	DeleteDBClusterRequest(*docdb.DeleteDBClusterInput) (*request.Request, *docdb.DeleteDBClusterOutput)
@@ -127,6 +131,10 @@ type DocDBAPI interface {
 	DeleteEventSubscription(*docdb.DeleteEventSubscriptionInput) (*docdb.DeleteEventSubscriptionOutput, error)
 	DeleteEventSubscriptionWithContext(aws.Context, *docdb.DeleteEventSubscriptionInput, ...request.Option) (*docdb.DeleteEventSubscriptionOutput, error)
 	DeleteEventSubscriptionRequest(*docdb.DeleteEventSubscriptionInput) (*request.Request, *docdb.DeleteEventSubscriptionOutput)
+
+	DeleteGlobalCluster(*docdb.DeleteGlobalClusterInput) (*docdb.DeleteGlobalClusterOutput, error)
+	DeleteGlobalClusterWithContext(aws.Context, *docdb.DeleteGlobalClusterInput, ...request.Option) (*docdb.DeleteGlobalClusterOutput, error)
+	DeleteGlobalClusterRequest(*docdb.DeleteGlobalClusterInput) (*request.Request, *docdb.DeleteGlobalClusterOutput)
 
 	DescribeCertificates(*docdb.DescribeCertificatesInput) (*docdb.DescribeCertificatesOutput, error)
 	DescribeCertificatesWithContext(aws.Context, *docdb.DescribeCertificatesInput, ...request.Option) (*docdb.DescribeCertificatesOutput, error)
@@ -210,6 +218,13 @@ type DocDBAPI interface {
 	DescribeEventsPages(*docdb.DescribeEventsInput, func(*docdb.DescribeEventsOutput, bool) bool) error
 	DescribeEventsPagesWithContext(aws.Context, *docdb.DescribeEventsInput, func(*docdb.DescribeEventsOutput, bool) bool, ...request.Option) error
 
+	DescribeGlobalClusters(*docdb.DescribeGlobalClustersInput) (*docdb.DescribeGlobalClustersOutput, error)
+	DescribeGlobalClustersWithContext(aws.Context, *docdb.DescribeGlobalClustersInput, ...request.Option) (*docdb.DescribeGlobalClustersOutput, error)
+	DescribeGlobalClustersRequest(*docdb.DescribeGlobalClustersInput) (*request.Request, *docdb.DescribeGlobalClustersOutput)
+
+	DescribeGlobalClustersPages(*docdb.DescribeGlobalClustersInput, func(*docdb.DescribeGlobalClustersOutput, bool) bool) error
+	DescribeGlobalClustersPagesWithContext(aws.Context, *docdb.DescribeGlobalClustersInput, func(*docdb.DescribeGlobalClustersOutput, bool) bool, ...request.Option) error
+
 	DescribeOrderableDBInstanceOptions(*docdb.DescribeOrderableDBInstanceOptionsInput) (*docdb.DescribeOrderableDBInstanceOptionsOutput, error)
 	DescribeOrderableDBInstanceOptionsWithContext(aws.Context, *docdb.DescribeOrderableDBInstanceOptionsInput, ...request.Option) (*docdb.DescribeOrderableDBInstanceOptionsOutput, error)
 	DescribeOrderableDBInstanceOptionsRequest(*docdb.DescribeOrderableDBInstanceOptionsInput) (*request.Request, *docdb.DescribeOrderableDBInstanceOptionsOutput)
@@ -256,9 +271,17 @@ type DocDBAPI interface {
 	ModifyEventSubscriptionWithContext(aws.Context, *docdb.ModifyEventSubscriptionInput, ...request.Option) (*docdb.ModifyEventSubscriptionOutput, error)
 	ModifyEventSubscriptionRequest(*docdb.ModifyEventSubscriptionInput) (*request.Request, *docdb.ModifyEventSubscriptionOutput)
 
+	ModifyGlobalCluster(*docdb.ModifyGlobalClusterInput) (*docdb.ModifyGlobalClusterOutput, error)
+	ModifyGlobalClusterWithContext(aws.Context, *docdb.ModifyGlobalClusterInput, ...request.Option) (*docdb.ModifyGlobalClusterOutput, error)
+	ModifyGlobalClusterRequest(*docdb.ModifyGlobalClusterInput) (*request.Request, *docdb.ModifyGlobalClusterOutput)
+
 	RebootDBInstance(*docdb.RebootDBInstanceInput) (*docdb.RebootDBInstanceOutput, error)
 	RebootDBInstanceWithContext(aws.Context, *docdb.RebootDBInstanceInput, ...request.Option) (*docdb.RebootDBInstanceOutput, error)
 	RebootDBInstanceRequest(*docdb.RebootDBInstanceInput) (*request.Request, *docdb.RebootDBInstanceOutput)
+
+	RemoveFromGlobalCluster(*docdb.RemoveFromGlobalClusterInput) (*docdb.RemoveFromGlobalClusterOutput, error)
+	RemoveFromGlobalClusterWithContext(aws.Context, *docdb.RemoveFromGlobalClusterInput, ...request.Option) (*docdb.RemoveFromGlobalClusterOutput, error)
+	RemoveFromGlobalClusterRequest(*docdb.RemoveFromGlobalClusterInput) (*request.Request, *docdb.RemoveFromGlobalClusterOutput)
 
 	RemoveSourceIdentifierFromSubscription(*docdb.RemoveSourceIdentifierFromSubscriptionInput) (*docdb.RemoveSourceIdentifierFromSubscriptionOutput, error)
 	RemoveSourceIdentifierFromSubscriptionWithContext(aws.Context, *docdb.RemoveSourceIdentifierFromSubscriptionInput, ...request.Option) (*docdb.RemoveSourceIdentifierFromSubscriptionOutput, error)
@@ -287,6 +310,10 @@ type DocDBAPI interface {
 	StopDBCluster(*docdb.StopDBClusterInput) (*docdb.StopDBClusterOutput, error)
 	StopDBClusterWithContext(aws.Context, *docdb.StopDBClusterInput, ...request.Option) (*docdb.StopDBClusterOutput, error)
 	StopDBClusterRequest(*docdb.StopDBClusterInput) (*request.Request, *docdb.StopDBClusterOutput)
+
+	SwitchoverGlobalCluster(*docdb.SwitchoverGlobalClusterInput) (*docdb.SwitchoverGlobalClusterOutput, error)
+	SwitchoverGlobalClusterWithContext(aws.Context, *docdb.SwitchoverGlobalClusterInput, ...request.Option) (*docdb.SwitchoverGlobalClusterOutput, error)
+	SwitchoverGlobalClusterRequest(*docdb.SwitchoverGlobalClusterInput) (*request.Request, *docdb.SwitchoverGlobalClusterOutput)
 
 	WaitUntilDBInstanceAvailable(*docdb.DescribeDBInstancesInput) error
 	WaitUntilDBInstanceAvailableWithContext(aws.Context, *docdb.DescribeDBInstancesInput, ...request.WaiterOption) error

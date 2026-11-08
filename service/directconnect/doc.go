@@ -3,22 +3,22 @@
 // Package directconnect provides the client and types for making API
 // requests to AWS Direct Connect.
 //
-// AWS Direct Connect links your internal network to an AWS Direct Connect location
+// Direct Connect links your internal network to an Direct Connect location
 // over a standard Ethernet fiber-optic cable. One end of the cable is connected
-// to your router, the other to an AWS Direct Connect router. With this connection
-// in place, you can create virtual interfaces directly to the AWS cloud (for
-// example, to Amazon EC2 and Amazon S3) and to Amazon VPC, bypassing Internet
-// service providers in your network path. A connection provides access to all
-// AWS Regions except the China (Beijing) and (China) Ningxia Regions. AWS resources
-// in the China Regions can only be accessed through locations associated with
-// those Regions.
+// to your router, the other to an Direct Connect router. With this connection
+// in place, you can create virtual interfaces directly to the Amazon Web Services
+// Cloud (for example, to Amazon EC2 and Amazon S3) and to Amazon VPC, bypassing
+// Internet service providers in your network path. A connection provides access
+// to all Amazon Web Services Regions except the China (Beijing) and (China)
+// Ningxia Regions. Amazon Web Services resources in the China Regions can only
+// be accessed through locations associated with those Regions.
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25 for more information on this service.
 //
 // See directconnect package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/directconnect/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS Direct Connect with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -33,4 +33,7 @@
 // See the AWS Direct Connect client DirectConnect for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/directconnect/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package directconnect

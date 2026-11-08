@@ -3,15 +3,15 @@
 // Package licensemanager provides the client and types for making API
 // requests to AWS License Manager.
 //
-// AWS License Manager makes it easier to manage licenses from software vendors
-// across multiple AWS accounts and on-premises servers.
+// License Manager makes it easier to manage licenses from software vendors
+// across multiple Amazon Web Services accounts and on-premises servers.
 //
 // See https://docs.aws.amazon.com/goto/WebAPI/license-manager-2018-08-01 for more information on this service.
 //
 // See licensemanager package documentation for more information.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/licensemanager/
 //
-// Using the Client
+// # Using the Client
 //
 // To contact AWS License Manager with the SDK use the New function to create
 // a new service client. With that client you can make API requests to the service.
@@ -26,4 +26,7 @@
 // See the AWS License Manager client LicenseManager for more
 // information on creating client for this service.
 // https://docs.aws.amazon.com/sdk-for-go/api/service/licensemanager/#New
+//
+// Deprecated: aws-sdk-go is deprecated. Use aws-sdk-go-v2.
+// See https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-go-v1-on-july-31-2025/.
 package licensemanager
